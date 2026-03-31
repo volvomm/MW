@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95bb13a039e87f9449919e2cbd37a89c, type: 3}
+  m_Name: BoxDialogue
+  m_EditorClassIdentifier: 
+  npcName: Box
+  npcPortrait: {fileID: -1775260456860531029, guid: 1b31b551c28b059488f2719d5fed8fc3, type: 3}
+  dialogueLines:
+  - These boxes sure look dusty
+  autoProgressLines: 
+  autoProgressDelay: 1.5
+  typingSpeed: 0.05
+  voiceSound: {fileID: 0}
+  voicePitch: 1
