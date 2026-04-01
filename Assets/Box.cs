@@ -20,7 +20,7 @@ public class Box : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (dialogueData == null || (!isDialogueActive))
+        if (dialogueData == null)
             return;
 
         if(isDialogueActive)
