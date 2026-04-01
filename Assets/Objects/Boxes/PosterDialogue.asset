@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95bb13a039e87f9449919e2cbd37a89c, type: 3}
-  m_Name: BoxDialogue
+  m_Name: PosterDialogue
   m_EditorClassIdentifier: 
   npcName: Patch
   npcPortrait: {fileID: -6874673969537961856, guid: 55b482a6d29f619468bb1c377e99bd90, type: 3}
   dialogueLines:
-  - These boxes sure look dusty.
-  - I wonder how long these boxes have been here...
-  autoProgressLines: 01
+  - Oh there's some posters up on the wall!
+  - I wonder what they mean...
+  - They look so strange.
+  autoProgressLines: 0101
   autoProgressDelay: 5
   typingSpeed: 0.07
   voiceSound: {fileID: 0}
