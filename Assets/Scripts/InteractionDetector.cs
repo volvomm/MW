@@ -30,10 +30,11 @@ public class InteractionDetector : MonoBehaviour
             interactableInRange = interactable;
             interactionIcon.SetActive(true);
 
-            // if there is no current outline and needs to show a new one.
-            if (collision.TryGetComponent(out SpriteOutlineController outline))
+            currentOutline = FindOutlineController(collision);
+
+            // if there is no current outline and needs to put a new one.
+            if (currentOutline != null)
             {
-                currentOutline = outline;
                 currentOutline.SetVisible(true);
             }
         }
@@ -57,6 +58,20 @@ public class InteractionDetector : MonoBehaviour
             currentOutline.SetVisible(false);
             currentOutline = null;
         }
+    }
+
+    // if there is no OutlineController on object
+    private SpriteOutlineController FindOutlineController(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out SpriteOutlineController outline))
+            return outline;
+
+        outline = collision.GetComponentInParent<SpriteOutlineController>(); // find with Parent obejct
+        if (outline != null)
+            return outline;
+
+        outline = collision.GetComponentInChildren<SpriteOutlineController>(); // find with Children object
+        return outline;
     }
 
 }
