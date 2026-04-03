@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7e14f226f9d003a46b274129a74a1e79
+guid: b16c45aba97d6794b96ab275f03d9bce
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1845739963004649692
-    second: 2_towel_0
+      213: -2001458842607298505
+    second: 3_box_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2_towel_0
+      name: 3_box_0
       rect:
         serializedVersion: 2
-        x: 367
-        y: 143
-        width: 471
-        height: 246
+        x: 1522
+        y: 510
+        width: 381
+        height: 443
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd082aa97b26d9910800000000000000
-      internalID: 1845739963004649692
+      spriteID: 738d3dd69c36934e0800000000000000
+      internalID: -2001458842607298505
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      2_towel_0: 1845739963004649692
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

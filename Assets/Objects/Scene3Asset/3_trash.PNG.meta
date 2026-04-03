@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 7e14f226f9d003a46b274129a74a1e79
+guid: 4d089e03c048ea8468595c3a36067dac
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1845739963004649692
-    second: 2_towel_0
+      213: -4841727869610761964
+    second: 3_trash_0
+  - first:
+      213: -1018014817823965587
+    second: 3_trash_1
+  - first:
+      213: 3220938217976009551
+    second: 3_trash_2
+  - first:
+      213: -6721584366045780957
+    second: 3_trash_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2_towel_0
+      name: 3_trash_0
       rect:
         serializedVersion: 2
-        x: 367
-        y: 143
-        width: 471
-        height: 246
+        x: 871
+        y: 514
+        width: 87
+        height: 79
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd082aa97b26d9910800000000000000
-      internalID: 1845739963004649692
+      spriteID: 411edb8b72abeccb0800000000000000
+      internalID: -4841727869610761964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3_trash_1
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 551
+        width: 92
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6eb487bae84fd1f0800000000000000
+      internalID: -1018014817823965587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3_trash_2
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 467
+        width: 204
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4390f57e3213bc20800000000000000
+      internalID: 3220938217976009551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3_trash_3
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 521
+        width: 46
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 324a50ea1a228b2a0800000000000000
+      internalID: -6721584366045780957
       vertices: []
       indices: 
       edges: []
@@ -134,8 +209,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      2_towel_0: 1845739963004649692
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
