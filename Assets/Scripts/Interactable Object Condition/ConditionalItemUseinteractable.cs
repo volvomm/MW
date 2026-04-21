@@ -8,6 +8,10 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
     [Header("Required Item")]
     [SerializeField] private InventoryItemData requiredItem;
 
+    [Header("Door Setup")]
+    [SerializeField] private GameObject holeBlockedSprite;
+    [SerializeField] private SceneTransition sceneTransition;
+
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText;
@@ -110,6 +114,11 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
         if (blockedVisual != null)
         {
             blockedVisual.SetActive(false);
+        }
+
+        if (sceneTransition != null)
+        {
+            sceneTransition.SetTransitionEnabled(true);
         }
 
         if (consumeItemOnSuccess && InventorySystem.Instance != null)
