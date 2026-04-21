@@ -1,9 +1,9 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
-public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIventoryItemRecivers
+public class TinCanHoleInteractable : MonoBehaviour, IInteractable, IIventoryItemRecivers
 {
     [Header("Required Item")]
     [SerializeField] private InventoryItemData requiredItem;
@@ -16,19 +16,16 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
 
     [Header("Dialogue Data")]
     [SerializeField] private BoxDialogue firstDialogue;
-    [SerializeField] private BoxDialogue selectionDialogue;
+    [SerializeField] private BoxDialogue selectItemDialogue;
     [SerializeField] private BoxDialogue successDialogue;
     [SerializeField] private BoxDialogue failDialogue;
 
-    [Header("Flags")]
-    [SerializeField] private bool setFirstDialogueFlag = true;
-    [SerializeField] private string firstDialogueFlagName = "Door_Hint_Shown";
+    [Header("Visual Change")]
+    [SerializeField] private GameObject blockedVisual;
 
+    [Header("Flags")]
     [SerializeField] private bool setSuccessFlag = true;
     [SerializeField] private string successFlagName = "Door_Opened";
-
-    [Header("Success Visual")]
-    [SerializeField] private GameObject blockedVisual;
 
     [Header("Consume Item")]
     [SerializeField] private bool consumeItemOnSuccess = true;
@@ -36,11 +33,8 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
     private int dialogueIndex;
     private bool isTyping;
     private bool isDialogueActive;
+    private bool openInventoryAfterDialogue;
     private BoxDialogue currentDialogue;
-
-    private bool openInventoryAfterDialogue = false;
-    private bool setFlagAfterDialogue = false;
-    private string pendingFlagName = "";
 
     public bool CanInteract()
     {
@@ -62,21 +56,11 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
 
         if (!hasRequiredItem)
         {
-            StartDialogue(
-                firstDialogue,
-                shouldOpenInventoryAfterDialogue: false,
-                shouldSetFlagAfterDialogue: setFirstDialogueFlag,
-                flagNameToSet: firstDialogueFlagName
-            );
+            StartDialogue(firstDialogue, false);
         }
         else
         {
-            StartDialogue(
-                selectionDialogue,
-                shouldOpenInventoryAfterDialogue: true,
-                shouldSetFlagAfterDialogue: false,
-                flagNameToSet: ""
-            );
+            StartDialogue(selectItemDialogue, true);
         }
     }
 
@@ -94,15 +78,13 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
         }
         else
         {
-            StartDialogue(failDialogue, false, false, "");
+            StartDialogue(failDialogue, false);
         }
     }
 
     private void HandleSuccess()
     {
-        if (setSuccessFlag &&
-            !string.IsNullOrEmpty(successFlagName) &&
-            PuzzleFlagManager.Instance != null)
+        if (setSuccessFlag && !string.IsNullOrEmpty(successFlagName) && PuzzleFlagManager.Instance != null)
         {
             PuzzleFlagManager.Instance.SetFlag(successFlagName, true);
         }
@@ -123,22 +105,16 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
             }
         }
 
-        StartDialogue(successDialogue, false, false, "");
+        StartDialogue(successDialogue, false);
     }
 
-    private void StartDialogue(
-        BoxDialogue dialogueData,
-        bool shouldOpenInventoryAfterDialogue,
-        bool shouldSetFlagAfterDialogue,
-        string flagNameToSet)
+    private void StartDialogue(BoxDialogue dialogueData, bool shouldOpenInventoryAfterDialogue)
     {
         if (dialogueData == null)
             return;
 
         currentDialogue = dialogueData;
         openInventoryAfterDialogue = shouldOpenInventoryAfterDialogue;
-        setFlagAfterDialogue = shouldSetFlagAfterDialogue;
-        pendingFlagName = flagNameToSet;
 
         isDialogueActive = true;
         dialogueIndex = 0;
@@ -175,17 +151,7 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
         }
         else
         {
-            bool shouldSetFlag = setFlagAfterDialogue;
-            string flagToSet = pendingFlagName;
             bool shouldOpenInventory = openInventoryAfterDialogue;
-
-            if (shouldSetFlag &&
-                !string.IsNullOrEmpty(flagToSet) &&
-                PuzzleFlagManager.Instance != null)
-            {
-                PuzzleFlagManager.Instance.SetFlag(flagToSet, true);
-            }
-
             EndDialogue();
 
             if (shouldOpenInventory)
@@ -231,8 +197,6 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
         isTyping = false;
         isDialogueActive = false;
         openInventoryAfterDialogue = false;
-        setFlagAfterDialogue = false;
-        pendingFlagName = "";
 
         if (dialogueText != null)
             dialogueText.SetText("");

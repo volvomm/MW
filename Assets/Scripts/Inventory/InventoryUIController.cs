@@ -15,12 +15,11 @@ public class InventoryUIController : MonoBehaviour
     [Header("State")]
     [SerializeField] private bool isOpen = false;
 
-    private IIventoryItemRecivers currentReceiver;
     private bool isSelectionMode = false;
-
+    private IIventoryItemRecivers currentReceiver;
 
     public bool IsOpen => isOpen;
-    public bool IsSelectedMode => isSelectionMode;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
@@ -35,6 +34,9 @@ public class InventoryUIController : MonoBehaviour
     {
         if (Input.GetKeyDown(toggleKey) || Input.GetKeyDown(altToogleKey))
         {
+            if (isSelectionMode)
+                return;
+
             ToggleInventory();
         }
     }
@@ -66,6 +68,9 @@ public class InventoryUIController : MonoBehaviour
                 slots[i].SetEmpty();
             else
                 slots[i].SetItem(item.itemIcon);
+
+            bool isSelected = InventorySystem.Instance.SelectedIndex == i;
+            slots[i].SetSelected(isSelected);
         }
     }
 
@@ -94,8 +99,9 @@ public class InventoryUIController : MonoBehaviour
         {
             isOpen = true;
             SetInventoryVisiable(true);
+            RefreshUI();
         }
-        RefreshUI();
+
     }
 
     public void CloseInventory()
@@ -111,6 +117,9 @@ public class InventoryUIController : MonoBehaviour
     {
         isOpen = !isOpen;
         SetInventoryVisiable(isOpen);
+
+        if (isOpen)
+            RefreshUI();
     }
 
     public void OpenForItemSelection(IIventoryItemRecivers receiver)
@@ -124,6 +133,8 @@ public class InventoryUIController : MonoBehaviour
     {
         currentReceiver = null;
         isSelectionMode = false;
+        InventorySystem.Instance?.ClearSelection();
+        RefreshUI();
         CloseInventory();
     }
 

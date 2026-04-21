@@ -85,5 +85,24 @@ public class InventorySystem : MonoBehaviour
         selectedIndex = -1;
     }
 
-    
+    public bool RemoveItem(InventoryItemData item)
+    {
+        if (item == null)
+            return false;
+
+        bool removed = items.Remove(item);
+
+        if (!removed)
+            return false;
+
+        if (selectedIndex >= items.Count)
+            selectedIndex = items.Count - 1;
+
+        if (items.Count == 0)
+            selectedIndex = -1;
+
+        Debug.Log($"{item.itemName} deleted");
+        return true;
+    }
+
 }

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class InventorySlotUI : MonoBehaviour
 {
+
     [SerializeField] private Image slotBackground;
     [SerializeField] private Image itemIcon;
     [SerializeField] private Image selectedHighlight;
@@ -45,7 +46,7 @@ public class InventorySlotUI : MonoBehaviour
         }
     }
 
-    private void SetSelected(bool selected)
+    public void SetSelected(bool selected)
     {
         if (selectedHighlight != null)
         {
