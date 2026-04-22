@@ -9,7 +9,7 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
     [SerializeField] private InventoryItemData requiredItem;
 
     [Header("Door Setup")]
-    [SerializeField] private GameObject holeBlockedSprite;
+    [SerializeField] private GameObject blockedVisual;
     [SerializeField] private SceneTransition sceneTransition;
 
     [Header("Dialogue UI")]
@@ -23,6 +23,7 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
     [SerializeField] private BoxDialogue selectionDialogue;
     [SerializeField] private BoxDialogue successDialogue;
     [SerializeField] private BoxDialogue failDialogue;
+    [SerializeField] private BoxDialogue alreadyOpenedDialogue;
 
     [Header("Flags")]
     [SerializeField] private bool setFirstDialogueFlag = true;
@@ -30,9 +31,6 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
 
     [SerializeField] private bool setSuccessFlag = true;
     [SerializeField] private string successFlagName = "Door_Opened";
-
-    [Header("Success Visual")]
-    [SerializeField] private GameObject blockedVisual;
 
     [Header("Consume Item")]
     [SerializeField] private bool consumeItemOnSuccess = true;
@@ -46,9 +44,16 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
     private bool setFlagAfterDialogue = false;
     private string pendingFlagName = "";
 
+    private InventoryUIController inventoryUI;
+
     public bool CanInteract()
     {
         return !isDialogueActive;
+    }
+
+    private void Awake()
+    {
+        inventoryUI = FindFirstObjectByType<InventoryUIController>();
     }
 
     public void Interact()
@@ -56,6 +61,14 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
         if (isDialogueActive)
         {
             NextLine();
+            return;
+        }
+
+        if (IsAlreadyOpened())
+        {
+            if (alreadyOpenedDialogue != null)
+                StartDialogue(alreadyOpenedDialogue, false, false, "");
+
             return;
         }
 
@@ -86,7 +99,6 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
 
     public void OnItemSelectedFromInventory(InventoryItemData selectedItem)
     {
-        InventoryUIController inventoryUI = FindFirstObjectByType<InventoryUIController>();
         if (inventoryUI != null)
         {
             inventoryUI.CloseSelectionMode();
@@ -125,7 +137,6 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
         {
             InventorySystem.Instance.RemoveItem(requiredItem);
 
-            InventoryUIController inventoryUI = FindFirstObjectByType<InventoryUIController>();
             if (inventoryUI != null)
             {
                 inventoryUI.RefreshUI();
@@ -133,6 +144,17 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
         }
 
         StartDialogue(successDialogue, false, false, "");
+    }
+
+    private bool IsAlreadyOpened()
+    {
+        if (!setSuccessFlag || string.IsNullOrEmpty(successFlagName))
+            return false;
+
+        if (PuzzleFlagManager.Instance == null)
+            return false;
+
+        return PuzzleFlagManager.Instance.GetFlag(successFlagName);
     }
 
     private void StartDialogue(
@@ -197,13 +219,9 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
 
             EndDialogue();
 
-            if (shouldOpenInventory)
+            if (shouldOpenInventory && inventoryUI != null)
             {
-                InventoryUIController inventoryUI = FindFirstObjectByType<InventoryUIController>();
-                if (inventoryUI != null)
-                {
-                    inventoryUI.OpenForItemSelection(this);
-                }
+                inventoryUI.OpenForItemSelection(this);
             }
         }
     }

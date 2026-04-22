@@ -8,7 +8,8 @@ public class SceneTransition : MonoBehaviour
     public Transform cameraTargetPosition;
     public Transform mainCamera;
 
-    [SerializeField] private bool canTransition = false;
+    [Header("State")]
+    [SerializeField] private bool canTransition = true;
 
     // if the door is opended
     public void SetTransitionEnabled(bool enabledState)
@@ -23,11 +24,17 @@ public class SceneTransition : MonoBehaviour
         if (!canTransition)
             return;
 
-        if (collision.CompareTag("Player"))
-        {
+        if (!collision.CompareTag("Player"))
+            return;
+
+        if (player != null && playerTargetPosition != null)
+        {  
             // Move Player
             player.position = playerTargetPosition.position;
+        }
 
+        if (mainCamera != null && cameraTargetPosition != null)
+        {
             //Move Camera
             Vector3 newCameraPosition = mainCamera.position;
             newCameraPosition.x = cameraTargetPosition.position.x;
