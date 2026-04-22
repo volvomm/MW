@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95bb13a039e87f9449919e2cbd37a89c, type: 3}
-  m_Name: towel_pickup
+  m_Name: TrashDialogue
   m_EditorClassIdentifier: 
   npcName: Patch
   npcPortrait: {fileID: -6874673969537961856, guid: 55b482a6d29f619468bb1c377e99bd90, type: 3}
   dialogueLines:
-  - This should work.
-  autoProgressLines: 01
+  - There's a piece of fish hanging over there!
+  - Oh never mind, there's mold on it...
+  autoProgressLines: 00
   autoProgressDelay: 5
   typingSpeed: 0.07
   voiceSound: {fileID: 0}
