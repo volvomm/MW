@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 09f2410ce1cc170449676c383f5c05ce
+guid: 3864727191f04ea48a49ae0f8ac28942
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 844392644479785137
-    second: pngtree-brown-mouse-with-a-suprised-scared-look-on-its-face-png-image_12990296_0
+      213: 4510684301576241129
+    second: orange kitty_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pngtree-brown-mouse-with-a-suprised-scared-look-on-its-face-png-image_12990296_0
+      name: orange kitty_0
       rect:
         serializedVersion: 2
-        x: 78
-        y: 0
-        width: 280
-        height: 355
+        x: 570
+        y: 1589
+        width: 261
+        height: 324
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b89b29e2a2e7bb00800000000000000
-      internalID: 844392644479785137
+      spriteID: 9eff161497b299e30800000000000000
+      internalID: 4510684301576241129
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      pngtree-brown-mouse-with-a-suprised-scared-look-on-its-face-png-image_12990296_0: 844392644479785137
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

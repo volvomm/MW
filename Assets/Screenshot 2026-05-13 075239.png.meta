@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 09f2410ce1cc170449676c383f5c05ce
+guid: 9ed38ae8574c50e44810e93a4a0eff55
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 844392644479785137
-    second: pngtree-brown-mouse-with-a-suprised-scared-look-on-its-face-png-image_12990296_0
+      213: 7468802606173327562
+    second: Screenshot 2026-05-13 075239_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pngtree-brown-mouse-with-a-suprised-scared-look-on-its-face-png-image_12990296_0
+      name: Screenshot 2026-05-13 075239_0
       rect:
         serializedVersion: 2
-        x: 78
+        x: 0
         y: 0
-        width: 280
-        height: 355
+        width: 176
+        height: 122
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b89b29e2a2e7bb00800000000000000
-      internalID: 844392644479785137
+      spriteID: ac0197e166486a760800000000000000
+      internalID: 7468802606173327562
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      pngtree-brown-mouse-with-a-suprised-scared-look-on-its-face-png-image_12990296_0: 844392644479785137
+      Screenshot 2026-05-13 075239_0: 7468802606173327562
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

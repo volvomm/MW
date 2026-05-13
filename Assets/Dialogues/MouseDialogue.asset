@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MouseDialogue
   m_EditorClassIdentifier: 
   npcName: Cryptic Mouse
-  npcPortrait: {fileID: 844392644479785137, guid: d819636b5bc244247bc87ee2fa6b414f, type: 3}
+  npcPortrait: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
   dialogueLines:
   - Eek!
   - Please don't eat me!

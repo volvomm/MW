@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2092518b5bf43146b029354e654ff5b, type: 3}
+  m_Name: KittenMainGroupDialogue
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - speakerName: Patch
+    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    dialogueText: Oh.
+  - speakerName: Patch
+    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    dialogueText: What are you guys doing here?
+  - speakerName: Patch
+    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    dialogueText: And where are your parents?
+  - speakerName: White Kitten
+    speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
+    dialogueText: Oh sir!
+  - speakerName: White Kitten
+    speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
+    dialogueText: Please help our mom!
+  - speakerName: Patch
+    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    dialogueText: Wait...
+  - speakerName: Patch
+    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    dialogueText: What do you mean by help your mom?
+  - speakerName: Orange Kitten
+    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
+    dialogueText: Someone got our mom!
+  typingSpeed: 0.07
