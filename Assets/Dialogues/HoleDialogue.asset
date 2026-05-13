@@ -15,7 +15,7 @@ MonoBehaviour:
   npcName: Patch
   npcPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
   dialogueLines:
-  - The hole is really sticky...
+  - Ew, why is this sticky?
   - I need to find something to cover this up with.
   autoProgressLines: 
   autoProgressDelay: 5

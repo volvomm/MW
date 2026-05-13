@@ -37,4 +37,72 @@ MonoBehaviour:
   - speakerName: Orange Kitten
     speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
     dialogueText: Someone got our mom!
+  - speakerName: Orange Kitten
+    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
+    dialogueText: Let me explain.
+  - speakerName: Orange Kitten
+    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
+    dialogueText: We were going on a walk with our mom.
+  - speakerName: Orange Kitten
+    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
+    dialogueText: When we suddenly got felt a slight pull towards a certain direction.
+  - speakerName: Orange Kitten
+    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
+    dialogueText: Which pulled us into this world!
+  - speakerName: GrayKitten
+    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
+    dialogueText: Anyways, yeah.
+  - speakerName: Gray Kitten
+    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
+    dialogueText: We were pulled and transported into this room with our mom.
+  - speakerName: White Kitten
+    speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
+    dialogueText: And then a big scary dog came here and tried to attack us!
+  - speakerName: Orange Kitten
+    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
+    dialogueText: But then our mom stepped in and protected us from the scary dog...
+  - speakerName: White Kitten
+    speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
+    dialogueText: But in the process, she got injured and the dog pulled her away!
+  - speakerName: Gray Kitten
+    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
+    dialogueText: Yeah that's basically what happened.
+  - speakerName: Gray Kitten
+    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
+    dialogueText: And now we're just waiting here since we can't fight against that
+      monster.
+  - speakerName: White Kitten
+    speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
+    dialogueText: Please sir!
+  - speakerName: White Kitten
+    speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
+    dialogueText: Could you please help us and find our mom for us?
+  - speakerName: Patch
+    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    dialogueText: ...
+  - speakerName: Patch
+    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    dialogueText: I'm so sorry that you guys had to go through that.
+  - speakerName: White Kitten
+    speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
+    dialogueText: I'll try and find you mom.
+  - speakerName: White Kitten
+    speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
+    dialogueText: Yay!
+  - speakerName: Patch
+    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    dialogueText: But I can't promise that I would be able to find her.
+  - speakerName: Gray Kitten
+    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
+    dialogueText: That's okay mister.
+  - speakerName: Gray Kitten
+    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
+    dialogueText: 'Thank you so much. '
+  - speakerName: Gray Kitten
+    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
+    dialogueText: I'll stay behind and keep my younger siblings safe while we wait
+      for your return.
+  - speakerName: Orange Kitten
+    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
+    dialogueText: We're counting on you mister!
   typingSpeed: 0.07
