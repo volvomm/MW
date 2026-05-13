@@ -498,7 +498,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -3394,7 +3394,7 @@ MonoBehaviour:
   playerTargetPosition: {fileID: 2095806604}
   cameraTargetPosition: {fileID: 1700710630}
   mainCamera: {fileID: 519420032}
-  canTransition: 0
+  canTransition: 1
 --- !u!61 &524617947
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3759,7 +3759,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -6424,7 +6424,7 @@ MonoBehaviour:
   playerTargetPosition: {fileID: 134388610}
   cameraTargetPosition: {fileID: 1464150249}
   mainCamera: {fileID: 519420032}
-  canTransition: 0
+  canTransition: 1
 --- !u!60 &1053644867
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6455,7 +6455,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -6837,7 +6837,7 @@ MonoBehaviour:
   playerTargetPosition: {fileID: 1977459725}
   cameraTargetPosition: {fileID: 2031913309}
   mainCamera: {fileID: 519420032}
-  canTransition: 0
+  canTransition: 1
 --- !u!61 &1121378071
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8045,7 +8045,7 @@ MonoBehaviour:
   playerTargetPosition: {fileID: 1521741195}
   cameraTargetPosition: {fileID: 2031913309}
   mainCamera: {fileID: 519420032}
-  canTransition: 0
+  canTransition: 1
 --- !u!60 &1220149295
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -8076,7 +8076,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -8093,9 +8093,9 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -1.6459732, y: 0.5575333}
-      - {x: -1.7350454, y: -0.63591194}
-      - {x: -0.71061844, y: -1.778694}
-      - {x: 0.870958, y: -3.4782538}
+      - {x: -2.1505575, y: -0.19072238}
+      - {x: -1.0667663, y: -1.6302974}
+      - {x: 0.7522446, y: -3.6513832}
       - {x: 0.9510565, y: -2.12455}
   m_UseDelaunayMesh: 0
 --- !u!1 &1234748514
@@ -12563,7 +12563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2053208577
 Transform:
   m_ObjectHideFlags: 0

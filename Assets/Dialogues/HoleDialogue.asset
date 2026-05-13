@@ -15,8 +15,13 @@ MonoBehaviour:
   npcName: Patch
   npcPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
   dialogueLines:
-  - Ew, why is this sticky?
-  - I need to find something to cover this up with.
+  - Oh.
+  - What is this?
+  - And why is it sticky?
+  - Is this the place that little rodent was taling about?
+  - Arcaiden or something like that?
+  - Anyways I think this is it.
+  - It's pretty gross so I need to cover all of this slime with something.
   autoProgressLines: 
   autoProgressDelay: 5
   typingSpeed: 0.07
