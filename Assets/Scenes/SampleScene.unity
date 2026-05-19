@@ -2022,9 +2022,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 510629283}
-        m_TargetAssemblyTypeName: Box, Assembly-CSharp
-        m_MethodName: EndDialogue
+      - m_Target: {fileID: 173646855}
+        m_TargetAssemblyTypeName: KittenGroupDialogueManager, Assembly-CSharp
+        m_MethodName: ForceEndDialogue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2968,7 +2968,6 @@ GameObject:
   - component: {fileID: 510629279}
   - component: {fileID: 510629282}
   - component: {fileID: 510629283}
-  - component: {fileID: 510629284}
   m_Layer: 0
   m_Name: Box asset
   m_TagString: Untagged
@@ -3158,22 +3157,6 @@ MonoBehaviour:
   dialougeText: {fileID: 1219159426}
   nameText: {fileID: 1258714718}
   portraitImage: {fileID: 252152096}
---- !u!114 &510629284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510629278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172ba3cd64bb43c47bc82eeb43345f67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetRenderer: {fileID: 510629279}
-  visibleOnStart: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineThickness: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -13172,7 +13155,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2090671161}
   - component: {fileID: 2090671160}
-  - component: {fileID: 2090671162}
   m_Layer: 0
   m_Name: poster asset
   m_TagString: Untagged
@@ -13251,22 +13233,6 @@ Transform:
   - {fileID: 2088940405}
   m_Father: {fileID: 104425405}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2090671162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2090671159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172ba3cd64bb43c47bc82eeb43345f67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetRenderer: {fileID: 2090671160}
-  visibleOnStart: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineThickness: 1
 --- !u!1 &2095806603
 GameObject:
   m_ObjectHideFlags: 0

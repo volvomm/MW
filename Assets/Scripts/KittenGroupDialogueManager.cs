@@ -12,6 +12,11 @@ public class KittenGroupDialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     public Image portraitImage;
 
+    public bool IsDialogueActive()
+    {
+        return dialogueActive;
+    }
+
     public MonoBehaviour playerMovementScript;
 
     private KittenGroupDialogue currentDialogue;
@@ -43,6 +48,25 @@ public class KittenGroupDialogueManager : MonoBehaviour
 
         dialoguePanel.SetActive(true);
         ShowLine();
+    }
+
+    public void ForceEndDialogue()
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        dialoguePanel.SetActive(false);
+        dialogueActive = false;
+
+        if (playerMovementScript != null)
+        {
+            playerMovementScript.enabled = true;
+        }
+
+        onDialogueFinished?.Invoke();
+        onDialogueFinished = null;
     }
 
     private void Update()
