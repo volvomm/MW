@@ -30,10 +30,6 @@ public class DoorChoiceTransition : MonoBehaviour
     void Start()
     {
         doorChoicePanel.SetActive(false);
-
-        yesButton.onClick.AddListener(YesEnterRoom);
-        noButton.onClick.AddListener(NoStayHere);
-
         fadePanel.alpha = 0;
     }
 
@@ -50,6 +46,12 @@ public class DoorChoiceTransition : MonoBehaviour
         choiceOpen = true;
         doorChoicePanel.SetActive(true);
         messageText.text = message;
+
+        yesButton.onClick.RemoveAllListeners();
+        noButton.onClick.RemoveAllListeners();
+
+        yesButton.onClick.AddListener(YesEnterRoom);
+        noButton.onClick.AddListener(NoStayHere);
     }
 
     void YesEnterRoom()
