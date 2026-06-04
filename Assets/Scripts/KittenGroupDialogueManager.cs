@@ -164,6 +164,11 @@ public class KittenGroupDialogueManager : MonoBehaviour
             playerMovementScript.enabled = true;
         }
 
+        if (CatMoodManager.Instance != null)
+        {
+            CatMoodManager.Instance.SetMood("Frightened");
+        }
+
         onDialogueFinished?.Invoke();
         onDialogueFinished = null;
     }
