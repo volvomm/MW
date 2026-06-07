@@ -34,4 +34,7 @@ MonoBehaviour:
   - speakerName: Gray Kitten
     speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
     dialogueText: I'm also really scared...
+  - speakerName: Gray Kitten
+    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
+    dialogueText: It's just the three of us without our mom.
   typingSpeed: 0.07

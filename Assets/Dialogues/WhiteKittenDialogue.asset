@@ -22,4 +22,10 @@ MonoBehaviour:
   - speakerName: White Kitten
     speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
     dialogueText: Mama's gone and I'm scared
+  - speakerName: Patch
+    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    dialogueText: How long ago did she get taken away?
+  - speakerName: White Kitten
+    speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
+    dialogueText: Nine minutes ago I think.
   typingSpeed: 0.07

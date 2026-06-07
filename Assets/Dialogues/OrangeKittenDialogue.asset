@@ -21,8 +21,14 @@ MonoBehaviour:
     dialogueText: Are you and your siblings hungry?
   - speakerName: Orange Kitten
     speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
-    dialogueText: No...
+    dialogueText: Yes but...
   - speakerName: Orange Kitten
     speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
     dialogueText: We just want our mama back...
+  - speakerName: Orange Kitten
+    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
+    dialogueText: Whenever she brought back food.
+  - speakerName: Orange Kitten
+    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
+    dialogueText: She would always bring back six portions us.
   typingSpeed: 0.07

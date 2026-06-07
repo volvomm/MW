@@ -2,16 +2,10 @@ using UnityEngine;
 
 public class MatRevealTrapdoor : MonoBehaviour, IInteractable
 {
-    [Header("Objects")]
-    [SerializeField] private GameObject matObject;
-    [SerializeField] private GameObject lockedTrapdoorObject;
+    public GameObject matObject;
+    public GameObject lockedTrapdoor;
 
-    private bool revealed = false;
-
-    public bool CanInteract()
-    {
-        return !revealed;
-    }
+    bool revealed = false;
 
     public void Interact()
     {
@@ -20,10 +14,12 @@ public class MatRevealTrapdoor : MonoBehaviour, IInteractable
 
         revealed = true;
 
-        if (matObject != null)
-            matObject.SetActive(false);
+        matObject.SetActive(false);
+        lockedTrapdoor.SetActive(true);
+    }
 
-        if (lockedTrapdoorObject != null)
-            lockedTrapdoorObject.SetActive(true);
+    public bool CanInteract()
+    {
+        return !revealed;
     }
 }

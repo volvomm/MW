@@ -10,7 +10,7 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
 
     [Header("Door Setup")]
     [SerializeField] private GameObject blockedVisual;
-    [SerializeField] private SceneTransition sceneTransition;
+    [SerializeField] private DoorChoiceTransition doorQuestionTransition;
 
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
@@ -128,9 +128,9 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
             blockedVisual.SetActive(false);
         }
 
-        if (sceneTransition != null)
+        if (doorQuestionTransition != null)
         {
-            sceneTransition.SetTransitionEnabled(true);
+            doorQuestionTransition.enabled = true;
         }
 
         if (consumeItemOnSuccess && InventorySystem.Instance != null)
