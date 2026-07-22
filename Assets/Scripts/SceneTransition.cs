@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class SceneTransition : MonoBehaviour
@@ -11,6 +12,8 @@ public class SceneTransition : MonoBehaviour
     [Header("State")]
     public bool canTransition = true;
     public InventoryItemData requiredKey;
+
+    public ConditionalItemUseInteractable ConditionalInteract;
 
     // if the door is opended
     public void SetTransitionEnabled(bool enabledState)
@@ -26,11 +29,12 @@ public class SceneTransition : MonoBehaviour
         }
     }
 
+
     //Check the player's inventory for a specific key
     //IF they have the key, allow them to open the door "can transition =true" 
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player"))
             return;
@@ -39,6 +43,11 @@ public class SceneTransition : MonoBehaviour
         {
            if (InventorySystem.Instance.items.Contains(requiredKey))
            {
+
+                ConditionalInteract.DialogueStart();
+                ConditionalInteract.HandleSuccess();
+
+
                 canTransition = true;
                 Debug.Log("We have an item!");
            }
@@ -71,6 +80,10 @@ public class SceneTransition : MonoBehaviour
             }
         }
 
+
+
  
     }
+
+
 }

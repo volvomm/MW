@@ -46,6 +46,8 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
 
     private InventoryUIController inventoryUI;
 
+    public SceneTransition sceneTransition;
+
     public bool CanInteract()
     {
         return !isDialogueActive;
@@ -97,6 +99,12 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
         }
     }
 
+    public void DialogueStart()
+    {
+        StartDialogue(successDialogue, false, false, "");
+        return;
+    }
+
     public void OnItemSelectedFromInventory(InventoryItemData selectedItem)
     {
         if (inventoryUI != null)
@@ -104,17 +112,13 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
             inventoryUI.CloseSelectionMode();
         }
 
-        if (selectedItem == requiredItem)
-        {
-            HandleSuccess();
-        }
-        else
+        if (selectedItem != requiredItem)
         {
             StartDialogue(failDialogue, false, false, "");
         }
     }
 
-    private void HandleSuccess()
+    public void HandleSuccess()
     {
         if (setSuccessFlag &&
             !string.IsNullOrEmpty(successFlagName) &&
@@ -142,8 +146,7 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
                 inventoryUI.RefreshUI();
             }
         }
-
-        StartDialogue(successDialogue, false, false, "");
+        return;
     }
 
     private bool IsAlreadyOpened()
