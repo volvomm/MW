@@ -10,7 +10,7 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
 
     [Header("Door Setup")]
     [SerializeField] private GameObject blockedVisual;
-    [SerializeField] private DoorChoiceTransition doorQuestionTransition;
+    [SerializeField] private SceneTransition sceneTransition;
 
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
@@ -44,9 +44,11 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
     private bool setFlagAfterDialogue = false;
     private string pendingFlagName = "";
 
+    // After the SucessDialogue, its ready for the open the door
+    private bool handleSuccessAfterDialogue;
+
     private InventoryUIController inventoryUI;
 
-    public SceneTransition sceneTransition;
 
     public bool CanInteract()
     {
@@ -56,6 +58,8 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
     private void Awake()
     {
         inventoryUI = FindFirstObjectByType<InventoryUIController>();
+
+        RestoreDoorState();
     }
 
     public void Interact()
@@ -69,7 +73,15 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
         if (IsAlreadyOpened())
         {
             if (alreadyOpenedDialogue != null)
-                StartDialogue(alreadyOpenedDialogue, false, false, "");
+            {
+                StartDialogue(
+                    alreadyOpenedDialogue,
+                    shouldOpenInventoryAfterDialogue: false,
+                    shouldSetFlagAfterDialogue: false,
+                    flagNameToSet: "",
+                    shouldHandleSuccessAfterDialogue: false
+                );
+            }
 
             return;
         }
@@ -77,7 +89,11 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
         if (InventorySystem.Instance == null)
             return;
 
-        bool hasRequiredItem = InventorySystem.Instance.HasItem(requiredItem);
+        if (requiredItem == null)
+            return;
+
+        bool hasRequiredItem =
+            InventorySystem.Instance.HasItem(requiredItem);
 
         if (!hasRequiredItem)
         {
@@ -85,25 +101,30 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
                 firstDialogue,
                 shouldOpenInventoryAfterDialogue: false,
                 shouldSetFlagAfterDialogue: setFirstDialogueFlag,
-                flagNameToSet: firstDialogueFlagName
+                flagNameToSet: firstDialogueFlagName,
+                shouldHandleSuccessAfterDialogue: false
             );
+
+            return;
         }
-        else
-        {
-            StartDialogue(
-                selectionDialogue,
-                shouldOpenInventoryAfterDialogue: true,
-                shouldSetFlagAfterDialogue: false,
-                flagNameToSet: ""
-            );
-        }
+
+        StartDialogue(
+            successDialogue,
+            shouldOpenInventoryAfterDialogue: false,
+            shouldSetFlagAfterDialogue: false,
+            flagNameToSet: "",
+            shouldHandleSuccessAfterDialogue: true
+        );
     }
 
+
+    /*
     public void DialogueStart()
     {
         StartDialogue(successDialogue, false, false, "");
         return;
     }
+    */
 
     public void OnItemSelectedFromInventory(InventoryItemData selectedItem)
     {
@@ -114,8 +135,26 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
 
         if (selectedItem != requiredItem)
         {
-            StartDialogue(failDialogue, false, false, "");
+            StartDialogue(
+                failDialogue,
+                shouldOpenInventoryAfterDialogue: false,
+                shouldSetFlagAfterDialogue: false,
+                flagNameToSet: "",
+                shouldHandleSuccessAfterDialogue: false
+                );
+
+            return;
+
         }
+
+        // if other puzzle using the inventory item chosing system.
+                StartDialogue(
+            successDialogue,
+            shouldOpenInventoryAfterDialogue: false,
+            shouldSetFlagAfterDialogue: false,
+            flagNameToSet: "",
+            shouldHandleSuccessAfterDialogue: true
+            );
     }
 
     public void HandleSuccess()
@@ -127,17 +166,21 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
             PuzzleFlagManager.Instance.SetFlag(successFlagName, true);
         }
 
+        // door blocking sprite OFF
         if (blockedVisual != null)
         {
             blockedVisual.SetActive(false);
         }
 
-        if (doorQuestionTransition != null)
+        // now player can go through if theyre in the transition trigger
+        if (sceneTransition != null)
         {
-            doorQuestionTransition.enabled = true;
+            sceneTransition.SetTransitionEnabled(true);
         }
 
-        if (consumeItemOnSuccess && InventorySystem.Instance != null)
+        if (consumeItemOnSuccess && 
+            requiredItem != null &&
+            InventorySystem.Instance != null)
         {
             InventorySystem.Instance.RemoveItem(requiredItem);
 
@@ -146,7 +189,22 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
                 inventoryUI.RefreshUI();
             }
         }
-        return;
+        
+    }
+
+    private void RestoreDoorState()
+    {
+        bool isOpend = IsAlreadyOpened();
+
+        if (blockedVisual != null)
+        {
+            blockedVisual.SetActive(!isOpend);
+        }
+
+        if (sceneTransition != null)
+        {
+            sceneTransition.SetTransitionEnabled(isOpend);
+        }
     }
 
     private bool IsAlreadyOpened()
@@ -164,15 +222,36 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
         BoxDialogue dialogueData,
         bool shouldOpenInventoryAfterDialogue,
         bool shouldSetFlagAfterDialogue,
-        string flagNameToSet)
+        string flagNameToSet,
+        bool shouldHandleSuccessAfterDialogue)
     {
+        // even there is no "SucessDialogue", the door will be never locked
         if (dialogueData == null)
+        {
+            if (shouldHandleSuccessAfterDialogue)
+            {
+                HandleSuccess();
+            }
+
             return;
+        }
+
+        if (dialogueData.dialogueLines == null ||
+            dialogueData.dialogueLines.Length == 0)
+        {
+            if (shouldHandleSuccessAfterDialogue)
+            {
+                HandleSuccess();
+            }
+
+            return;
+        }
 
         currentDialogue = dialogueData;
         openInventoryAfterDialogue = shouldOpenInventoryAfterDialogue;
         setFlagAfterDialogue = shouldSetFlagAfterDialogue;
         pendingFlagName = flagNameToSet;
+        handleSuccessAfterDialogue = shouldHandleSuccessAfterDialogue;
 
         isDialogueActive = true;
         dialogueIndex = 0;
@@ -187,6 +266,7 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
             dialoguePanel.SetActive(true);
 
         StartCoroutine(TypeLine(dialogueData));
+
     }
 
     private void NextLine()
@@ -199,33 +279,47 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
             StopAllCoroutines();
 
             if (dialogueText != null)
-                dialogueText.SetText(currentDialogue.dialogueLines[dialogueIndex]);
-
+            {
+                dialogueText.SetText(currentDialogue.dialogueLines[dialogueIndex]
+                    );
+            }
             isTyping = false;
+            return;
+
         }
-        else if (++dialogueIndex < currentDialogue.dialogueLines.Length)
+
+        dialogueIndex++;
+
+
+        if (dialogueIndex < currentDialogue.dialogueLines.Length)
         {
             StartCoroutine(TypeLine(currentDialogue));
+            return;
         }
-        else
+
+        bool shouldSetFlag = setFlagAfterDialogue;
+        string flagToSet = pendingFlagName;
+        bool shouldOpenInventory = openInventoryAfterDialogue;
+        bool shouldHandleSuccess = handleSuccessAfterDialogue;
+
+        if (shouldSetFlag &&
+            !string.IsNullOrEmpty(flagToSet) &&
+            PuzzleFlagManager.Instance != null)
         {
-            bool shouldSetFlag = setFlagAfterDialogue;
-            string flagToSet = pendingFlagName;
-            bool shouldOpenInventory = openInventoryAfterDialogue;
+            PuzzleFlagManager.Instance.SetFlag(flagToSet, true);
+        }
 
-            if (shouldSetFlag &&
-                !string.IsNullOrEmpty(flagToSet) &&
-                PuzzleFlagManager.Instance != null)
-            {
-                PuzzleFlagManager.Instance.SetFlag(flagToSet, true);
-            }
+        EndDialogue();
 
-            EndDialogue();
+        // After the SucessDialogue finished, the door is open
+        if (shouldHandleSuccess)
+        {
+            HandleSuccess();
+        }
 
-            if (shouldOpenInventory && inventoryUI != null)
-            {
-                inventoryUI.OpenForItemSelection(this);
-            }
+        if (shouldOpenInventory && inventoryUI != null)
+        {
+            inventoryUI.OpenForItemSelection(this);
         }
     }
 
@@ -250,7 +344,10 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
             dialogueData.autoProgressLines.Length > dialogueIndex &&
             dialogueData.autoProgressLines[dialogueIndex])
         {
-            yield return new WaitForSeconds(dialogueData.autoProgressDelay);
+            yield return new WaitForSeconds(
+                dialogueData.autoProgressDelay
+            );
+
             NextLine();
         }
     }
@@ -258,11 +355,14 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
     private void EndDialogue()
     {
         StopAllCoroutines();
+
         isTyping = false;
         isDialogueActive = false;
         openInventoryAfterDialogue = false;
         setFlagAfterDialogue = false;
         pendingFlagName = "";
+        handleSuccessAfterDialogue = false;
+        currentDialogue = null;
 
         if (dialogueText != null)
             dialogueText.SetText("");

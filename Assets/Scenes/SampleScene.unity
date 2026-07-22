@@ -2736,7 +2736,6 @@ MonoBehaviour:
   mainCamera: {fileID: 519420032}
   canTransition: 0
   requiredKey: {fileID: 11400000, guid: eb214331ea18b4249bfdc47ff5fe11c9, type: 2}
-  ConditionalInteract: {fileID: 1766591285}
 --- !u!61 &256834817
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2819,7 +2818,6 @@ MonoBehaviour:
   mainCamera: {fileID: 519420032}
   canTransition: 1
   requiredKey: {fileID: 0}
-  ConditionalInteract: {fileID: 0}
 --- !u!61 &259924955
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4676,7 +4674,6 @@ MonoBehaviour:
   mainCamera: {fileID: 519420032}
   canTransition: 1
   requiredKey: {fileID: 0}
-  ConditionalInteract: {fileID: 0}
 --- !u!61 &471074781
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4985,7 +4982,6 @@ MonoBehaviour:
   mainCamera: {fileID: 519420032}
   canTransition: 1
   requiredKey: {fileID: 0}
-  ConditionalInteract: {fileID: 0}
 --- !u!61 &505387221
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5488,7 +5484,6 @@ MonoBehaviour:
   mainCamera: {fileID: 519420032}
   canTransition: 1
   requiredKey: {fileID: 0}
-  ConditionalInteract: {fileID: 0}
 --- !u!61 &524617947
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5794,7 +5789,6 @@ MonoBehaviour:
   mainCamera: {fileID: 519420032}
   canTransition: 1
   requiredKey: {fileID: 0}
-  ConditionalInteract: {fileID: 0}
 --- !u!61 &560044109
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12537,7 +12531,6 @@ MonoBehaviour:
   mainCamera: {fileID: 519420032}
   canTransition: 1
   requiredKey: {fileID: 0}
-  ConditionalInteract: {fileID: 0}
 --- !u!61 &1121378071
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17156,7 +17149,6 @@ MonoBehaviour:
   mainCamera: {fileID: 519420032}
   canTransition: 1
   requiredKey: {fileID: 0}
-  ConditionalInteract: {fileID: 0}
 --- !u!61 &1728716936
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18044,7 +18036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredItem: {fileID: 11400000, guid: eb214331ea18b4249bfdc47ff5fe11c9, type: 2}
   blockedVisual: {fileID: 1041853447}
-  doorQuestionTransition: {fileID: 0}
+  sceneTransition: {fileID: 256834816}
   dialoguePanel: {fileID: 741082908}
   dialogueText: {fileID: 1219159426}
   nameText: {fileID: 1258714718}
@@ -18059,7 +18051,6 @@ MonoBehaviour:
   setSuccessFlag: 1
   successFlagName: Door_Opened
   consumeItemOnSuccess: 1
-  sceneTransition: {fileID: 0}
 --- !u!60 &1766591286
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -18629,7 +18620,6 @@ MonoBehaviour:
   mainCamera: {fileID: 519420032}
   canTransition: 1
   requiredKey: {fileID: 0}
-  ConditionalInteract: {fileID: 0}
 --- !u!61 &1826408397
 BoxCollider2D:
   m_ObjectHideFlags: 0
