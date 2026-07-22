@@ -7,7 +7,7 @@ public class InventorySystem : MonoBehaviour
     public static InventorySystem Instance { get; private set; }
 
     [SerializeField] private int maxSlotCount = 6;
-    [SerializeField] private List<InventoryItemData> items = new List<InventoryItemData>();
+    public List<InventoryItemData> items = new List<InventoryItemData>();
 
     private int selectedIndex = -1;
 

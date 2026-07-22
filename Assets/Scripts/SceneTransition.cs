@@ -9,39 +9,68 @@ public class SceneTransition : MonoBehaviour
     public Transform mainCamera;
 
     [Header("State")]
-    [SerializeField] private bool canTransition = true;
+    public bool canTransition = true;
+    public InventoryItemData requiredKey;
 
     // if the door is opended
     public void SetTransitionEnabled(bool enabledState)
     {
-        canTransition = enabledState;
+        //canTransition = enabledState;
     }
+
+    private void Start()
+    {
+        if (requiredKey != null)
+        {
+            canTransition = false;
+        }
+    }
+
+    //Check the player's inventory for a specific key
+    //IF they have the key, allow them to open the door "can transition =true" 
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (!canTransition)
-            return;
-
         if (!collision.CompareTag("Player"))
             return;
 
-        if (player != null && playerTargetPosition != null)
-        {  
-            // Move Player
-            player.position = playerTargetPosition.position;
-        }
-
-        if (mainCamera != null && cameraTargetPosition != null)
+        if (requiredKey != null) //If thedoor requires a key
         {
-            //Move Camera
-            Vector3 newCameraPosition = mainCamera.position;
-            newCameraPosition.x = cameraTargetPosition.position.x;
-            newCameraPosition.y = cameraTargetPosition.position.y;
-            newCameraPosition.z = mainCamera.position.z;
-
-            mainCamera.position = newCameraPosition;
+           if (InventorySystem.Instance.items.Contains(requiredKey))
+           {
+                canTransition = true;
+                Debug.Log("We have an item!");
+           }
+           else
+           {
+                canTransition = false;
+           }
         }
+
+        Debug.Log(canTransition + " " + gameObject.name); 
+
+        if (canTransition)
+        {
+
+            if (player != null && playerTargetPosition != null)
+            {
+                // Move Player
+                player.position = playerTargetPosition.position;
+            }
+
+            if (mainCamera != null && cameraTargetPosition != null)
+            {
+                //Move Camera
+                Vector3 newCameraPosition = mainCamera.position;
+                newCameraPosition.x = cameraTargetPosition.position.x;
+                newCameraPosition.y = cameraTargetPosition.position.y;
+                newCameraPosition.z = mainCamera.position.z;
+
+                mainCamera.position = newCameraPosition;
+            }
+        }
+
+ 
     }
 }
