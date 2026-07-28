@@ -1560,7 +1560,7 @@ SpriteRenderer:
   m_SortingOrder: 6
   m_Sprite: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2.37, y: 2.94}
@@ -3987,7 +3987,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 8
+  m_SortingOrder: 9
   m_Sprite: {fileID: -922177539557995989, guid: b046ed964704ab748840dbbfed85dcf5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7328,7 +7328,7 @@ MonoBehaviour:
   dialogueText: {fileID: 1219159426}
   nameText: {fileID: 1258714718}
   portraitImage: {fileID: 252152096}
-  patchPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+  patchPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
   motherCatPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
   dialogueLines:
   - speaker: 0
@@ -8370,6 +8370,7 @@ MonoBehaviour:
   cage: {fileID: 890463440}
   motherCat: {fileID: 186976885}
   motherCatFrontPosition: {fileID: 809808364}
+  rescueDialogue: {fileID: 898501634}
 --- !u!60 &890463444
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -9848,6 +9849,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 898501633}
+  - component: {fileID: 898501634}
   m_Layer: 0
   m_Name: MotherCat
   m_TagString: Untagged
@@ -9873,6 +9875,57 @@ Transform:
   - {fileID: 186976887}
   m_Father: {fileID: 1264672590}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &898501634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898501632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade2712d1146720459a67d14ff817156, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - speakerName: Mother Cat
+    dialogueText: Oh thank you so much for freeing me!
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  - speakerName: Patch
+    dialogueText: No need for thanks
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+  - speakerName: Patch
+    dialogueText: We've got to get you back to your kittens
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+  - speakerName: Mother Cat
+    dialogueText: Wait I can't go back up there!
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  - speakerName: Mother Cat
+    dialogueText: That brute is still up there...
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  - speakerName: Mother Cat
+    dialogueText: I'm too injured to fight him again
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  - speakerName: Mother Cat
+    dialogueText: 'I''m sorry but could I ask you to deal with the dog before I get
+      back to my kittens? '
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  - speakerName: Patch
+    dialogueText: Alright, I'll find a way to make him leave or something
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+  - speakerName: Patch
+    dialogueText: In the meantime, just stay here until I come back for you
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+  - speakerName: Mother Cat
+    dialogueText: Thank you so much! Be careful!
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  dialoguePanel: {fileID: 741082908}
+  speakerNameText: {fileID: 1258714718}
+  dialogueText: {fileID: 1219159426}
+  portraitImage: {fileID: 252152096}
+  playerMovement: {fileID: 246482627}
+  playerRigidbody: {fileID: 246482620}
+  typingSpeed: 0.04
 --- !u!1 &900733901
 GameObject:
   m_ObjectHideFlags: 0
@@ -12013,7 +12066,7 @@ GameObject:
   - component: {fileID: 1059128425}
   - component: {fileID: 1059128424}
   m_Layer: 0
-  m_Name: 8_soundRecorder_0
+  m_Name: SoundRecorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12082,13 +12135,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059128423}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.12461802, w: 0.99220484}
   m_LocalPosition: {x: 96.16, y: -81.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 14.317}
 --- !u!1 &1059396910
 GameObject:
   m_ObjectHideFlags: 0

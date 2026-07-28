@@ -9,6 +9,10 @@ public class FreeMotherCat : MonoBehaviour, IInteractable
 
     public Transform motherCatFrontPosition;
 
+    [Header("Dialogue")]
+    [SerializeField]
+    private MotherCatRescueDialogue rescueDialogue;
+
     private bool alreadyFreed = false;
 
     public bool CanInteract()
@@ -32,5 +36,16 @@ public class FreeMotherCat : MonoBehaviour, IInteractable
         motherCat.transform.position = motherCatFrontPosition.position;
 
         cage.SetActive(false);
+
+        if (rescueDialogue != null)
+        {
+            rescueDialogue.BeginDialogue();
+        }
+        else
+        {
+            Debug.LogWarning(
+                "The Rescue Dialogue field has not been assigned on FreeMotherCat."
+            );
+        }
     }
 }
