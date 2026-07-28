@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueLines:
   - speakerName: Patch
-    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
     dialogueText: Oh.
   - speakerName: Patch
-    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
     dialogueText: What are you guys doing here?
   - speakerName: Patch
-    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
     dialogueText: And where are your parents?
   - speakerName: White Kitten
     speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
@@ -78,13 +78,13 @@ MonoBehaviour:
     speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
     dialogueText: Could you please help us and find our mom for us?
   - speakerName: Patch
-    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
     dialogueText: ...
   - speakerName: Patch
-    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
     dialogueText: I'm so sorry that you guys had to go through that.
   - speakerName: Patch
-    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
     dialogueText: I'll try and find you mom.
   - speakerName: White Kitten
     speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}

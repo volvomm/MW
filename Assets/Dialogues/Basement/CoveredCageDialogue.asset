@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95bb13a039e87f9449919e2cbd37a89c, type: 3}
   m_Name: CoveredCageDialogue
   m_EditorClassIdentifier: 
-  npcName: 
-  npcPortrait: {fileID: 0}
+  npcName: Patch
+  npcPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
   dialogueLines:
   - This cloth seems to be covering something...
   autoProgressLines: 
