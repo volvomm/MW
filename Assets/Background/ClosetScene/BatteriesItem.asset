@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6b30d684d92fa46821cea8b7ff686c, type: 3}
+  m_Name: BatteriesItem
+  m_EditorClassIdentifier: 
+  itemName: Batteries
+  itemIcon: {fileID: 1573451829454297924, guid: 17d82e41e2ccb724083b656da28b49ae, type: 3}

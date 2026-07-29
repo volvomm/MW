@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b25764c454477dc488ee1af45e8629c9
+guid: 102bcb8cf66885a40b6b74a18556b918
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3396553802782524813
-    second: 8_soundRecorder_0
+      213: -4133765471998244028
+    second: 8_soundRecorder(closeUp)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 8_soundRecorder_0
+      name: 8_soundRecorder(closeUp)_0
       rect:
         serializedVersion: 2
-        x: 1620
-        y: 561
-        width: 89
-        height: 117
+        x: 747
+        y: 241
+        width: 451
+        height: 633
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d85ca5b10bbf22f20800000000000000
-      internalID: 3396553802782524813
+      spriteID: 44b05c0743ae1a6c0800000000000000
+      internalID: -4133765471998244028
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      8_soundRecorder_0: 3396553802782524813
+      8_soundRecorder(closeUp)_0: -4133765471998244028
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
