@@ -12,6 +12,12 @@ public class RecorderInteractable : MonoBehaviour, IInteractable
     [Header("Powered Screen UI")]
     [SerializeField] private GameObject recorderScreenGlow;
     [SerializeField] private GameObject recorderStartText;
+    [SerializeField] private TMP_Text recorderScreenText;
+
+    [Header("Recording Dialogue")]
+    [SerializeField] private BoxDialogue recordingDialogueData;
+    [SerializeField] private BoxDialogue playbackDialogueData;
+    [SerializeField] private BoxDialogue alreadyDoneDialogueData;
 
     [Header("Recorder Clickable Buttons")]
     [SerializeField] private Button recordButton;
@@ -43,6 +49,13 @@ public class RecorderInteractable : MonoBehaviour, IInteractable
     private bool inspectionOpen;
     private bool recorderPowered;
 
+    private bool isRecording;
+    private bool hasRecorded;
+    private bool isPlayingAudio;
+
+    private bool recorderSequenceComplete;
+    private bool showingAlreadyDoneDialogue;
+
     private void Start()
     {
         SetRecorderButtonsInteractable(false);
@@ -64,6 +77,14 @@ public class RecorderInteractable : MonoBehaviour, IInteractable
 
     }
 
+    private void SetRecorderScreenText(string newText)
+    {
+        if (recorderScreenText != null)
+        {
+            recorderScreenText.SetText(newText);
+        }
+    }
+
     public bool CanInteract()
     {
         return !inspectionOpen;
@@ -71,12 +92,22 @@ public class RecorderInteractable : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        // E continues any dialogue that is currently open.
         if (isDialogueActive)
         {
             NextLine();
             return;
         }
 
+        // After the whole recorder puzzle has been completed,
+        // interacting only shows Patch's reminder dialogue.
+        if (recorderSequenceComplete)
+        {
+            StartAlreadyDoneDialogue();
+            return;
+        }
+
+        // Do not reopen the interaction while the close-up is active.
         if (inspectionOpen)
         {
             return;
@@ -92,6 +123,29 @@ public class RecorderInteractable : MonoBehaviour, IInteractable
         }
 
         OpenRecorderInspection();
+    }
+
+    private void StartAlreadyDoneDialogue()
+    {
+        if (alreadyDoneDialogueData == null)
+        {
+            Debug.LogWarning(
+                $"{gameObject.name}: Already Done Dialogue Data is missing."
+            );
+
+            return;
+        }
+
+        showingAlreadyDoneDialogue = true;
+
+        // Freeze Patch while this normal dialogue is visible.
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = false;
+        }
+
+        // Do not show the recorder close-up.
+        StartDialogue(alreadyDoneDialogueData);
     }
 
     private void OpenRecorderInspection()
@@ -185,7 +239,12 @@ public class RecorderInteractable : MonoBehaviour, IInteractable
         }
 
         recorderPowered = true;
+
+        isRecording = false;
+        hasRecorded = false;
+
         ShowPoweredScreen();
+        SetRecorderScreenText("START");
 
         // Refresh the inventory so the battery icon disappears.
         InventoryUIController inventoryUI =
@@ -247,6 +306,23 @@ public class RecorderInteractable : MonoBehaviour, IInteractable
         if (recorderStartText != null)
         {
             recorderStartText.SetActive(true);
+        }
+
+        if (isPlayingAudio)
+        {
+            SetRecorderScreenText("PLAYING AUDIO");
+        }
+        else if (hasRecorded)
+        {
+            SetRecorderScreenText("RECORDED");
+        }
+        else if (isRecording)
+        {
+            SetRecorderScreenText("RECORDING");
+        }
+        else
+        {
+            SetRecorderScreenText("START");
         }
     }
 
@@ -329,6 +405,9 @@ public class RecorderInteractable : MonoBehaviour, IInteractable
 
     private void FinishCurrentDialogue()
     {
+        bool finishedPlaybackDialogue =
+            currentDialogueData == playbackDialogueData;
+
         StopAllCoroutines();
 
         isTyping = false;
@@ -345,39 +424,221 @@ public class RecorderInteractable : MonoBehaviour, IInteractable
             dialoguePanel.SetActive(false);
         }
 
-        // Always keep the close-up recorder visible.
-        // The X returns after every dialogue.
+        // This was the dialogue shown after returning to the
+        // recorder once the puzzle had already been completed.
+        if (showingAlreadyDoneDialogue)
+        {
+            showingAlreadyDoneDialogue = false;
+            currentDialogueData = null;
+
+            if (playerMovement != null)
+            {
+                playerMovement.enabled = true;
+            }
+
+            return;
+        }
+
+        // Patch has finished the dialogue after playing his recording.
+        if (finishedPlaybackDialogue)
+        {
+            recorderSequenceComplete = true;
+        }
+
+        if (isRecording)
+        {
+            // Keep recording until the square Stop button is clicked.
+            UpdateRecorderButtonStates();
+
+            if (closeButton != null)
+            {
+                closeButton.SetActive(false);
+            }
+
+            return;
+        }
+
+        if (isPlayingAudio)
+        {
+            // The playback dialogue has finished.
+            // Keep PLAYING AUDIO on the screen until X is clicked.
+            UpdateRecorderButtonStates();
+
+            if (closeButton != null)
+            {
+                closeButton.SetActive(true);
+            }
+
+            return;
+        }
+
+        UpdateRecorderButtonStates();
+
         if (closeButton != null)
         {
             closeButton.SetActive(true);
-        }
-
-        if (recorderPowered)
-        {
-            // Leave the controls disabled for now.
-            // We will replace them with the functional-recorder UI next.
-            SetRecorderButtonsInteractable(false);
-        }
-        else
-        {
-            // Without batteries, buttons can still be tested.
-            SetRecorderButtonsInteractable(true);
         }
     }
 
     public void PressRecordButton()
     {
-        ShowBatteryDialogue();
+        if (isDialogueActive)
+        {
+            return;
+        }
+
+        // Before the batteries are installed, clicking the button
+        // still gives the old battery warning.
+        if (!recorderPowered)
+        {
+            ShowBatteryDialogue();
+            return;
+        }
+
+        // Do not begin another recording if one is already active
+        // or a recording has already been completed.
+        if (isRecording || hasRecorded)
+        {
+            return;
+        }
+
+        isRecording = true;
+
+        SetRecorderScreenText("RECORDING");
+
+        // Disable all controls while Patch is speaking.
+        SetRecorderButtonsInteractable(false);
+
+        if (closeButton != null)
+        {
+            closeButton.SetActive(false);
+        }
+
+        StartDialogue(recordingDialogueData);
     }
 
     public void PressStopButton()
     {
-        ShowBatteryDialogue();
+        if (isDialogueActive)
+        {
+            return;
+        }
+
+        if (!recorderPowered)
+        {
+            ShowBatteryDialogue();
+            return;
+        }
+
+        // Stop only works after the red Record button has been used.
+        if (!isRecording)
+        {
+            return;
+        }
+
+        isRecording = false;
+        hasRecorded = true;
+
+        SetRecorderScreenText("RECORDED");
+
+        // There is no playback function yet, so disable the
+        // recorder controls until we create the next step.
+        UpdateRecorderButtonStates();
+
+        if (closeButton != null)
+        {
+            closeButton.SetActive(true);
+        }
     }
 
     public void PressPlayButton()
     {
-        ShowBatteryDialogue();
+        if (isDialogueActive)
+        {
+            return;
+        }
+
+        if (!recorderPowered)
+        {
+            ShowBatteryDialogue();
+            return;
+        }
+
+        // The Play button only works once Patch has recorded audio.
+        if (!hasRecorded || isPlayingAudio)
+        {
+            return;
+        }
+
+        isPlayingAudio = true;
+
+        SetRecorderScreenText("PLAYING\nAUDIO");
+
+        // Disable all controls while the playback dialogue is active.
+        SetRecorderButtonsInteractable(false);
+
+        if (closeButton != null)
+        {
+            closeButton.SetActive(false);
+        }
+
+        StartDialogue(playbackDialogueData);
+    }
+
+    private void UpdateRecorderButtonStates()
+    {
+        if (recordButton == null ||
+            stopButton == null ||
+            playButton == null)
+        {
+            return;
+        }
+
+        if (isDialogueActive)
+        {
+            recordButton.interactable = false;
+            stopButton.interactable = false;
+            playButton.interactable = false;
+            return;
+        }
+
+        if (!recorderPowered)
+        {
+            recordButton.interactable = true;
+            stopButton.interactable = true;
+            playButton.interactable = true;
+            return;
+        }
+
+        if (isRecording)
+        {
+            recordButton.interactable = false;
+            stopButton.interactable = true;
+            playButton.interactable = false;
+            return;
+        }
+
+        if (isPlayingAudio)
+        {
+            recordButton.interactable = false;
+            stopButton.interactable = false;
+            playButton.interactable = false;
+            return;
+        }
+
+        if (hasRecorded)
+        {
+            // Recording is complete, so only Play should work.
+            recordButton.interactable = false;
+            stopButton.interactable = false;
+            playButton.interactable = true;
+            return;
+        }
+
+        // Powered recorder before recording begins.
+        recordButton.interactable = true;
+        stopButton.interactable = false;
+        playButton.interactable = false;
     }
 
     private void ShowBatteryDialogue()

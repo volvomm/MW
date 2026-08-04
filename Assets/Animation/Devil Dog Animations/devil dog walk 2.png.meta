@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 7abe6eba8cc908540b507fa41359aa42
+guid: 1be772be905760c42a9b81bf13cb0f3a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7416123643353735474
-    second: 9-2_background_0
+      213: -7207100064140079166
+    second: devil dog walk 2_0
+  - first:
+      213: 6366304203580551204
+    second: devil dog walk 2_1
+  - first:
+      213: -9194584337569677500
+    second: devil dog walk 2_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 9-2_background_0
+      name: devil dog walk 2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 989
+        y: 649
+        width: 1664
+        height: 1132
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ece5683b6d2a41990800000000000000
-      internalID: -7416123643353735474
+      spriteID: 2cf4c303dac3bfb90800000000000000
+      internalID: -7207100064140079166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil dog walk 2_1
+      rect:
+        serializedVersion: 2
+        x: 1425
+        y: 662
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 420be7a61f7a95850800000000000000
+      internalID: 6366304203580551204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil dog walk 2_2
+      rect:
+        serializedVersion: 2
+        x: 1434
+        y: 661
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44ff9cd8246466080800000000000000
+      internalID: -9194584337569677500
       vertices: []
       indices: 
       edges: []
@@ -134,8 +184,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      9-2_background_0: -7416123643353735474
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
