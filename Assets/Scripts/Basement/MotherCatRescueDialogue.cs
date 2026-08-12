@@ -202,6 +202,8 @@ public class MotherCatRescueDialogue : MonoBehaviour
         isTyping = false;
         dialogueActive = false;
 
+        StoryProgress.MotherCatRescueDialogueFinished = true;
+
         dialogueText.text = "";
 
         if (dialoguePanel != null)

@@ -443,6 +443,8 @@ public class RecorderInteractable : MonoBehaviour, IInteractable
         if (finishedPlaybackDialogue)
         {
             recorderSequenceComplete = true;
+
+            StoryProgress.RecorderPuzzleFinished = true;
         }
 
         if (isRecording)

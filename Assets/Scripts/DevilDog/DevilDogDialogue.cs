@@ -15,8 +15,11 @@ public class DevilDogDialogue : MonoBehaviour
         public string sentence;
     }
 
-    [Header("Dialogue Lines")]
-    [SerializeField] private DialogueLine[] dialogueLines;
+    [Header("First Devil Dog Dialogue")]
+    [SerializeField] private DialogueLine[] firstDialogueLines;
+
+    [Header("Second Devil Dog Lure Dialogue")]
+    [SerializeField] private DialogueLine[] lureDialogueLines;
 
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
@@ -36,15 +39,22 @@ public class DevilDogDialogue : MonoBehaviour
     [Header("Typing")]
     [SerializeField] private float typingSpeed = 0.04f;
 
-    [Header("Repeat Settings")]
-    [SerializeField] private bool playOnlyOnce;
+    [Header("Devil Dog Walk Away")]
+    [SerializeField] private DevilDogWalkOff devilDogWalkOff;
 
     private bool playerIsInRange;
     private bool dialogueIsActive;
     private bool isTyping;
-    private bool dialogueCompleted;
+
+    private bool firstDialogueCompleted;
+    private bool lureDialogueCompleted;
+
+    private bool playingLureDialogue;
 
     private int currentLineIndex;
+
+    private DialogueLine[] currentDialogueLines;
+
     private Coroutine typingCoroutine;
 
     private void Start()
@@ -73,25 +83,73 @@ public class DevilDogDialogue : MonoBehaviour
             return;
         }
 
-        if (playOnlyOnce && dialogueCompleted)
+        if (!playerIsInRange)
         {
             return;
         }
 
-        if (playerIsInRange)
+        // FIRST INTERACTION:
+        // Patch has not spoken to the Devil Dog yet.
+        if (!firstDialogueCompleted)
         {
-            StartDialogue();
+            StartFirstDialogue();
+            return;
         }
+
+        // SECOND INTERACTION:
+        // Only becomes available after BOTH story requirements are complete.
+        if (!lureDialogueCompleted &&
+            StoryProgress.MotherCatRescueDialogueFinished &&
+            StoryProgress.RecorderPuzzleFinished)
+        {
+            StartLureDialogue();
+            return;
+        }
+
+        // If neither condition is available,
+        // pressing E does nothing for now.
+    }
+
+    private void StartFirstDialogue()
+    {
+        if (firstDialogueLines == null ||
+            firstDialogueLines.Length == 0)
+        {
+            Debug.LogWarning(
+                "No first Devil Dog dialogue lines assigned.",
+                this
+            );
+
+            return;
+        }
+
+        playingLureDialogue = false;
+        currentDialogueLines = firstDialogueLines;
+
+        StartDialogue();
+    }
+
+    private void StartLureDialogue()
+    {
+        if (lureDialogueLines == null ||
+            lureDialogueLines.Length == 0)
+        {
+            Debug.LogWarning(
+                "No Devil Dog lure dialogue lines assigned.",
+                this
+            );
+
+            return;
+        }
+
+        playingLureDialogue = true;
+        currentDialogueLines = lureDialogueLines;
+
+        StartDialogue();
     }
 
     private void StartDialogue()
     {
-        if (dialogueLines == null || dialogueLines.Length == 0)
-        {
-            Debug.LogWarning("No Devil Dog dialogue lines assigned.", this);
-            return;
-        }
-
         dialogueIsActive = true;
         currentLineIndex = 0;
 
@@ -111,6 +169,7 @@ public class DevilDogDialogue : MonoBehaviour
         }
 
         SetPlayerMovement(false);
+
         DisplayCurrentLine();
     }
 
@@ -124,7 +183,7 @@ public class DevilDogDialogue : MonoBehaviour
 
         currentLineIndex++;
 
-        if (currentLineIndex >= dialogueLines.Length)
+        if (currentLineIndex >= currentDialogueLines.Length)
         {
             EndDialogue();
             return;
@@ -135,7 +194,8 @@ public class DevilDogDialogue : MonoBehaviour
 
     private void DisplayCurrentLine()
     {
-        DialogueLine line = dialogueLines[currentLineIndex];
+        DialogueLine line =
+            currentDialogueLines[currentLineIndex];
 
         if (speakerNameText != null)
         {
@@ -145,7 +205,9 @@ public class DevilDogDialogue : MonoBehaviour
         if (speakerPortraitImage != null)
         {
             speakerPortraitImage.sprite = line.speakerPortrait;
-            speakerPortraitImage.enabled = line.speakerPortrait != null;
+
+            speakerPortraitImage.enabled =
+                line.speakerPortrait != null;
         }
 
         if (typingCoroutine != null)
@@ -153,7 +215,8 @@ public class DevilDogDialogue : MonoBehaviour
             StopCoroutine(typingCoroutine);
         }
 
-        typingCoroutine = StartCoroutine(TypeSentence(line.sentence));
+        typingCoroutine =
+            StartCoroutine(TypeSentence(line.sentence));
     }
 
     private IEnumerator TypeSentence(string sentence)
@@ -166,6 +229,7 @@ public class DevilDogDialogue : MonoBehaviour
         for (int i = 0; i <= sentence.Length; i++)
         {
             dialogueText.maxVisibleCharacters = i;
+
             yield return new WaitForSeconds(typingSpeed);
         }
 
@@ -181,10 +245,13 @@ public class DevilDogDialogue : MonoBehaviour
             typingCoroutine = null;
         }
 
-        DialogueLine line = dialogueLines[currentLineIndex];
+        DialogueLine line =
+            currentDialogueLines[currentLineIndex];
 
         dialogueText.text = line.sentence;
-        dialogueText.maxVisibleCharacters = line.sentence.Length;
+
+        dialogueText.maxVisibleCharacters =
+            line.sentence.Length;
 
         isTyping = false;
     }
@@ -199,7 +266,6 @@ public class DevilDogDialogue : MonoBehaviour
 
         dialogueIsActive = false;
         isTyping = false;
-        dialogueCompleted = true;
 
         if (dialoguePanel != null)
         {
@@ -213,11 +279,44 @@ public class DevilDogDialogue : MonoBehaviour
 
         SetPlayerMovement(true);
 
-        if (interactionIcon != null &&
-            playerIsInRange &&
-            !(playOnlyOnce && dialogueCompleted))
+        // FIRST DEVIL DOG CONVERSATION FINISHED
+        if (!playingLureDialogue)
         {
-            interactionIcon.SetActive(true);
+            firstDialogueCompleted = true;
+
+            StoryProgress.HasTalkedToDevilDog = true;
+
+            if (interactionIcon != null &&
+                playerIsInRange &&
+                StoryProgress.MotherCatRescueDialogueFinished &&
+                StoryProgress.RecorderPuzzleFinished)
+            {
+                interactionIcon.SetActive(true);
+            }
+
+            return;
+        }
+
+        // SECOND / LURE CONVERSATION FINISHED
+        lureDialogueCompleted = true;
+
+        StoryProgress.DevilDogLureDialogueFinished = true;
+
+        if (interactionIcon != null)
+        {
+            interactionIcon.SetActive(false);
+        }
+
+        if (devilDogWalkOff != null)
+        {
+            devilDogWalkOff.StartWalkingAway();
+        }
+        else
+        {
+            Debug.LogWarning(
+                "DevilDogWalkOff has not been assigned.",
+                this
+            );
         }
     }
 
@@ -245,11 +344,34 @@ public class DevilDogDialogue : MonoBehaviour
 
         playerIsInRange = true;
 
-        if (!dialogueIsActive &&
-            !(playOnlyOnce && dialogueCompleted) &&
-            interactionIcon != null)
+        // First interaction is always available.
+        if (!firstDialogueCompleted)
         {
-            interactionIcon.SetActive(true);
+            if (interactionIcon != null)
+            {
+                interactionIcon.SetActive(true);
+            }
+
+            return;
+        }
+
+        // After the first dialogue, only show E when
+        // the second conversation is actually available.
+        if (!lureDialogueCompleted &&
+            StoryProgress.MotherCatRescueDialogueFinished &&
+            StoryProgress.RecorderPuzzleFinished)
+        {
+            if (interactionIcon != null)
+            {
+                interactionIcon.SetActive(true);
+            }
+
+            return;
+        }
+
+        if (interactionIcon != null)
+        {
+            interactionIcon.SetActive(false);
         }
     }
 
