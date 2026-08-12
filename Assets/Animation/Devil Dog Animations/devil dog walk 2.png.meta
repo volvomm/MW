@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      devil dog walk 2_0: -7207100064140079166
+      devil dog walk 2_1: 6366304203580551204
+      devil dog walk 2_2: -9194584337569677500
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

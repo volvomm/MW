@@ -250,8 +250,10 @@ public class DevilDogDialogue : MonoBehaviour
 
         dialogueText.text = line.sentence;
 
-        dialogueText.maxVisibleCharacters =
-            line.sentence.Length;
+        //dialogueText.maxVisibleCharacters =
+        //line.sentence.Length;
+
+        dialogueText.maxVisibleCharacters = 100;
 
         isTyping = false;
     }
