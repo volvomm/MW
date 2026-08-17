@@ -6,11 +6,17 @@ public class RecorderInspection : MonoBehaviour
 
     public void ShowRecorder()
     {
-        inspectionCanvas.SetActive(true);
+        if (inspectionCanvas != null)
+        {
+            inspectionCanvas.SetActive(true);
+        }
     }
 
     public void HideRecorder()
     {
-        inspectionCanvas.SetActive(false);
+        if (inspectionCanvas != null)
+        {
+            inspectionCanvas.SetActive(false);
+        }
     }
 }

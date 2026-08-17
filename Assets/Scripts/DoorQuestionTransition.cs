@@ -22,7 +22,7 @@ public class DoorQuestionTransition : MonoBehaviour
     public float fadeSpeed = 1f;
     public string question = "Enter the closet?";
 
-    [Header("Locked Dialogue UI")]
+    [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text speakerNameText;
     [SerializeField] private TMP_Text dialogueText;
@@ -30,7 +30,7 @@ public class DoorQuestionTransition : MonoBehaviour
     [SerializeField] private Sprite patchPortrait;
     [SerializeField] private GameObject closeButton;
 
-    [Header("Locked Dialogue Settings")]
+    [Header("Early Locked Dialogue")]
     [SerializeField] private string lockedSpeakerName = "Patch";
 
     [TextArea(3, 6)]
@@ -38,18 +38,32 @@ public class DoorQuestionTransition : MonoBehaviour
     private string lockedDialogue =
         "I think I see something in the other room.";
 
+    [Header("Closet Barricade")]
+    [SerializeField] private InventoryItemData woodenPlankItem;
+    [SerializeField] private GameObject normalClosetDoor;
+    [SerializeField] private GameObject lockedClosetDoor;
+
+    [TextArea(3, 6)]
+    [SerializeField]
+    private string barricadeDialogue =
+        "Now it's time to reunite the mother with her kittens.";
+
     [SerializeField] private float typingSpeed = 0.04f;
 
     [Header("Player Movement")]
-    [SerializeField] private Behaviour playerMovementScript;
+    [SerializeField] private PlayerMovement playerMovementScript;
 
     private bool playerInside;
     private bool questionOpen;
 
-    private bool lockedDialogueActive;
+    private bool patchDialogueActive;
     private bool isTyping;
 
+    private bool closetBarricaded;
+
     private Coroutine typingCoroutine;
+
+    private string currentDialogue;
 
     private void Start()
     {
@@ -62,6 +76,18 @@ public class DoorQuestionTransition : MonoBehaviour
         {
             fadePanel.alpha = 0f;
         }
+
+        // Normal door starts visible.
+        if (normalClosetDoor != null)
+        {
+            normalClosetDoor.SetActive(true);
+        }
+
+        // Barricaded version starts hidden.
+        if (lockedClosetDoor != null)
+        {
+            lockedClosetDoor.SetActive(false);
+        }
     }
 
     private void Update()
@@ -71,11 +97,12 @@ public class DoorQuestionTransition : MonoBehaviour
             return;
         }
 
-        // If the locked dialogue is currently open,
-        // E either completes the sentence or closes the dialogue.
-        if (lockedDialogueActive)
+        // If Patch dialogue is already on screen,
+        // E handles that dialogue instead of interacting
+        // with the door again.
+        if (patchDialogueActive)
         {
-            HandleLockedDialogueInput();
+            HandlePatchDialogueInput();
             return;
         }
 
@@ -84,22 +111,102 @@ public class DoorQuestionTransition : MonoBehaviour
             return;
         }
 
-        // Before Patch talks to the Devil Dog,
-        // do not allow the closet question to open.
-        if (!StoryProgress.HasTalkedToDevilDog)
+        // ------------------------------------------------
+        // AFTER DEVIL DOG DISAPPEARS INTO THE CLOSET
+        // ------------------------------------------------
+        if (StoryProgress.DevilDogTrapdoorSequenceFinished)
         {
-            StartLockedDialogue();
+            TryBarricadeCloset();
             return;
         }
 
-        // After Patch talks to the Devil Dog,
-        // open the normal closet question.
+        // ------------------------------------------------
+        // EARLIER STORY BEHAVIOUR
+        // ------------------------------------------------
+
+        // Before Patch talks to the Devil Dog,
+        // don't allow the closet question.
+        if (!StoryProgress.HasTalkedToDevilDog)
+        {
+            StartPatchDialogue(lockedDialogue);
+            return;
+        }
+
+        // After talking to Devil Dog but BEFORE
+        // the final trapdoor sequence, the closet still
+        // works normally.
         OpenQuestion();
     }
 
-    private void StartLockedDialogue()
+    private void TryBarricadeCloset()
     {
-        lockedDialogueActive = true;
+        // Already finished. Don't do anything again.
+        if (closetBarricaded)
+        {
+            return;
+        }
+
+        if (InventorySystem.Instance == null)
+        {
+            Debug.LogWarning(
+                "DoorQuestionTransition: InventorySystem.Instance was not found."
+            );
+
+            return;
+        }
+
+        // Patch MUST have the wooden plank.
+        if (woodenPlankItem == null ||
+            !InventorySystem.Instance.HasItem(woodenPlankItem))
+        {
+            // No dialogue and no door question.
+            // Patch simply needs to collect the plank first.
+            return;
+        }
+
+        BarricadeCloset();
+    }
+
+    private void BarricadeCloset()
+    {
+        closetBarricaded = true;
+
+        // Stop Patch immediately.
+        SetPlayerMovement(false);
+
+        // Remove wooden plank from inventory.
+        InventorySystem.Instance.RemoveItem(woodenPlankItem);
+
+        // Refresh inventory display.
+        InventoryUIController inventoryUI =
+            FindFirstObjectByType<InventoryUIController>();
+
+        if (inventoryUI != null)
+        {
+            inventoryUI.RefreshUI();
+        }
+
+        // Hide normal closet door.
+        if (normalClosetDoor != null)
+        {
+            normalClosetDoor.SetActive(false);
+        }
+
+        // Show barricaded closet door.
+        if (lockedClosetDoor != null)
+        {
+            lockedClosetDoor.SetActive(true);
+        }
+
+        // Only AFTER the door changes,
+        // Patch says the reunion line.
+        StartPatchDialogue(barricadeDialogue);
+    }
+
+    private void StartPatchDialogue(string sentence)
+    {
+        patchDialogueActive = true;
+        currentDialogue = sentence;
 
         if (questionPanel != null)
         {
@@ -119,7 +226,8 @@ public class DoorQuestionTransition : MonoBehaviour
         if (speakerPortraitImage != null)
         {
             speakerPortraitImage.sprite = patchPortrait;
-            speakerPortraitImage.enabled = patchPortrait != null;
+            speakerPortraitImage.enabled =
+                patchPortrait != null;
         }
 
         if (closeButton != null)
@@ -134,10 +242,11 @@ public class DoorQuestionTransition : MonoBehaviour
             StopCoroutine(typingCoroutine);
         }
 
-        typingCoroutine = StartCoroutine(TypeLockedDialogue());
+        typingCoroutine =
+            StartCoroutine(TypePatchDialogue());
     }
 
-    private IEnumerator TypeLockedDialogue()
+    private IEnumerator TypePatchDialogue()
     {
         isTyping = true;
 
@@ -148,31 +257,39 @@ public class DoorQuestionTransition : MonoBehaviour
             yield break;
         }
 
-        dialogueText.text = lockedDialogue;
+        dialogueText.text = currentDialogue;
         dialogueText.maxVisibleCharacters = 0;
 
-        for (int i = 0; i <= lockedDialogue.Length; i++)
+        for (int i = 0; i <= currentDialogue.Length; i++)
         {
             dialogueText.maxVisibleCharacters = i;
+
             yield return new WaitForSeconds(typingSpeed);
         }
+
+        dialogueText.maxVisibleCharacters =
+            currentDialogue.Length;
 
         isTyping = false;
         typingCoroutine = null;
     }
 
-    private void HandleLockedDialogueInput()
+    private void HandlePatchDialogueInput()
     {
+        // First E while typing:
+        // immediately reveal the complete sentence.
         if (isTyping)
         {
-            CompleteLockedDialogue();
+            CompletePatchDialogueImmediately();
             return;
         }
 
-        CloseLockedDialogue();
+        // Next E:
+        // close the dialogue.
+        ClosePatchDialogue();
     }
 
-    private void CompleteLockedDialogue()
+    private void CompletePatchDialogueImmediately()
     {
         if (typingCoroutine != null)
         {
@@ -182,14 +299,15 @@ public class DoorQuestionTransition : MonoBehaviour
 
         if (dialogueText != null)
         {
-            dialogueText.text = lockedDialogue;
-            dialogueText.maxVisibleCharacters = lockedDialogue.Length;
+            dialogueText.text = currentDialogue;
+            dialogueText.maxVisibleCharacters =
+                currentDialogue.Length;
         }
 
         isTyping = false;
     }
 
-    private void CloseLockedDialogue()
+    private void ClosePatchDialogue()
     {
         if (typingCoroutine != null)
         {
@@ -197,8 +315,13 @@ public class DoorQuestionTransition : MonoBehaviour
             typingCoroutine = null;
         }
 
-        lockedDialogueActive = false;
+        patchDialogueActive = false;
         isTyping = false;
+
+        if (dialogueText != null)
+        {
+            dialogueText.text = "";
+        }
 
         if (dialoguePanel != null)
         {
@@ -215,16 +338,20 @@ public class DoorQuestionTransition : MonoBehaviour
 
     private void SetPlayerMovement(bool canMove)
     {
-        if (playerMovementScript != null)
+        if (playerMovementScript == null)
         {
-            playerMovementScript.enabled = canMove;
+            return;
         }
 
-        if (!canMove &&
-            player != null &&
-            player.TryGetComponent(out Rigidbody2D rb))
+        if (!canMove)
         {
-            rb.linearVelocity = Vector2.zero;
+            playerMovementScript.StopMovementImmediately();
+            playerMovementScript.enabled = false;
+        }
+        else
+        {
+            playerMovementScript.StopMovementImmediately();
+            playerMovementScript.enabled = true;
         }
     }
 
@@ -299,7 +426,9 @@ public class DoorQuestionTransition : MonoBehaviour
             yield break;
         }
 
-        while (!Mathf.Approximately(fadePanel.alpha, targetAlpha))
+        while (!Mathf.Approximately(
+                   fadePanel.alpha,
+                   targetAlpha))
         {
             fadePanel.alpha = Mathf.MoveTowards(
                 fadePanel.alpha,
@@ -338,11 +467,6 @@ public class DoorQuestionTransition : MonoBehaviour
             }
 
             questionOpen = false;
-        }
-
-        if (lockedDialogueActive)
-        {
-            CloseLockedDialogue();
         }
     }
 }

@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 74259058}
   - component: {fileID: 74259057}
   - component: {fileID: 74259060}
-  - component: {fileID: 74259059}
+  - component: {fileID: 74259061}
   m_Layer: 0
   m_Name: 'double wooden planks '
   m_TagString: Untagged
@@ -569,23 +569,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &74259059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 74259056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b70dbab8042ccc47a2c99d40ef6d24e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: 684067d4371383b42a0508c3367fe96f, type: 2}
-  dialoguePanel: {fileID: 741082908}
-  dialougeText: {fileID: 1219159426}
-  nameText: {fileID: 1258714718}
-  portraitImage: {fileID: 252152096}
 --- !u!60 &74259060
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -728,6 +711,21 @@ PolygonCollider2D:
       - {x: -0.775, y: -1}
       - {x: -0.72499996, y: -0.95}
   m_UseDelaunayMesh: 0
+--- !u!114 &74259061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74259056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb63b8c40135eb4cba5e3b9a1d17ebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  woodenPlankItem: {fileID: 11400000, guid: bf581722a9d92e94a8a4ca985a7fd9c4, type: 2}
+  doublePlanks: {fileID: 74259056}
+  singlePlank: {fileID: 934646667}
 --- !u!1 &104425404
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,6 +944,10 @@ MonoBehaviour:
   closeButton: {fileID: 0}
   lockedSpeakerName: Patch
   lockedDialogue: I think I see something in the other room.
+  woodenPlankItem: {fileID: 0}
+  normalClosetDoor: {fileID: 0}
+  lockedClosetDoor: {fileID: 0}
+  barricadeDialogue: Now it's time to reunite the mother with her kittens.
   typingSpeed: 0.04
   playerMovementScript: {fileID: 0}
 --- !u!61 &111123728
@@ -1305,12 +1307,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151802293}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 92.72, y: -86.03, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 88.46, y: 3.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 784335931}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &152415676
 GameObject:
@@ -6075,7 +6077,7 @@ Transform:
   m_GameObject: {fileID: 542329407}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 88.46, y: 3.3100052, z: 0}
+  m_LocalPosition: {x: 88.46, y: 3.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6724,6 +6726,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matObject: {fileID: 620473412}
   lockedTrapdoor: {fileID: 65850030}
+--- !u!1 &637073022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 637073023}
+  m_Layer: 0
+  m_Name: ClosetBarricadeSequence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &637073023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637073022}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 90.14243, y: -89.44447, z: -0.039241195}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &638788796
 GameObject:
   m_ObjectHideFlags: 0
@@ -6769,6 +6802,8 @@ Transform:
   - {fileID: 378486889}
   - {fileID: 2095806604}
   - {fileID: 1977459725}
+  - {fileID: 910460796}
+  - {fileID: 929020244}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &652377083
@@ -6820,8 +6855,12 @@ MonoBehaviour:
   closeButton: {fileID: 351142273}
   lockedSpeakerName: Patch
   lockedDialogue: I think I see something in the other room.
+  woodenPlankItem: {fileID: 11400000, guid: bf581722a9d92e94a8a4ca985a7fd9c4, type: 2}
+  normalClosetDoor: {fileID: 542329407}
+  lockedClosetDoor: {fileID: 151802293}
+  barricadeDialogue: Now it's time to reunite the mother with her kittens.
   typingSpeed: 0.04
-  playerMovementScript: {fileID: 0}
+  playerMovementScript: {fileID: 246482627}
 --- !u!61 &652377085
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7966,6 +8005,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 542329409}
+  - {fileID: 151802295}
   - {fileID: 620473413}
   - {fileID: 1624675443}
   - {fileID: 507000023}
@@ -10848,6 +10888,37 @@ RectTransform:
   m_AnchoredPosition: {x: -966.0224, y: -541.75616}
   m_SizeDelta: {x: 0.6988, y: 0.8869}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &910460795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 910460796}
+  m_Layer: 0
+  m_Name: Spawn_Patch_KittenReunion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &910460796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910460795}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 73.4, y: 1.72, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 638788797}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &925556954
 GameObject:
   m_ObjectHideFlags: 0
@@ -10923,6 +10994,37 @@ RectTransform:
   m_AnchoredPosition: {x: 17.400024, y: 325.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &929020243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 929020244}
+  m_Layer: 0
+  m_Name: Spawn_MotherCat_KittenReunion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &929020244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929020243}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 68.67, y: 1.84, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 638788797}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &934646667
 GameObject:
   m_ObjectHideFlags: 0
@@ -11004,7 +11106,7 @@ Transform:
   m_GameObject: {fileID: 934646667}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 88.74, y: -92.84, z: 0}
+  m_LocalPosition: {x: 83.44, y: -92.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15121,6 +15223,111 @@ RectTransform:
   m_AnchoredPosition: {x: 75, y: -25}
   m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1222557370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1222557371}
+  - component: {fileID: 1222557373}
+  - component: {fileID: 1222557372}
+  m_Layer: 0
+  m_Name: DevilDogTrapdoorSequenceTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1222557371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222557370}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 95.64, y: 1.05, z: -0.03575838}
+  m_LocalScale: {x: 2.9443126, y: 2.9443126, z: 2.9443126}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1582904471}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1222557372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222557370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de9c9c3aee4136429802ff39698e75e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  devilDog: {fileID: 1973829502}
+  dialoguePanel: {fileID: 741082908}
+  speakerNameText: {fileID: 1258714718}
+  dialogueText: {fileID: 1219159426}
+  speakerPortraitImage: {fileID: 252152096}
+  closeButton: {fileID: 351142273}
+  devilDogPortrait: {fileID: 1854476141901762521, guid: 144ad7061d030d04a86b12d06ca1d6f9, type: 3}
+  recorderRecordingDialogue: {fileID: 11400000, guid: 68d527a8b4c40314ea78d2938883c514, type: 2}
+  playerMovement: {fileID: 246482627}
+  playerRigidbody: {fileID: 246482620}
+  playerAnimator: {fileID: 246482625}
+  firstDogLine: You're telling me those kittens are here?
+  finalDogLine: Those brats are there!
+  typingSpeed: 0.04
+--- !u!61 &1222557373
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222557370}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1234748514
 GameObject:
   m_ObjectHideFlags: 0
@@ -15352,6 +15559,7 @@ Transform:
   - {fileID: 218158177}
   - {fileID: 898501633}
   - {fileID: 1570231893}
+  - {fileID: 1973829503}
   - {fileID: 1647285614}
   - {fileID: 940683207}
   m_Father: {fileID: 0}
@@ -18187,6 +18395,7 @@ Transform:
   - {fileID: 111123729}
   - {fileID: 524617945}
   - {fileID: 1121378069}
+  - {fileID: 1222557371}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1584438682
@@ -21740,6 +21949,57 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1926932009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1926932011}
+  - component: {fileID: 1926932010}
+  m_Layer: 0
+  m_Name: MothercatReunionSequence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1926932010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926932009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce116fed5baeca74781be1387ca7ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patch: {fileID: 246482619}
+  motherCat: {fileID: 186976885}
+  patchReunionPosition: {fileID: 910460796}
+  motherReunionPosition: {fileID: 929020244}
+  fadePanel: {fileID: 1370582112}
+  fadeDuration: 1
+  playerMovement: {fileID: 246482627}
+--- !u!4 &1926932011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926932009}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 91.24225, y: -100.11547, z: 0.01585215}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1941895064
 GameObject:
   m_ObjectHideFlags: 0
@@ -21833,6 +22093,93 @@ MonoBehaviour:
   slotBackground: {fileID: 1941895066}
   itemIcon: {fileID: 1018007347}
   selectedHighlight: {fileID: 1314920916}
+--- !u!1 &1973829502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1973829503}
+  - component: {fileID: 1973829507}
+  m_Layer: 0
+  m_Name: DevilDogTrapdoorRoom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1973829503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973829502}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.47, y: 12.55, z: 0}
+  m_LocalScale: {x: 0.25061747, y: 0.23787226, z: 0.38273892}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1264672590}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1973829507
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973829502}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 8
+  m_Sprite: {fileID: 3661768967120018263, guid: 3368a631f386fe4468b2ebd7b040e3eb, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 24.869999, y: 15.46}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1977459724
 GameObject:
   m_ObjectHideFlags: 0
@@ -21858,7 +22205,7 @@ Transform:
   m_GameObject: {fileID: 1977459724}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 95.47, y: -0.07, z: 0.031646904}
+  m_LocalPosition: {x: 95.47, y: 1.24, z: 0.031646904}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24143,4 +24490,5 @@ SceneRoots:
   - {fileID: 1428289562}
   - {fileID: 74259058}
   - {fileID: 934646669}
-  - {fileID: 151802295}
+  - {fileID: 637073023}
+  - {fileID: 1926932011}

@@ -4,38 +4,42 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
+
     private Rigidbody2D rb;
     private Vector2 moveInput;
+
     public SpriteRenderer rend;
+
     private Animator animator;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         rb.linearVelocity = moveInput * moveSpeed;
+
         Flip();
 
-        float animationSpeed = moveInput.sqrMagnitude > 0.001f ? 1f : 0f;
+        float animationSpeed =
+            moveInput.sqrMagnitude > 0.001f ? 1f : 0f;
+
         animator.SetFloat("Speed", animationSpeed);
     }
 
-    void Flip()
+    private void Flip()
     {
         if (moveInput.x > 0)
         {
-            //moving right
+            // Moving right.
             rend.flipX = false;
         }
         else if (moveInput.x < 0)
         {
-            //moving left
+            // Moving left.
             rend.flipX = true;
         }
     }
@@ -49,6 +53,21 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             moveInput = context.ReadValue<Vector2>();
+        }
+    }
+
+    public void StopMovementImmediately()
+    {
+        moveInput = Vector2.zero;
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+
+        if (animator != null)
+        {
+            animator.SetFloat("Speed", 0f);
         }
     }
 }
