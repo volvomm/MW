@@ -1784,7 +1784,8 @@ Transform:
   m_LocalPosition: {x: 3.3943481, y: -0.274971, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 889180655}
   m_Father: {fileID: 898501633}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &208637740
@@ -8721,6 +8722,186 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1570231893}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &889180654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 889180655}
+  - component: {fileID: 889180657}
+  - component: {fileID: 889180656}
+  m_Layer: 0
+  m_Name: MotherCatReunionInteract
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &889180655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889180654}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 186976887}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &889180656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889180654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce116fed5baeca74781be1387ca7ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basementDialogueLines:
+  - speakerName: Mother Cat
+    dialogueText: 'What happened? '
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  - speakerName: Mother Cat
+    dialogueText: Did you get rid of him?
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  - speakerName: Patch
+    dialogueText: It took some convincing.
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+  - speakerName: Patch
+    dialogueText: But I managed to trap him in the closet.
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+  - speakerName: Patch
+    dialogueText: Come on, I'll take you back to your kittens.
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+  reunionDialogueLines:
+  - speakerName: White Kitten
+    dialogueText: Mom?!
+    speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
+  - speakerName: Orange Kitten
+    dialogueText: You're back!
+    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
+  - speakerName: Gray Kitten
+    dialogueText: I've missed you so much!
+    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
+  - speakerName: Mother Cat
+    dialogueText: I've also missed you all!
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  - speakerName: Mother Cat
+    dialogueText: What was your name again?
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  - speakerName: Patch
+    dialogueText: Oh... um my name is Patch
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+  - speakerName: Mother Cat
+    dialogueText: Thank you so much for everything that you've done for us
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  - speakerName: Mother Cat
+    dialogueText: Kids, say thank you to the nice cat
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  - speakerName: Orange Cat
+    dialogueText: Thank you mister!
+    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
+  - speakerName: White Kitten
+    dialogueText: Thank you for bringing our mom back to us!
+    speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
+  - speakerName: 'Gray Kitten '
+    dialogueText: We really can't thank you enough!
+    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
+  - speakerName: Patch
+    dialogueText: It's all good, really.
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+  - speakerName: Patch
+    dialogueText: But um I just wanted to ask you something
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+  - speakerName: Mother Cat
+    dialogueText: Hmm...?
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  - speakerName: Patch
+    dialogueText: Do you know a place called Arcadia? I'm trying to find that place
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+  - speakerName: Mother Cat
+    dialogueText: Oh Arcadia? We actually came from that area, it's past the door
+      that the dog was guarding
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  - speakerName: Patch
+    dialogueText: Oh thank you! I guess I'll get going now.
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+  - speakerName: Mother Cat
+    dialogueText: Thank you again!
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  dialoguePanel: {fileID: 741082908}
+  speakerNameText: {fileID: 1258714718}
+  dialogueText: {fileID: 1219159426}
+  portraitImage: {fileID: 252152096}
+  closeButton: {fileID: 351142273}
+  patch: {fileID: 246482619}
+  playerMovement: {fileID: 246482627}
+  playerRigidbody: {fileID: 246482620}
+  playerAnimator: {fileID: 246482625}
+  motherCat: {fileID: 186976885}
+  patchReunionPosition: {fileID: 910460796}
+  motherReunionPosition: {fileID: 929020244}
+  mainCamera: {fileID: 519420031}
+  kittenRoomCameraPoint: {fileID: 1464150249}
+  fadePanel: {fileID: 1370582112}
+  fadeSpeed: 1
+  typingSpeed: 0.04
+--- !u!61 &889180657
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889180654}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.2469101, y: -0.060661316}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3.7914429, y: 3.8672638}
+  m_EdgeRadius: 0
 --- !u!1 &890311103
 GameObject:
   m_ObjectHideFlags: 0
@@ -15220,8 +15401,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 75, y: -25}
-  m_SizeDelta: {x: 600, y: 100}
+  m_AnchoredPosition: {x: 75, y: -65}
+  m_SizeDelta: {x: 600, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1222557370
 GameObject:
@@ -21949,57 +22130,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1926932009
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1926932011}
-  - component: {fileID: 1926932010}
-  m_Layer: 0
-  m_Name: MothercatReunionSequence
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1926932010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926932009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce116fed5baeca74781be1387ca7ae40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  patch: {fileID: 246482619}
-  motherCat: {fileID: 186976885}
-  patchReunionPosition: {fileID: 910460796}
-  motherReunionPosition: {fileID: 929020244}
-  fadePanel: {fileID: 1370582112}
-  fadeDuration: 1
-  playerMovement: {fileID: 246482627}
---- !u!4 &1926932011
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926932009}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 91.24225, y: -100.11547, z: 0.01585215}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1941895064
 GameObject:
   m_ObjectHideFlags: 0
@@ -24491,4 +24621,3 @@ SceneRoots:
   - {fileID: 74259058}
   - {fileID: 934646669}
   - {fileID: 637073023}
-  - {fileID: 1926932011}

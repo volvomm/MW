@@ -9,4 +9,8 @@ public static class StoryProgress
     public static bool DevilDogLureDialogueFinished =false;
 
     public static bool DevilDogTrapdoorSequenceFinished = false;
+
+    public static bool ClosetBarricaded = false;
+
+    public static bool MotherCatReunited = false;
 }

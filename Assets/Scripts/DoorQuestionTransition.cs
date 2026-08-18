@@ -170,6 +170,7 @@ public class DoorQuestionTransition : MonoBehaviour
     private void BarricadeCloset()
     {
         closetBarricaded = true;
+        StoryProgress.ClosetBarricaded = true;
 
         // Stop Patch immediately.
         SetPlayerMovement(false);
