@@ -570,13 +570,17 @@ public class MotherCatReunionSequence : MonoBehaviour, IInteractable
     {
         CloseDialoguePanel();
 
-        currentStage =
-            DialogueStage.None;
+        currentStage = DialogueStage.None;
 
         sequenceActive = false;
 
-        StoryProgress.MotherCatReunited =
-            true;
+        StoryProgress.MotherCatReunited = true;
+
+        // Tell the chase system that the reunion has completely finished.
+        if (ChaseSequenceManager.Instance != null)
+        {
+            ChaseSequenceManager.Instance.MarkReunionFinished();
+        }
 
         if (closeButton != null)
         {

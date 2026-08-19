@@ -29,10 +29,10 @@ MonoBehaviour:
     speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
     dialogueText: Please help our mom!
   - speakerName: Patch
-    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
     dialogueText: Wait...
   - speakerName: Patch
-    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
     dialogueText: What do you mean by help your mom?
   - speakerName: Orange Kitten
     speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
@@ -90,7 +90,7 @@ MonoBehaviour:
     speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
     dialogueText: Yay!
   - speakerName: Patch
-    speakerPortrait: {fileID: -6874673969537961856, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
     dialogueText: But I can't promise that I would be able to find her.
   - speakerName: Gray Kitten
     speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
