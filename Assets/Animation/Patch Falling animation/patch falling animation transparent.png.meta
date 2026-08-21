@@ -1,0 +1,2223 @@
+fileFormatVersion: 2
+guid: 6fdf35b43b68daf4da916df9b0356a28
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2760736596350046217
+    second: patch falling animation transparent_0
+  - first:
+      213: 941505709488420691
+    second: patch falling animation transparent_1
+  - first:
+      213: 6723196799710923496
+    second: patch falling animation transparent_2
+  - first:
+      213: 6213071935322119608
+    second: patch falling animation transparent_3
+  - first:
+      213: 4945649134868858833
+    second: patch falling animation transparent_4
+  - first:
+      213: 3484253251671735898
+    second: patch falling animation transparent_5
+  - first:
+      213: 7596803192441777413
+    second: patch falling animation transparent_6
+  - first:
+      213: -4724604377689046569
+    second: patch falling animation transparent_7
+  - first:
+      213: -27349582449812961
+    second: patch falling animation transparent_8
+  - first:
+      213: 7501214800006532138
+    second: patch falling animation transparent_9
+  - first:
+      213: 789126402443822431
+    second: patch falling animation transparent_10
+  - first:
+      213: 5526066244959674401
+    second: patch falling animation transparent_11
+  - first:
+      213: 4668269581561048908
+    second: patch falling animation transparent_12
+  - first:
+      213: -3616044367548438671
+    second: patch falling animation transparent_13
+  - first:
+      213: 8206360917977411547
+    second: patch falling animation transparent_14
+  - first:
+      213: -8147948477356889201
+    second: patch falling animation transparent_15
+  - first:
+      213: 7830662916659376141
+    second: patch falling animation transparent_16
+  - first:
+      213: -2515701961753510669
+    second: patch falling animation transparent_17
+  - first:
+      213: 4555279917532781760
+    second: patch falling animation transparent_18
+  - first:
+      213: -7220389902052363337
+    second: patch falling animation transparent_19
+  - first:
+      213: -2206392470626822115
+    second: patch falling animation transparent_20
+  - first:
+      213: 2799029278072267357
+    second: patch falling animation transparent_21
+  - first:
+      213: -6225840820779926314
+    second: patch falling animation transparent_22
+  - first:
+      213: -6191892502270939321
+    second: patch falling animation transparent_23
+  - first:
+      213: 2515477262475211676
+    second: patch falling animation transparent_24
+  - first:
+      213: 580522812463872138
+    second: patch falling animation transparent_25
+  - first:
+      213: -3135679563007662009
+    second: patch falling animation transparent_26
+  - first:
+      213: -4195131389633725128
+    second: patch falling animation transparent_27
+  - first:
+      213: 1739315686561774482
+    second: patch falling animation transparent_28
+  - first:
+      213: -2381750947314408124
+    second: patch falling animation transparent_29
+  - first:
+      213: -2724128907222949297
+    second: patch falling animation transparent_30
+  - first:
+      213: 6736422805836056039
+    second: patch falling animation transparent_31
+  - first:
+      213: 8274731992181947988
+    second: patch falling animation transparent_32
+  - first:
+      213: 8712390187804063177
+    second: patch falling animation transparent_33
+  - first:
+      213: -3566139472174500863
+    second: patch falling animation transparent_34
+  - first:
+      213: 7988245373919911562
+    second: patch falling animation transparent_35
+  - first:
+      213: -1609450180592121758
+    second: patch falling animation transparent_36
+  - first:
+      213: -6325743406052176333
+    second: patch falling animation transparent_37
+  - first:
+      213: -6459530815251912055
+    second: patch falling animation transparent_38
+  - first:
+      213: -8120704133508619192
+    second: patch falling animation transparent_39
+  - first:
+      213: 3102437514421921993
+    second: patch falling animation transparent_40
+  - first:
+      213: -1055405940294656251
+    second: patch falling animation transparent_41
+  - first:
+      213: -8306935553264467693
+    second: patch falling animation transparent_42
+  - first:
+      213: 8068079863171954075
+    second: patch falling animation transparent_43
+  - first:
+      213: 3968583484543138764
+    second: patch falling animation transparent_44
+  - first:
+      213: -4416671551968872367
+    second: patch falling animation transparent_45
+  - first:
+      213: -2732009621757334747
+    second: patch falling animation transparent_46
+  - first:
+      213: -6168188639673377106
+    second: patch falling animation transparent_47
+  - first:
+      213: 3680206104102117989
+    second: patch falling animation transparent_48
+  - first:
+      213: -1264182869969164474
+    second: patch falling animation transparent_49
+  - first:
+      213: 4232552604490385659
+    second: patch falling animation transparent_50
+  - first:
+      213: 8586259449549053309
+    second: patch falling animation transparent_51
+  - first:
+      213: 1700970770557850348
+    second: patch falling animation transparent_52
+  - first:
+      213: 8217970711628995886
+    second: patch falling animation transparent_53
+  - first:
+      213: 400977080445427360
+    second: patch falling animation transparent_54
+  - first:
+      213: 10199453183292163
+    second: patch falling animation transparent_55
+  - first:
+      213: -1258365200944858798
+    second: patch falling animation transparent_56
+  - first:
+      213: 8373041597217200539
+    second: patch falling animation transparent_57
+  - first:
+      213: 4492515435615443557
+    second: patch falling animation transparent_58
+  - first:
+      213: -574736410854615645
+    second: patch falling animation transparent_59
+  - first:
+      213: -2948735366663888281
+    second: patch falling animation transparent_60
+  - first:
+      213: -5494937030094520991
+    second: patch falling animation transparent_61
+  - first:
+      213: -2489109368656401806
+    second: patch falling animation transparent_62
+  - first:
+      213: -3138451988498905475
+    second: patch falling animation transparent_63
+  - first:
+      213: -4165374620882379564
+    second: patch falling animation transparent_64
+  - first:
+      213: 9003050236546535375
+    second: patch falling animation transparent_65
+  - first:
+      213: 5033560532585751786
+    second: patch falling animation transparent_66
+  - first:
+      213: 4214584449067824281
+    second: patch falling animation transparent_67
+  - first:
+      213: -4811631916818350738
+    second: patch falling animation transparent_68
+  - first:
+      213: -5916938121239068424
+    second: patch falling animation transparent_69
+  - first:
+      213: -2783134476530888629
+    second: patch falling animation transparent_70
+  - first:
+      213: 4286785313076601668
+    second: patch falling animation transparent_71
+  - first:
+      213: 4831965845665233594
+    second: patch falling animation transparent_72
+  - first:
+      213: -322452848094077319
+    second: patch falling animation transparent_73
+  - first:
+      213: 3513106763669388046
+    second: patch falling animation transparent_74
+  - first:
+      213: -2393226957546343284
+    second: patch falling animation transparent_75
+  - first:
+      213: -7731238754573064752
+    second: patch falling animation transparent_76
+  - first:
+      213: 2753525677065831722
+    second: patch falling animation transparent_77
+  - first:
+      213: 5240580405865864636
+    second: patch falling animation transparent_78
+  - first:
+      213: 7926620673974891329
+    second: patch falling animation transparent_79
+  - first:
+      213: 7293551438327465771
+    second: patch falling animation transparent_80
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 40
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: patch falling animation transparent_0
+      rect:
+        serializedVersion: 2
+        x: 3065
+        y: 2130
+        width: 14
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9009ddfae4b105620800000000000000
+      internalID: 2760736596350046217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_1
+      rect:
+        serializedVersion: 2
+        x: 3069
+        y: 2139
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3573f085476e01d00800000000000000
+      internalID: 941505709488420691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_2
+      rect:
+        serializedVersion: 2
+        x: 2802
+        y: 1125
+        width: 773
+        height: 997
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ea00d94ed79d4d50800000000000000
+      internalID: 6723196799710923496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_3
+      rect:
+        serializedVersion: 2
+        x: 3068
+        y: 2122
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bdd2d4c104493650800000000000000
+      internalID: 6213071935322119608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_4
+      rect:
+        serializedVersion: 2
+        x: 3071
+        y: 2116
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d7839b5fa972a440800000000000000
+      internalID: 4945649134868858833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_5
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 1240
+        width: 992
+        height: 820
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 16, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5eb46d3fdd8a5030800000000000000
+      internalID: 3484253251671735898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_6
+      rect:
+        serializedVersion: 2
+        x: 1480
+        y: 1162
+        width: 890
+        height: 922
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50dab0201444d6960800000000000000
+      internalID: 7596803192441777413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_7
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 1019
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d1c69bb955de6eb0800000000000000
+      internalID: -4724604377689046569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_8
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 1010
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1ad25d13b5de9ff0800000000000000
+      internalID: -27349582449812961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_9
+      rect:
+        serializedVersion: 2
+        x: 1467
+        y: 81
+        width: 965
+        height: 945
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2cca421e1ba91860800000000000000
+      internalID: 7501214800006532138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_10
+      rect:
+        serializedVersion: 2
+        x: 2303
+        y: 1007
+        width: 12
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f55cb84384a83fa00800000000000000
+      internalID: 789126402443822431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_11
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 73
+        width: 730
+        height: 942
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1202910b8f780bc40800000000000000
+      internalID: 5526066244959674401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_12
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 1008
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4f25bc637609c040800000000000000
+      internalID: 4668269581561048908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_13
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 232
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 177293c6eca31ddc0800000000000000
+      internalID: -3616044367548438671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_14
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 241
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdf21b696c9d2e170800000000000000
+      internalID: 8206360917977411547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_15
+      rect:
+        serializedVersion: 2
+        x: 2599
+        y: 248
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8b25fe870cacee80800000000000000
+      internalID: -8147948477356889201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_16
+      rect:
+        serializedVersion: 2
+        x: 2608
+        y: 254
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d007e4f1f6a1cac60800000000000000
+      internalID: 7830662916659376141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_17
+      rect:
+        serializedVersion: 2
+        x: 2622
+        y: 262
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fcbde0056e661dd0800000000000000
+      internalID: -2515701961753510669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_18
+      rect:
+        serializedVersion: 2
+        x: 2627
+        y: 262
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cc130933fa973f30800000000000000
+      internalID: 4555279917532781760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_19
+      rect:
+        serializedVersion: 2
+        x: 2632
+        y: 257
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b3f95ca3a50ccb90800000000000000
+      internalID: -7220389902052363337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_20
+      rect:
+        serializedVersion: 2
+        x: 2796
+        y: 148
+        width: 958
+        height: 746
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d181139ecb15161e0800000000000000
+      internalID: -2206392470626822115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_21
+      rect:
+        serializedVersion: 2
+        x: 2590
+        y: 241
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d526a6b6c4628d620800000000000000
+      internalID: 2799029278072267357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_22
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 254
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dc394962ce5999a0800000000000000
+      internalID: -6225840820779926314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_23
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 239
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74f6cb2439af11aa0800000000000000
+      internalID: -6191892502270939321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_24
+      rect:
+        serializedVersion: 2
+        x: 2577
+        y: 233
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c93386e1e35c8e220800000000000000
+      internalID: 2515477262475211676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_25
+      rect:
+        serializedVersion: 2
+        x: 2578
+        y: 239
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a887be41c6e6e0800800000000000000
+      internalID: 580522812463872138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_26
+      rect:
+        serializedVersion: 2
+        x: 2584
+        y: 240
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 748e97d0d04db74d0800000000000000
+      internalID: -3135679563007662009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_27
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 226
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83d7ac65a36e7c5c0800000000000000
+      internalID: -4195131389633725128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_28
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 230
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29b77c1d66a432810800000000000000
+      internalID: 1739315686561774482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_29
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 222
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 445efd9e12252fed0800000000000000
+      internalID: -2381750947314408124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_30
+      rect:
+        serializedVersion: 2
+        x: 2567
+        y: 218
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f426a922133f13ad0800000000000000
+      internalID: -2724128907222949297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_31
+      rect:
+        serializedVersion: 2
+        x: 2571
+        y: 227
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e5c2bec9d49c7d50800000000000000
+      internalID: 6736422805836056039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_32
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 207
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45eb09dc7e0c5d270800000000000000
+      internalID: 8274731992181947988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_33
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 216
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c5f8a037b0a8e870800000000000000
+      internalID: 8712390187804063177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_34
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 213
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1043a855b07828ec0800000000000000
+      internalID: -3566139472174500863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_35
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 209
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8e572318d2fbde60800000000000000
+      internalID: 7988245373919911562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_36
+      rect:
+        serializedVersion: 2
+        x: 2565
+        y: 221
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2684e1686951aa9e0800000000000000
+      internalID: -1609450180592121758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_37
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 194
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33e8dfd23e17638a0800000000000000
+      internalID: -6325743406052176333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_38
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 190
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98a683592f22b56a0800000000000000
+      internalID: -6459530815251912055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_39
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 207
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8442c2cad967d4f80800000000000000
+      internalID: -8120704133508619192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_40
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 201
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c8e6f06b721e0b20800000000000000
+      internalID: 3102437514421921993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_41
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 197
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50f56ea93e17a51f0800000000000000
+      internalID: -1055405940294656251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_42
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 194
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 311cb975026d7bc80800000000000000
+      internalID: -8306935553264467693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_43
+      rect:
+        serializedVersion: 2
+        x: 2548
+        y: 196
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b95b8d793e397ff60800000000000000
+      internalID: 8068079863171954075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_44
+      rect:
+        serializedVersion: 2
+        x: 2553
+        y: 203
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccbfca917ad331730800000000000000
+      internalID: 3968583484543138764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_45
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 192
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 158725fbf94d4b2c0800000000000000
+      internalID: -4416671551968872367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_46
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 194
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52b643c49b3f51ad0800000000000000
+      internalID: -2732009621757334747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_47
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 192
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eae1ba8dc11366aa0800000000000000
+      internalID: -6168188639673377106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_48
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 192
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5622b3ff3f7b21330800000000000000
+      internalID: 3680206104102117989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_49
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 189
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 647aa50b068b47ee0800000000000000
+      internalID: -1264182869969164474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_50
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 194
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf8cdc33b2c0dba30800000000000000
+      internalID: 4232552604490385659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_51
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 189
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7d56b73a75882770800000000000000
+      internalID: 8586259449549053309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_52
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 189
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce25c6857ef0b9710800000000000000
+      internalID: 1700970770557850348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_53
+      rect:
+        serializedVersion: 2
+        x: 1441
+        y: 186
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2dd53152d81c0270800000000000000
+      internalID: 8217970711628995886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_54
+      rect:
+        serializedVersion: 2
+        x: 2540
+        y: 187
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0aed50bb78e809500800000000000000
+      internalID: 400977080445427360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_55
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 176
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 303b4ef395c342000800000000000000
+      internalID: 10199453183292163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_56
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 187
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 259f7ff4483698ee0800000000000000
+      internalID: -1258365200944858798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_57
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 173
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9953bb68f4033470800000000000000
+      internalID: 8373041597217200539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_58
+      rect:
+        serializedVersion: 2
+        x: 2532
+        y: 176
+        width: 22
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56a51df7cfe985e30800000000000000
+      internalID: 4492515435615443557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_59
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 162
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a5178787402608f0800000000000000
+      internalID: -574736410854615645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_60
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 176
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7622e5d9eccf317d0800000000000000
+      internalID: -2948735366663888281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_61
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 173
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16d731272ef0eb3b0800000000000000
+      internalID: -5494937030094520991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_62
+      rect:
+        serializedVersion: 2
+        x: 2527
+        y: 158
+        width: 16
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27a63229738e47dd0800000000000000
+      internalID: -2489109368656401806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_63
+      rect:
+        serializedVersion: 2
+        x: 2551
+        y: 173
+        width: 20
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7687e07b8af174d0800000000000000
+      internalID: -3138451988498905475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_64
+      rect:
+        serializedVersion: 2
+        x: 2562
+        y: 170
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dcd0e5f9dd9136c0800000000000000
+      internalID: -4165374620882379564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_65
+      rect:
+        serializedVersion: 2
+        x: 2568
+        y: 166
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcf4a5c6d7241fc70800000000000000
+      internalID: 9003050236546535375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_66
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 161
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae4233ca2accad540800000000000000
+      internalID: 5033560532585751786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_67
+      rect:
+        serializedVersion: 2
+        x: 2573
+        y: 158
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 994b2920a363d7a30800000000000000
+      internalID: 4214584449067824281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_68
+      rect:
+        serializedVersion: 2
+        x: 2575
+        y: 166
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6d3c18c346a93db0800000000000000
+      internalID: -4811631916818350738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_69
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 145
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f00495c020d2eda0800000000000000
+      internalID: -5916938121239068424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_70
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 139
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b40db3470f15069d0800000000000000
+      internalID: -2783134476530888629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_71
+      rect:
+        serializedVersion: 2
+        x: 2527
+        y: 148
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 443ea46a788bd7b30800000000000000
+      internalID: 4286785313076601668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_72
+      rect:
+        serializedVersion: 2
+        x: 2530
+        y: 136
+        width: 10
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aba32b5f5579e0340800000000000000
+      internalID: 4831965845665233594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_73
+      rect:
+        serializedVersion: 2
+        x: 2568
+        y: 135
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97e1a84d7da668bf0800000000000000
+      internalID: -322452848094077319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_74
+      rect:
+        serializedVersion: 2
+        x: 2576
+        y: 147
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b39820dff01c030800000000000000
+      internalID: 3513106763669388046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_75
+      rect:
+        serializedVersion: 2
+        x: 2539
+        y: 136
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c84bf8013cc89ced0800000000000000
+      internalID: -2393226957546343284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_76
+      rect:
+        serializedVersion: 2
+        x: 2540
+        y: 130
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d560f7805f15b490800000000000000
+      internalID: -7731238754573064752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_77
+      rect:
+        serializedVersion: 2
+        x: 2552
+        y: 133
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a250d65b30d763620800000000000000
+      internalID: 2753525677065831722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_78
+      rect:
+        serializedVersion: 2
+        x: 2554
+        y: 130
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbdd1840d184ab840800000000000000
+      internalID: 5240580405865864636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_79
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 134
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1437a858183010e60800000000000000
+      internalID: 7926620673974891329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: patch falling animation transparent_80
+      rect:
+        serializedVersion: 2
+        x: 2561
+        y: 130
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b274c88e366e73560800000000000000
+      internalID: 7293551438327465771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 71b3447610340cb4890ede08f36ace0a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      patch falling animation transparent_0: 2760736596350046217
+      patch falling animation transparent_1: 941505709488420691
+      patch falling animation transparent_10: 789126402443822431
+      patch falling animation transparent_11: 5526066244959674401
+      patch falling animation transparent_12: 4668269581561048908
+      patch falling animation transparent_13: -3616044367548438671
+      patch falling animation transparent_14: 8206360917977411547
+      patch falling animation transparent_15: -8147948477356889201
+      patch falling animation transparent_16: 7830662916659376141
+      patch falling animation transparent_17: -2515701961753510669
+      patch falling animation transparent_18: 4555279917532781760
+      patch falling animation transparent_19: -7220389902052363337
+      patch falling animation transparent_2: 6723196799710923496
+      patch falling animation transparent_20: -2206392470626822115
+      patch falling animation transparent_21: 2799029278072267357
+      patch falling animation transparent_22: -6225840820779926314
+      patch falling animation transparent_23: -6191892502270939321
+      patch falling animation transparent_24: 2515477262475211676
+      patch falling animation transparent_25: 580522812463872138
+      patch falling animation transparent_26: -3135679563007662009
+      patch falling animation transparent_27: -4195131389633725128
+      patch falling animation transparent_28: 1739315686561774482
+      patch falling animation transparent_29: -2381750947314408124
+      patch falling animation transparent_3: 6213071935322119608
+      patch falling animation transparent_30: -2724128907222949297
+      patch falling animation transparent_31: 6736422805836056039
+      patch falling animation transparent_32: 8274731992181947988
+      patch falling animation transparent_33: 8712390187804063177
+      patch falling animation transparent_34: -3566139472174500863
+      patch falling animation transparent_35: 7988245373919911562
+      patch falling animation transparent_36: -1609450180592121758
+      patch falling animation transparent_37: -6325743406052176333
+      patch falling animation transparent_38: -6459530815251912055
+      patch falling animation transparent_39: -8120704133508619192
+      patch falling animation transparent_4: 4945649134868858833
+      patch falling animation transparent_40: 3102437514421921993
+      patch falling animation transparent_41: -1055405940294656251
+      patch falling animation transparent_42: -8306935553264467693
+      patch falling animation transparent_43: 8068079863171954075
+      patch falling animation transparent_44: 3968583484543138764
+      patch falling animation transparent_45: -4416671551968872367
+      patch falling animation transparent_46: -2732009621757334747
+      patch falling animation transparent_47: -6168188639673377106
+      patch falling animation transparent_48: 3680206104102117989
+      patch falling animation transparent_49: -1264182869969164474
+      patch falling animation transparent_5: 3484253251671735898
+      patch falling animation transparent_50: 4232552604490385659
+      patch falling animation transparent_51: 8586259449549053309
+      patch falling animation transparent_52: 1700970770557850348
+      patch falling animation transparent_53: 8217970711628995886
+      patch falling animation transparent_54: 400977080445427360
+      patch falling animation transparent_55: 10199453183292163
+      patch falling animation transparent_56: -1258365200944858798
+      patch falling animation transparent_57: 8373041597217200539
+      patch falling animation transparent_58: 4492515435615443557
+      patch falling animation transparent_59: -574736410854615645
+      patch falling animation transparent_6: 7596803192441777413
+      patch falling animation transparent_60: -2948735366663888281
+      patch falling animation transparent_61: -5494937030094520991
+      patch falling animation transparent_62: -2489109368656401806
+      patch falling animation transparent_63: -3138451988498905475
+      patch falling animation transparent_64: -4165374620882379564
+      patch falling animation transparent_65: 9003050236546535375
+      patch falling animation transparent_66: 5033560532585751786
+      patch falling animation transparent_67: 4214584449067824281
+      patch falling animation transparent_68: -4811631916818350738
+      patch falling animation transparent_69: -5916938121239068424
+      patch falling animation transparent_7: -4724604377689046569
+      patch falling animation transparent_70: -2783134476530888629
+      patch falling animation transparent_71: 4286785313076601668
+      patch falling animation transparent_72: 4831965845665233594
+      patch falling animation transparent_73: -322452848094077319
+      patch falling animation transparent_74: 3513106763669388046
+      patch falling animation transparent_75: -2393226957546343284
+      patch falling animation transparent_76: -7731238754573064752
+      patch falling animation transparent_77: 2753525677065831722
+      patch falling animation transparent_78: 5240580405865864636
+      patch falling animation transparent_79: 7926620673974891329
+      patch falling animation transparent_8: -27349582449812961
+      patch falling animation transparent_80: 7293551438327465771
+      patch falling animation transparent_9: 7501214800006532138
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
