@@ -48,22 +48,37 @@ public class ChaseIntroTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        TryStartChase(other);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        TryStartChase(other);
+    }
+
+    private void TryStartChase(Collider2D other)
+    {
+        // Only react to Patch.
         if (!other.CompareTag("Player"))
             return;
 
+        // Don't start it again while it is already running.
         if (sequenceRunning)
             return;
 
+        // Make sure the chase manager exists.
         if (ChaseSequenceManager.Instance == null)
             return;
 
-        // Do not start until the reunion has finished.
+        // Reunion must be finished first.
         if (!ChaseSequenceManager.Instance.reunionFinished)
             return;
 
-        // Do not play this sequence twice.
+        // Don't repeat the chase intro after it has finished.
         if (ChaseSequenceManager.Instance.chaseIntroFinished)
             return;
+
+        Debug.Log("PATCH IS INSIDE CHASE INTRO TRIGGER - Starting chase dialogue.");
 
         StartCoroutine(BeginSequence());
     }

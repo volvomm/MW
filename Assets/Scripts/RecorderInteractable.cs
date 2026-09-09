@@ -328,6 +328,8 @@ public class RecorderInteractable : MonoBehaviour, IInteractable
 
     private void NextLine()
     {
+        dialogueText.maxVisibleCharacters = 100;
+
         if (currentDialogueData == null ||
             currentDialogueData.dialogueLines == null ||
             currentDialogueData.dialogueLines.Length == 0)
