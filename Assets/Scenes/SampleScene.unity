@@ -2062,7 +2062,9 @@ GameObject:
   - component: {fileID: 218158177}
   - component: {fileID: 218158176}
   - component: {fileID: 218158178}
-  - component: {fileID: 218158179}
+  - component: {fileID: 218158180}
+  - component: {fileID: 218158181}
+  - component: {fileID: 218158182}
   m_Layer: 0
   m_Name: Mouse_npc
   m_TagString: Untagged
@@ -2281,7 +2283,7 @@ PolygonCollider2D:
       - {x: 0.52, y: -1.735}
       - {x: 0.57, y: -1.7149999}
   m_UseDelaunayMesh: 0
---- !u!114 &218158179
+--- !u!114 &218158180
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2290,11 +2292,303 @@ MonoBehaviour:
   m_GameObject: {fileID: 218158175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b09a16652381bb42941070683849169, type: 3}
+  m_Script: {fileID: 11500000, guid: 13f9693a39eae2e489bd0555fbd36a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holeTarget: {fileID: 1815093306}
-  speed: 3
+  npcTransform: {fileID: 218158177}
+  exitPoint: {fileID: 1305745221}
+  moveSpeed: 5
+  npcAnimator: {fileID: 0}
+  speedParameter: Speed
+  disableNPCAtEnd: 1
+--- !u!114 &218158181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218158175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a848a4596256a4849abe8eeb7b51b812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moodManager: {fileID: 221396127}
+  targetSpriteRenderer: {fileID: 218158176}
+  moodVisuals:
+  - mood: 1
+    sprite: {fileID: 21300000, guid: 19ccdbb56a9cfcd4bbb9f3236ae8df0d, type: 3}
+  defaultSprite: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
+--- !u!114 &218158182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218158175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da65caef9dbc2b7458dc1cf5f4565b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueNodes:
+  - speakerName: Patch
+    dialogueText: Is that a fish? I'm starving
+    portrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
+    nextNodeIndex: 1
+    hasChoices: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 2
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 1
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Fish
+    dialogueText: Eeek! Please don't eat me!
+    portrait: {fileID: 21300000, guid: 19ccdbb56a9cfcd4bbb9f3236ae8df0d, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
+    nextNodeIndex: 2
+    hasChoices: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Fish
+    dialogueText: 
+    portrait: {fileID: 21300000, guid: 19ccdbb56a9cfcd4bbb9f3236ae8df0d, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
+    nextNodeIndex: 3
+    hasChoices: 1
+    choices:
+    - choiceText: You look so delicious though
+      nextNodeIndex: 3
+      changeMood: 0
+      newMood: 0
+      triggerPerceptionChange: 0
+      perceptionDelay: 2
+      perceptionChangeType: 0
+      perceptionTarget: {fileID: 0}
+      replacementSprite: {fileID: 0}
+      perceptionAnimator: {fileID: 0}
+      animationTriggerName: 
+      animationDuration: 0
+    - choiceText: But I'm hungry
+      nextNodeIndex: 4
+      changeMood: 0
+      newMood: 0
+      triggerPerceptionChange: 0
+      perceptionDelay: 2
+      perceptionChangeType: 0
+      perceptionTarget: {fileID: 0}
+      replacementSprite: {fileID: 0}
+      perceptionAnimator: {fileID: 0}
+      animationTriggerName: 
+      animationDuration: 0
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Fish
+    dialogueText: No I'm not delicious. Here, have this piece of bread instead
+    portrait: {fileID: 21300000, guid: 19ccdbb56a9cfcd4bbb9f3236ae8df0d, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
+    nextNodeIndex: 5
+    hasChoices: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 1
+    changeMoodDuringPerception: 1
+    perceptionMood: 0
+    perceptionDelay: 2
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 218158176}
+    replacementSprite: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Fish
+    dialogueText: What if I give you some bread instead? Here eat it!
+    portrait: {fileID: 21300000, guid: 19ccdbb56a9cfcd4bbb9f3236ae8df0d, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
+    nextNodeIndex: 5
+    hasChoices: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 1
+    changeMoodDuringPerception: 1
+    perceptionMood: 0
+    perceptionDelay: 2
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 218158176}
+    replacementSprite: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Patch
+    dialogueText: MMmmm, this is delicious
+    portrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
+    nextNodeIndex: 6
+    hasChoices: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 218158176}
+    replacementSprite: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Mouse
+    dialogueText: Do you feel better now?
+    portrait: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
+    nextNodeIndex: 7
+    hasChoices: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 2
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Patch
+    dialogueText: Yeah I do. Tell me, where do i find more of this bread?
+    portrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
+    nextNodeIndex: 8
+    hasChoices: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Mouse
+    dialogueText: It's from a Santuary not far from here, you'll just have to go
+      past me and you'll find it. You'll also feel safe there!
+    portrait: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
+    nextNodeIndex: 9
+    hasChoices: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Mouse
+    dialogueText: Eeeek! It's raining now! Oh well, time for me to go!
+    portrait: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
+    nextNodeIndex: -1
+    hasChoices: 0
+    choices: []
+    changeMood: 1
+    newMood: 2
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 2
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 218158176}
+    replacementSprite: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 1
+    npcExitMover: {fileID: 218158180}
+  startingNodeIndex: 0
+  perspectiveSetup: {fileID: 218158181}
 --- !u!1 &221396123
 GameObject:
   m_ObjectHideFlags: 0
@@ -3955,7 +4249,7 @@ Transform:
   - {fileID: 1024847089}
   - {fileID: 890311104}
   - {fileID: 1356332394}
-  - {fileID: 1815093306}
+  - {fileID: 1305745221}
   m_Father: {fileID: 1699842733}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &348740203
@@ -4967,8 +5261,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5216,10 +5510,10 @@ RectTransform:
   - {fileID: 1607725654}
   m_Father: {fileID: 630683383}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 527.5, y: -149}
-  m_SizeDelta: {x: 1055, y: 298}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &417059928
 MonoBehaviour:
@@ -5670,7 +5964,7 @@ MonoBehaviour:
   catPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
   mousePortrait: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
   typingSpeed: 0.05
-  mouseMovement: {fileID: 218158179}
+  mouseMovement: {fileID: 0}
 --- !u!114 &432343090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5684,6 +5978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 961425679}
+  conversation: {fileID: 218158182}
   interactionKey: 101
 --- !u!1 &471074779
 GameObject:
@@ -7492,7 +7787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &630683383
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8199,7 +8494,8 @@ Transform:
   m_LocalPosition: {x: 71.48, y: -0.02, z: 0}
   m_LocalScale: {x: 0.9302462, y: 0.9318059, z: 1.255832}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2109124753}
   m_Father: {fileID: 1059396911}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &683358023
@@ -12796,79 +13092,264 @@ MonoBehaviour:
   choiceButtons:
   - {fileID: 417059930}
   - {fileID: 1004589401}
+  moodManager: {fileID: 221396127}
+  playerMovement: {fileID: 246482627}
   dialogueNodes:
   - speakerName: Patch
     dialogueText: Is that a fish? I'm starving
     portrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
     nextNodeIndex: 1
     hasChoices: 0
     choices: []
-  - speakerName: Patch
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 2
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: Transform
+    animationDuration: 1
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Fish
     dialogueText: Eeek! Please don't eat me
     portrait: {fileID: 21300000, guid: 19ccdbb56a9cfcd4bbb9f3236ae8df0d, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
     nextNodeIndex: 2
     hasChoices: 0
     choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 2
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: Transform
+    animationDuration: 1
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
   - speakerName: Fish
     dialogueText: 
     portrait: {fileID: 21300000, guid: 19ccdbb56a9cfcd4bbb9f3236ae8df0d, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
     nextNodeIndex: 3
     hasChoices: 1
     choices:
     - choiceText: You look so delicious though
       nextNodeIndex: 3
+      changeMood: 0
+      newMood: 0
+      triggerPerceptionChange: 0
+      perceptionDelay: 2
+      perceptionChangeType: 0
+      perceptionTarget: {fileID: 0}
+      replacementSprite: {fileID: 0}
+      perceptionAnimator: {fileID: 0}
+      animationTriggerName: Transform
+      animationDuration: 1
     - choiceText: But I'm hungry
       nextNodeIndex: 4
+      changeMood: 0
+      newMood: 0
+      triggerPerceptionChange: 0
+      perceptionDelay: 2
+      perceptionChangeType: 0
+      perceptionTarget: {fileID: 0}
+      replacementSprite: {fileID: 0}
+      perceptionAnimator: {fileID: 0}
+      animationTriggerName: Transform
+      animationDuration: 1
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 2
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: Transform
+    animationDuration: 1
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
   - speakerName: Fish
     dialogueText: No I'm not delicious. Here, have a piece of bread instead
     portrait: {fileID: 21300000, guid: 19ccdbb56a9cfcd4bbb9f3236ae8df0d, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
     nextNodeIndex: 5
     hasChoices: 0
-    choices:
-    - choiceText: I'm salivating
-      nextNodeIndex: 2
-    - choiceText: But you look so tasty
-      nextNodeIndex: 4
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 1
+    changeMoodDuringPerception: 1
+    perceptionMood: 0
+    perceptionDelay: 2
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 218158176}
+    replacementSprite: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: Transform
+    animationDuration: 1
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
   - speakerName: Fish
     dialogueText: What if I give you some bread instead? Here eat it!
     portrait: {fileID: 21300000, guid: 19ccdbb56a9cfcd4bbb9f3236ae8df0d, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
     nextNodeIndex: 5
     hasChoices: 0
     choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 1
+    changeMoodDuringPerception: 1
+    perceptionMood: 0
+    perceptionDelay: 2
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 218158176}
+    replacementSprite: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: Transform
+    animationDuration: 1
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
   - speakerName: Patch
     dialogueText: MMmmm, it's delicious
     portrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
     nextNodeIndex: 6
     hasChoices: 0
     choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 2
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 218158176}
+    replacementSprite: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: Transform
+    animationDuration: 1
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
   - speakerName: Mouse
     dialogueText: Are you feeling better now?
     portrait: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
     nextNodeIndex: 7
     hasChoices: 0
     choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 2
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: Transform
+    animationDuration: 1
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
   - speakerName: Patch
     dialogueText: Yeah I am, where do I find more of this bread?
     portrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
     nextNodeIndex: 8
     hasChoices: 0
     choices: []
-  - speakerName: Fish
-    dialogueText: It's in a Santuary not far from here, you just have to go past
-      me and you'll find it. It's also guarentees safety! The only problem is that
-      many have tried to get there but they've all died on the way
-    portrait: {fileID: 21300000, guid: 19ccdbb56a9cfcd4bbb9f3236ae8df0d, type: 3}
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 2
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: Transform
+    animationDuration: 1
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Mouse
+    dialogueText: 'It''s in a Santuary not far from here, you just have to go past
+      me and you''ll find it. It''s also guarentees safety! '
+    portrait: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
     nextNodeIndex: 9
     hasChoices: 0
     choices: []
-  - speakerName: Fish
-    dialogueText: That piece of bread also have some side affects when consumed but
-      it'll wear off soon. Oh well time for me to go!
-    portrait: {fileID: 21300000, guid: 19ccdbb56a9cfcd4bbb9f3236ae8df0d, type: 3}
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 2
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: Transform
+    animationDuration: 1
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Mouse
+    dialogueText: Eeek it's raining now! Oh well time for me to go!
+    portrait: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: -1
     nextNodeIndex: -1
     hasChoices: 0
     choices: []
-  startingNodeIndex: 0
+    changeMood: 1
+    newMood: 2
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 2
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 218158176}
+    replacementSprite: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: Transform
+    animationDuration: 1
+    triggerNPCExit: 1
+    npcExitMover: {fileID: 218158180}
   typingSpeed: 0.04
 --- !u!1 &968746711
 GameObject:
@@ -13507,10 +13988,10 @@ RectTransform:
   - {fileID: 406855352}
   m_Father: {fileID: 630683383}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 527.5, y: -447}
-  m_SizeDelta: {x: 1055, y: 298}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1007088712
 GameObject:
@@ -17515,6 +17996,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4.6412354, y: 1.2743831}
   m_EdgeRadius: 0
+--- !u!1 &1305745220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1305745221}
+  m_Layer: 0
+  m_Name: MouseHoleExitPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1305745221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305745220}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.08, y: 0.42, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 348516723}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1314920914
 GameObject:
   m_ObjectHideFlags: 0
@@ -20363,8 +20875,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -22928,37 +23440,6 @@ PolygonCollider2D:
       - {x: -1.645, y: -3.23}
       - {x: -1.505, y: -3.1699998}
   m_UseDelaunayMesh: 0
---- !u!1 &1815093305
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1815093306}
-  m_Layer: 0
-  m_Name: MouseHoleTarget
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1815093306
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1815093305}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.0900002, y: 0.33000183, z: 10.036404}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 348516723}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1817523883
 GameObject:
   m_ObjectHideFlags: 0
@@ -26893,6 +27374,100 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106144670}
   m_CullTransparentMesh: 1
+--- !u!1 &2109124752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2109124753}
+  - component: {fileID: 2109124755}
+  - component: {fileID: 2109124754}
+  m_Layer: 0
+  m_Name: KittenRoomMoodReset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2109124753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109124752}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.55, y: 1.17, z: 0}
+  m_LocalScale: {x: 5.5375, y: 2.125, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 679221924}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2109124754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109124752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fe01f6d02d37af4d9b887e6f176b624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moodManager: {fileID: 221396127}
+  moodToSet: 0
+  triggerOnlyOnce: 1
+--- !u!61 &2109124755
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109124752}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2110625949
 GameObject:
   m_ObjectHideFlags: 0

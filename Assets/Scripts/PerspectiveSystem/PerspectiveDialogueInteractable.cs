@@ -4,6 +4,7 @@ public class IdealDialogueInteractable : MonoBehaviour
 {
     [Header("Dialogue")]
     public IdealDialogueManager dialogueManager;
+    public NPCDialogueConversation conversation;
 
     [Header("Interaction Settings")]
     public KeyCode interactionKey = KeyCode.E;
@@ -17,13 +18,35 @@ public class IdealDialogueInteractable : MonoBehaviour
             return;
         }
 
+        if (dialogueManager == null)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(interactionKey))
         {
             if (!dialogueManager.IsDialogueActive)
             {
-                dialogueManager.StartDialogue();
+                if (conversation == null)
+                {
+                    Debug.LogWarning(
+                        gameObject.name +
+                        ": No NPC Dialogue Conversation has been assigned."
+                    );
+
+                    return;
+                }
+
+                dialogueManager.StartDialogue(conversation);
+                return;
             }
-            else if (dialogueManager.IsTyping)
+
+            if (dialogueManager.CurrentConversation != conversation)
+            {
+                return;
+            }
+
+            if (dialogueManager.IsTyping)
             {
                 dialogueManager.CompleteCurrentLine();
             }
