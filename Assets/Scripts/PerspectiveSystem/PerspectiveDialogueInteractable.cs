@@ -15,6 +15,18 @@ public class IdealDialogueInteractable : MonoBehaviour
 
     private bool playerNearby = false;
 
+    private void Start()
+    {
+        // IMPORTANT:
+        // Do NOT turn the icon off here.
+        //
+        // The InteractionDetector on Patch already controls the
+        // shared InteractionIcon for normal interactable objects.
+        //
+        // If this NPC also disabled the shared icon in Start(),
+        // the two systems could fight over the same GameObject.
+    }
+
     private void Update()
     {
         if (!playerNearby)
@@ -41,11 +53,11 @@ public class IdealDialogueInteractable : MonoBehaviour
                     return;
                 }
 
-                // Start the dialogue normally.
+                // Start dialogue normally.
                 dialogueManager.StartDialogue(conversation);
 
-                // This is now considered Patch's first interaction
-                // with this NPC.
+                // Mark this NPC as interacted with after the
+                // first successful dialogue interaction.
                 if (firstTimeInteractable != null &&
                     !firstTimeInteractable.HasBeenInteractedWith)
                 {
@@ -60,6 +72,7 @@ public class IdealDialogueInteractable : MonoBehaviour
                 return;
             }
 
+            // Everything below remains your existing E dialogue behaviour.
             if (dialogueManager.CurrentConversation != conversation)
             {
                 return;
@@ -78,33 +91,36 @@ public class IdealDialogueInteractable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player"))
         {
-            playerNearby = true;
+            return;
+        }
 
-            // Show ! only if Patch has never interacted
-            // with this NPC before.
-            if (firstTimeInteractable != null &&
-                !firstTimeInteractable.HasBeenInteractedWith)
+        playerNearby = true;
+
+        // NPC-specific icon behaviour.
+        if (firstTimeInteractable != null &&
+            !firstTimeInteractable.HasBeenInteractedWith)
+        {
+            if (interactionIcon != null)
             {
-                if (interactionIcon != null)
-                {
-                    interactionIcon.SetActive(true);
-                }
+                interactionIcon.SetActive(true);
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player"))
         {
-            playerNearby = false;
+            return;
+        }
 
-            if (interactionIcon != null)
-            {
-                interactionIcon.SetActive(false);
-            }
+        playerNearby = false;
+
+        if (interactionIcon != null)
+        {
+            interactionIcon.SetActive(false);
         }
     }
 }

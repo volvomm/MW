@@ -15,8 +15,8 @@ MonoBehaviour:
   dialogueLines:
   - speakerName: Patch
     speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
-    dialogueText: Hey little one, I found your mom and she told me that you know
-      a number from her digit box that she store in the closet.
+    dialogueText: Hey little one, do you happen to know any numbers from your mom's
+      number box?
   - speakerName: Gray Kitten
     speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
     dialogueText: I remember that box. Mom used to press three
