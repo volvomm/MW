@@ -9,6 +9,10 @@ public class IdealDialogueInteractable : MonoBehaviour
     [Header("Interaction Settings")]
     public KeyCode interactionKey = KeyCode.E;
 
+    [Header("First-Time Interaction")]
+    [SerializeField] private FirstTimeInteractable firstTimeInteractable;
+    [SerializeField] private GameObject interactionIcon;
+
     private bool playerNearby = false;
 
     private void Update()
@@ -37,7 +41,22 @@ public class IdealDialogueInteractable : MonoBehaviour
                     return;
                 }
 
+                // Start the dialogue normally.
                 dialogueManager.StartDialogue(conversation);
+
+                // This is now considered Patch's first interaction
+                // with this NPC.
+                if (firstTimeInteractable != null &&
+                    !firstTimeInteractable.HasBeenInteractedWith)
+                {
+                    firstTimeInteractable.MarkAsInteracted();
+
+                    if (interactionIcon != null)
+                    {
+                        interactionIcon.SetActive(false);
+                    }
+                }
+
                 return;
             }
 
@@ -62,6 +81,17 @@ public class IdealDialogueInteractable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNearby = true;
+
+            // Show ! only if Patch has never interacted
+            // with this NPC before.
+            if (firstTimeInteractable != null &&
+                !firstTimeInteractable.HasBeenInteractedWith)
+            {
+                if (interactionIcon != null)
+                {
+                    interactionIcon.SetActive(true);
+                }
+            }
         }
     }
 
@@ -70,6 +100,11 @@ public class IdealDialogueInteractable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNearby = false;
+
+            if (interactionIcon != null)
+            {
+                interactionIcon.SetActive(false);
+            }
         }
     }
 }

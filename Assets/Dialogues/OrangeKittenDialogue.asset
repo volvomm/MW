@@ -15,20 +15,12 @@ MonoBehaviour:
   dialogueLines:
   - speakerName: Patch
     speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
-    dialogueText: So...
+    dialogueText: Do you remember if your mom had told you a number from a box from
+      her closet?
+  - speakerName: Orange Kitten
+    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
+    dialogueText: Mama told me to pick a number for the box and I chose six!
   - speakerName: Patch
     speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
-    dialogueText: Are you and your siblings hungry?
-  - speakerName: Orange Kitten
-    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
-    dialogueText: Yes but...
-  - speakerName: Orange Kitten
-    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
-    dialogueText: We just want our mama back...
-  - speakerName: Orange Kitten
-    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
-    dialogueText: Whenever she brought back food.
-  - speakerName: Orange Kitten
-    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
-    dialogueText: She would always bring back six portions us.
+    dialogueText: Number six huh...
   typingSpeed: 0.07

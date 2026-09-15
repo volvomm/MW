@@ -15,26 +15,16 @@ MonoBehaviour:
   dialogueLines:
   - speakerName: Patch
     speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
-    dialogueText: Don't worry.
+    dialogueText: Hey little one, I found your mom and she told me that you know
+      a number from her digit box that she store in the closet.
+  - speakerName: Gray Kitten
+    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
+    dialogueText: I remember that box. Mom used to press three
   - speakerName: Patch
     speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
-    dialogueText: I'll try and bring your mom back.
+    dialogueText: Three huh.
   - speakerName: Gray Kitten
     speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
-    dialogueText: Please do sir.
-  - speakerName: Gray Kitten
-    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
-    dialogueText: My siblings are afraid and so am I.
-  - speakerName: Gray Kitten
-    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
-    dialogueText: I'm just trying to be brave for them
-  - speakerName: Gray Kitten
-    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
-    dialogueText: But the thing is
-  - speakerName: Gray Kitten
-    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
-    dialogueText: I'm also really scared...
-  - speakerName: Gray Kitten
-    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
-    dialogueText: It's just the three of us without our mom.
+    dialogueText: 'Mama always told us that she''d use the last number, whatever
+      that means. '
   typingSpeed: 0.07
