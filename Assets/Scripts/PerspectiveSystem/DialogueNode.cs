@@ -25,6 +25,10 @@ public class DialogueNode
 
     [Header("Player Choices")]
     public bool hasChoices = false;
+
+    [Tooltip("If enabled, this node immediately displays the choice UI without showing a dialogue line first.")]
+    public bool choiceOnlyNode = false;
+
     public DialogueChoice[] choices;
 
     [Header("Mood Event - When This Node Starts")]

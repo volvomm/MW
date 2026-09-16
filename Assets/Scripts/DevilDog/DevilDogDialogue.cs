@@ -42,6 +42,9 @@ public class DevilDogDialogue : MonoBehaviour
     [Header("Devil Dog Walk Away")]
     [SerializeField] private DevilDogWalkOff devilDogWalkOff;
 
+    [Header("Perspective System")]
+    [SerializeField] private NPCPerspectiveSetup perspectiveSetup;
+
     private bool playerIsInRange;
     private bool dialogueIsActive;
     private bool isTyping;
@@ -345,6 +348,12 @@ public class DevilDogDialogue : MonoBehaviour
         }
 
         playerIsInRange = true;
+
+        // Update the Devil Dog's appearance based on Patch's current mood.
+        if (perspectiveSetup != null)
+        {
+            perspectiveSetup.ApplyCurrentMoodVisual();
+        }
 
         // First interaction is always available.
         if (!firstDialogueCompleted)

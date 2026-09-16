@@ -7,6 +7,9 @@ public class InteractionDetector : MonoBehaviour
     private SpriteOutlineController currentOutline = null;
     private FirstTimeInteractable firstTimeInRange = null;
 
+    [Header("Interaction Lock")]
+    public bool interactionsLocked = false;
+
     [Header("Interaction Icon")]
     public GameObject interactionIcon;
 
@@ -23,15 +26,14 @@ public class InteractionDetector : MonoBehaviour
         if (!context.performed)
             return;
 
-        if (interactableInRange == null)
+        // A dialogue/cutscene currently owns the E key.
+        // Do not activate world interactables.
+        if (interactionsLocked)
             return;
 
-        // Keep the original interaction behaviour.
-        // This allows E to start AND continue dialogue.
-        interactableInRange.Interact();
-
-        // Once E has actually been pressed on this interactable,
-        // it is no longer considered new.
+        // First-time interaction system.
+        // This works even for interactions such as the kittens,
+        // which handle E through their own scripts.
         if (firstTimeInRange != null &&
             !firstTimeInRange.HasBeenInteractedWith)
         {
@@ -42,10 +44,51 @@ public class InteractionDetector : MonoBehaviour
                 interactionIcon.SetActive(false);
             }
         }
+
+        // If this object uses IInteractable,
+        // perform its normal interaction.
+        if (interactableInRange == null)
+            return;
+
+        interactableInRange.Interact();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // ---------------------------------------------
+        // FIRST-TIME INTERACTION ICON
+        // ---------------------------------------------
+
+        if (collision.CompareTag("Interactable"))
+        {
+            FirstTimeInteractable firstTime =
+    collision.GetComponent<FirstTimeInteractable>();
+
+            if (firstTime != null)
+            {
+                firstTimeInRange = firstTime;
+
+                if (!firstTimeInRange.HasBeenInteractedWith)
+                {
+                    if (interactionIcon != null)
+                    {
+                        interactionIcon.SetActive(true);
+                    }
+                }
+                else
+                {
+                    if (interactionIcon != null)
+                    {
+                        interactionIcon.SetActive(false);
+                    }
+                }
+            }
+        }
+
+        // ---------------------------------------------
+        // NORMAL IINTERACTABLE SYSTEM
+        // ---------------------------------------------
+
         IInteractable interactable = FindInteractable(collision);
 
         if (interactable == null)
@@ -64,30 +107,35 @@ public class InteractionDetector : MonoBehaviour
         {
             currentOutline.SetVisible(true);
         }
-
-        // Find the FirstTimeInteractable belonging to this
-        // interaction, even if the hierarchy is different.
-        firstTimeInRange = FindFirstTimeInteractable(collision);
-
-        if (firstTimeInRange != null &&
-            !firstTimeInRange.HasBeenInteractedWith)
-        {
-            if (interactionIcon != null)
-            {
-                interactionIcon.SetActive(true);
-            }
-        }
-        else
-        {
-            if (interactionIcon != null)
-            {
-                interactionIcon.SetActive(false);
-            }
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        // ---------------------------------------------
+        // FIRST-TIME INTERACTION ICON
+        // ---------------------------------------------
+
+        if (collision.CompareTag("Interactable"))
+        {
+            FirstTimeInteractable exitingFirstTime =
+     collision.GetComponent<FirstTimeInteractable>();
+
+            if (exitingFirstTime != null &&
+                exitingFirstTime == firstTimeInRange)
+            {
+                if (interactionIcon != null)
+                {
+                    interactionIcon.SetActive(false);
+                }
+
+                firstTimeInRange = null;
+            }
+        }
+
+        // ---------------------------------------------
+        // NORMAL IINTERACTABLE SYSTEM
+        // ---------------------------------------------
+
         IInteractable interactable = FindInteractable(collision);
 
         if (interactable == null)
@@ -99,12 +147,6 @@ public class InteractionDetector : MonoBehaviour
         ClearCurrentOutline();
 
         interactableInRange = null;
-        firstTimeInRange = null;
-
-        if (interactionIcon != null)
-        {
-            interactionIcon.SetActive(false);
-        }
     }
 
     private IInteractable FindInteractable(Collider2D collision)

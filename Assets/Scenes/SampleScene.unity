@@ -130,9 +130,10 @@ GameObject:
   - component: {fileID: 6677438}
   - component: {fileID: 6677437}
   - component: {fileID: 6677436}
+  - component: {fileID: 6677439}
   m_Layer: 0
   m_Name: BenchTrigger
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,7 +185,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -216,12 +217,25 @@ Transform:
   m_GameObject: {fileID: 6677435}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.65641576, y: -3.9707735, z: 0.042653095}
+  m_LocalPosition: {x: -0.59, y: -1.66, z: 0.042653095}
   m_LocalScale: {x: 1.0760903, y: 1.0760903, z: 1.0760903}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1558360514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6677439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6677435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &49055308
 GameObject:
   m_ObjectHideFlags: 0
@@ -2181,6 +2195,7 @@ MonoBehaviour:
   moodVisuals:
   - mood: 1
     sprite: {fileID: 21300000, guid: 19ccdbb56a9cfcd4bbb9f3236ae8df0d, type: 3}
+    dialoguePortrait: {fileID: 0}
   defaultSprite: {fileID: 844392644479785137, guid: 09f2410ce1cc170449676c383f5c05ce, type: 3}
 --- !u!114 &218158182
 MonoBehaviour:
@@ -2203,6 +2218,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 1
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 0
     newMood: 0
@@ -2226,6 +2242,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 2
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 0
     newMood: 0
@@ -2249,6 +2266,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 3
     hasChoices: 1
+    choiceOnlyNode: 0
     choices:
     - choiceText: You look so delicious though
       nextNodeIndex: 3
@@ -2296,6 +2314,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 5
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 0
     newMood: 0
@@ -2319,6 +2338,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 5
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 0
     newMood: 0
@@ -2342,6 +2362,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 6
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 0
     newMood: 0
@@ -2365,6 +2386,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 7
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 0
     newMood: 0
@@ -2388,6 +2410,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 8
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 0
     newMood: 0
@@ -2412,6 +2435,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 9
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 0
     newMood: 0
@@ -2435,6 +2459,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: -1
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 1
     newMood: 2
@@ -3160,7 +3185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746f6ac229dce1e4a95c760f39e38e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
+  moveSpeed: 12
   rend: {fileID: 246482621}
 --- !u!114 &246482628
 MonoBehaviour:
@@ -3551,9 +3576,10 @@ GameObject:
   - component: {fileID: 274181892}
   - component: {fileID: 274181891}
   - component: {fileID: 274181890}
+  - component: {fileID: 274181893}
   m_Layer: 0
   m_Name: Trigger_Inside_To_Room1-1
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3648,6 +3674,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1582904471}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &274181893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274181889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &293030117
 GameObject:
   m_ObjectHideFlags: 0
@@ -4640,9 +4679,10 @@ GameObject:
   - component: {fileID: 373732048}
   - component: {fileID: 373732051}
   - component: {fileID: 373732052}
+  - component: {fileID: 373732053}
   m_Layer: 0
   m_Name: CoveredCage
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4876,6 +4916,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   revealManager: {fileID: 758040797}
+--- !u!114 &373732053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373732047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &378486888
 GameObject:
   m_ObjectHideFlags: 0
@@ -6152,9 +6205,10 @@ GameObject:
   - component: {fileID: 498737277}
   - component: {fileID: 498737276}
   - component: {fileID: 498737275}
+  - component: {fileID: 498737278}
   m_Layer: 0
   m_Name: OrangeKittenTrigger
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6233,6 +6287,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 940683207}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &498737278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498737274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &505387218
 GameObject:
   m_ObjectHideFlags: 0
@@ -6373,12 +6440,12 @@ GameObject:
   m_Component:
   - component: {fileID: 510629280}
   - component: {fileID: 510629279}
-  - component: {fileID: 510629282}
   - component: {fileID: 510629283}
   - component: {fileID: 510629284}
+  - component: {fileID: 510629285}
   m_Layer: 0
   m_Name: Box asset
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6453,7 +6520,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 104425405}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &510629282
+--- !u!114 &510629283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510629278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b70dbab8042ccc47a2c99d40ef6d24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueData: {fileID: 11400000, guid: fdfac8003962fd04d819b339c8c9b750, type: 2}
+  dialoguePanel: {fileID: 741082908}
+  dialougeText: {fileID: 1219159426}
+  nameText: {fileID: 1258714718}
+  portraitImage: {fileID: 252152096}
+--- !u!114 &510629284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510629278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
+--- !u!60 &510629285
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6499,11 +6596,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.77, y: -2.35}
-      - {x: 1.79, y: -2.35}
-      - {x: 1.8299999, y: -2.31}
-      - {x: 1.8299999, y: -2.29}
-      - {x: 1.8199999, y: -2.28}
+    - - {x: 1.5207278, y: -1.4208996}
+      - {x: 1.6653639, y: -1.7381502}
+      - {x: 1.6827029, y: -1.5055277}
+      - {x: 1.8753221, y: -1.7914528}
+      - {x: 1.8879833, y: -1.3622195}
       - {x: 1.8199999, y: 0.08}
       - {x: 1.81, y: 0.11}
       - {x: 1.77, y: 0.14999999}
@@ -6538,46 +6635,16 @@ PolygonCollider2D:
       - {x: -1.8299999, y: -0.55}
       - {x: -1.8299999, y: -0.72999996}
       - {x: -1.8199999, y: -1.02}
-      - {x: -1.8199999, y: -2.18}
-      - {x: -1.8299999, y: -2.3}
-      - {x: -1.79, y: -2.34}
-      - {x: 0.42, y: -2.34}
-      - {x: 0.42999998, y: -2.35}
-      - {x: 0.62, y: -2.34}
-      - {x: 0.63, y: -2.35}
-      - {x: 0.65, y: -2.34}
-      - {x: 1.76, y: -2.34}
+      - {x: -1.7973386, y: -1.205574}
+      - {x: -1.569397, y: -1.3595626}
+      - {x: -1.3821001, y: -1.2069514}
+      - {x: 0.3860086, y: -1.3995682}
+      - {x: 0.61128914, y: -1.4662193}
+      - {x: 0.7106441, y: -1.3542426}
+      - {x: 0.85661095, y: -1.5002079}
+      - {x: 0.9672552, y: -1.3995625}
+      - {x: 1.3860921, y: -1.5921906}
   m_UseDelaunayMesh: 0
---- !u!114 &510629283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510629278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b70dbab8042ccc47a2c99d40ef6d24e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: fdfac8003962fd04d819b339c8c9b750, type: 2}
-  dialoguePanel: {fileID: 741082908}
-  dialougeText: {fileID: 1219159426}
-  nameText: {fileID: 1258714718}
-  portraitImage: {fileID: 252152096}
---- !u!114 &510629284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510629278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasBeenInteractedWith: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -7455,9 +7522,10 @@ GameObject:
   - component: {fileID: 620473415}
   - component: {fileID: 620473414}
   - component: {fileID: 620473416}
+  - component: {fileID: 620473417}
   m_Layer: 0
   m_Name: Mat
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7712,6 +7780,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matObject: {fileID: 620473412}
   lockedTrapdoor: {fileID: 65850030}
+--- !u!114 &620473417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620473412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &630683382
 GameObject:
   m_ObjectHideFlags: 0
@@ -7844,7 +7925,7 @@ Transform:
   m_GameObject: {fileID: 631495129}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -784.1, y: -728.5, z: 0.08984278}
+  m_LocalPosition: {x: -804.3, y: -707.1, z: 0.08984278}
   m_LocalScale: {x: 2.1380847, y: 2.1380847, z: 2.1380847}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7863,9 +7944,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 246482627}
+  interactionDetector: {fileID: 806497400}
   dialoguePanel: {fileID: 741082908}
   speakerNameText: {fileID: 1258714718}
   dialogueText: {fileID: 1219159426}
+  portraitImage: {fileID: 252152096}
+  patchPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+  devilDogPerspective: {fileID: 1570231897}
   typingSpeed: 0.04
 --- !u!61 &631495132
 BoxCollider2D:
@@ -8006,9 +8091,10 @@ GameObject:
   - component: {fileID: 652377086}
   - component: {fileID: 652377085}
   - component: {fileID: 652377084}
+  - component: {fileID: 652377087}
   m_Layer: 0
   m_Name: Trigger_Room1-1_To_Closet
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8105,12 +8191,25 @@ Transform:
   m_GameObject: {fileID: 652377083}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 88.47, y: 1.4379044, z: 0}
+  m_LocalPosition: {x: 88.47, y: 1.93, z: 0}
   m_LocalScale: {x: 4.1, y: 0.8125, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1582904471}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &652377087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652377083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &661096046
 GameObject:
   m_ObjectHideFlags: 0
@@ -8887,9 +8986,10 @@ GameObject:
   - component: {fileID: 719594255}
   - component: {fileID: 719594254}
   - component: {fileID: 719594253}
+  - component: {fileID: 719594256}
   m_Layer: 0
   m_Name: WhiteKittenTrigger
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8968,6 +9068,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 940683207}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &719594256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719594252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &727573257
 GameObject:
   m_ObjectHideFlags: 0
@@ -9596,7 +9709,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1e25c1729463b46a2c9286757b6dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionIcon: {fileID: 909763552}
+  interactionsLocked: 0
+  interactionIcon: {fileID: 863405234}
 --- !u!60 &806497401
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -10364,76 +10478,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basementDialogueLines:
   - speakerName: Mother Cat
-    dialogueText: 'What happened? '
-    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
-  - speakerName: Mother Cat
-    dialogueText: Did you get rid of him?
+    dialogueText: What happened? Did you get rid of him?
     speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
   - speakerName: Patch
-    dialogueText: It took some convincing.
-    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
-  - speakerName: Patch
-    dialogueText: But I managed to trap him in the closet.
+    dialogueText: It took some convincing. But I managed to trap him in the closet.
     speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
   - speakerName: Patch
     dialogueText: Come on, I'll take you back to your kittens.
     speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
   reunionDialogueLines:
   - speakerName: White Kitten
-    dialogueText: Mom?!
+    dialogueText: Mom?! You're back!
     speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
   - speakerName: Orange Kitten
-    dialogueText: You're back!
-    speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
-  - speakerName: Gray Kitten
     dialogueText: I've missed you so much!
-    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
-  - speakerName: Mother Cat
-    dialogueText: I've also missed you all!
-    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
-  - speakerName: Mother Cat
-    dialogueText: What was your name again?
-    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
-  - speakerName: Patch
-    dialogueText: Oh... um my name is Patch
-    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
-  - speakerName: Mother Cat
-    dialogueText: Thank you so much for everything that you've done for us
-    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
-  - speakerName: Mother Cat
-    dialogueText: Kids, say thank you to the nice cat
-    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
-  - speakerName: Orange Cat
-    dialogueText: Thank you mister!
     speakerPortrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
-  - speakerName: White Kitten
-    dialogueText: Thank you for bringing our mom back to us!
-    speakerPortrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
-  - speakerName: 'Gray Kitten '
-    dialogueText: We really can't thank you enough!
-    speakerPortrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
-  - speakerName: Patch
-    dialogueText: It's all good, really.
-    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
-  - speakerName: Patch
-    dialogueText: But um I just wanted to ask you something
-    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
   - speakerName: Mother Cat
-    dialogueText: Hmm...?
+    dialogueText: I've missed you too my kittens. Thank you so much for everything
+      that you've done for us
     speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
   - speakerName: Patch
-    dialogueText: Do you know a place called Arcadia? I'm trying to find that place
+    dialogueText: Your welcome! But um I just wanted to ask you something
     speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
   - speakerName: Mother Cat
-    dialogueText: Oh Arcadia? We actually came from that area, it's past the door
-      that the dog was guarding
+    dialogueText: Arcadia? That place is a myth, I haven't even seen it in person.
     speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
   - speakerName: Patch
-    dialogueText: Oh thank you! I guess I'll get going now.
+    dialogueText: I see... well I guess I better get going.
     speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
   - speakerName: Mother Cat
-    dialogueText: Thank you again!
+    dialogueText: Thank you for your help! I hope you'll find what you're looking
+      for!
     speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  - speakerName: Patch
+    dialogueText: 'Hmm, I guess I''ll keep looking. '
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
   dialoguePanel: {fileID: 741082908}
   speakerNameText: {fileID: 1258714718}
   dialogueText: {fileID: 1219159426}
@@ -13219,6 +13298,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 1
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 0
     newMood: 0
@@ -13242,6 +13322,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 2
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 0
     newMood: 0
@@ -13265,6 +13346,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 3
     hasChoices: 1
+    choiceOnlyNode: 0
     choices:
     - choiceText: You look so delicious though
       nextNodeIndex: 3
@@ -13312,6 +13394,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 5
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 0
     newMood: 0
@@ -13335,6 +13418,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 5
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 0
     newMood: 0
@@ -13358,6 +13442,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 6
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 0
     newMood: 0
@@ -13381,6 +13466,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 7
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 0
     newMood: 0
@@ -13404,6 +13490,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 8
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 0
     newMood: 0
@@ -13428,6 +13515,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: 9
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 0
     newMood: 0
@@ -13451,6 +13539,7 @@ MonoBehaviour:
     failedMoodNodeIndex: -1
     nextNodeIndex: -1
     hasChoices: 0
+    choiceOnlyNode: 0
     choices: []
     changeMood: 1
     newMood: 2
@@ -14400,9 +14489,10 @@ GameObject:
   - component: {fileID: 1018709638}
   - component: {fileID: 1018709640}
   - component: {fileID: 1018709639}
+  - component: {fileID: 1018709641}
   m_Layer: 0
   m_Name: BatteriesInteract
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14492,6 +14582,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.6960945, y: 1.3926654}
   m_EdgeRadius: 0
+--- !u!114 &1018709641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018709637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &1019536614
 GameObject:
   m_ObjectHideFlags: 0
@@ -15335,9 +15438,10 @@ GameObject:
   - component: {fileID: 1059128424}
   - component: {fileID: 1059128426}
   - component: {fileID: 1059128428}
+  - component: {fileID: 1059128429}
   m_Layer: 0
   m_Name: SoundRecorder
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15508,6 +15612,19 @@ PolygonCollider2D:
       - {x: 0.55909973, y: -0.719504}
       - {x: 0.72486395, y: -0.56114227}
   m_UseDelaunayMesh: 0
+--- !u!114 &1059128429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059128423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &1059396910
 GameObject:
   m_ObjectHideFlags: 0
@@ -18129,9 +18246,10 @@ GameObject:
   - component: {fileID: 1270203332}
   - component: {fileID: 1270203333}
   - component: {fileID: 1270203335}
+  - component: {fileID: 1270203336}
   m_Layer: 0
   m_Name: DevilDogDialogueTrigger
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18185,7 +18303,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.89232445, y: 0.32902908}
+  m_Offset: {x: -0.33385944, y: -0.5637691}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -18195,7 +18313,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 25.985104, y: 16.888329}
+  m_Size: {x: 10.2816105, y: 9.482578}
   m_EdgeRadius: 0
 --- !u!114 &1270203335
 MonoBehaviour:
@@ -18234,6 +18352,20 @@ MonoBehaviour:
   interactionKey: 101
   typingSpeed: 0.04
   devilDogWalkOff: {fileID: 1570231896}
+  perspectiveSetup: {fileID: 1570231897}
+--- !u!114 &1270203336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270203331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &1276556577
 GameObject:
   m_ObjectHideFlags: 0
@@ -20720,7 +20852,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1558360514}
   - component: {fileID: 1558360513}
-  - component: {fileID: 1558360515}
   m_Layer: 0
   m_Name: Scene2Bench
   m_TagString: Untagged
@@ -20799,19 +20930,6 @@ Transform:
   - {fileID: 6677438}
   m_Father: {fileID: 521658589}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1558360515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1558360512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasBeenInteractedWith: 0
 --- !u!1 &1570231891
 GameObject:
   m_ObjectHideFlags: 0
@@ -20825,6 +20943,7 @@ GameObject:
   - component: {fileID: 1570231894}
   - component: {fileID: 1570231895}
   - component: {fileID: 1570231896}
+  - component: {fileID: 1570231897}
   m_Layer: 0
   m_Name: DevilDog
   m_TagString: Untagged
@@ -20876,7 +20995,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: 3661768967120018263, guid: 3368a631f386fe4468b2ebd7b040e3eb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af311ef8af979734c9719ac6c7364d3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -20896,8 +21015,8 @@ Transform:
   m_GameObject: {fileID: 1570231891}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.83435, y: 11.59713, z: 0}
-  m_LocalScale: {x: 0.25061747, y: 0.23787226, z: 0.38273892}
+  m_LocalPosition: {x: 19.006, y: 11.523, z: 0}
+  m_LocalScale: {x: 0.48783815, y: 0.463029, z: 0.7450184}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1270203332}
@@ -20941,17 +21060,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.31808233, y: -0.20245004}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 24.869999, y: 15.46}
+    oldSize: {x: 7.85, y: 8}
     newSize: {x: 24.869999, y: 15.46}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 24.869999, y: 15.46}
+  m_Size: {x: 9.274495, y: 8.988314}
   m_EdgeRadius: 0
 --- !u!95 &1570231895
 Animator:
@@ -20990,6 +21109,28 @@ MonoBehaviour:
   walkSpeed: 3
   exitPoint: {fileID: 1647285614}
   animator: {fileID: 1570231895}
+--- !u!114 &1570231897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570231891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a848a4596256a4849abe8eeb7b51b812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moodManager: {fileID: 221396127}
+  targetSpriteRenderer: {fileID: 1570231892}
+  moodVisuals:
+  - mood: 0
+    sprite: {fileID: 21300000, guid: af311ef8af979734c9719ac6c7364d3f, type: 3}
+    dialoguePortrait: {fileID: 21300000, guid: af311ef8af979734c9719ac6c7364d3f, type: 3}
+  - mood: 3
+    sprite: {fileID: 3661768967120018263, guid: 3368a631f386fe4468b2ebd7b040e3eb, type: 3}
+    dialoguePortrait: {fileID: -1192571620878233729, guid: d2e493c250bcf7245ad97022c6b85393, type: 3}
+  defaultSprite: {fileID: 0}
 --- !u!1 &1577981084
 GameObject:
   m_ObjectHideFlags: 0
@@ -22518,6 +22659,7 @@ MonoBehaviour:
   interactionKey: 101
   typingSpeed: 0.04
   devilDogWalkOff: {fileID: 391222448}
+  perspectiveSetup: {fileID: 0}
 --- !u!61 &1721865781
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22675,7 +22817,7 @@ GameObject:
   - component: {fileID: 1738322746}
   m_Layer: 0
   m_Name: TrashTrigger
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22689,7 +22831,7 @@ Transform:
   m_GameObject: {fileID: 1738322742}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.44, y: -2.73, z: 0.039637566}
+  m_LocalPosition: {x: -0.44, y: -2.39, z: 0.039637566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23008,9 +23150,10 @@ GameObject:
   - component: {fileID: 1751153420}
   - component: {fileID: 1751153421}
   - component: {fileID: 1751153422}
+  - component: {fileID: 1751153423}
   m_Layer: 0
   m_Name: ShoeBoxKeyInteract
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23100,6 +23243,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.0496445, y: 2.2394485}
   m_EdgeRadius: 0
+--- !u!114 &1751153423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751153419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &1755760992
 GameObject:
   m_ObjectHideFlags: 0
@@ -23361,9 +23517,10 @@ GameObject:
   - component: {fileID: 1762524259}
   - component: {fileID: 1762524261}
   - component: {fileID: 1762524260}
+  - component: {fileID: 1762524262}
   m_Layer: 0
   m_Name: Bench3Trigger
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23377,7 +23534,7 @@ Transform:
   m_GameObject: {fileID: 1762524258}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.0920863, y: -3.9895082, z: 0.042739023}
+  m_LocalPosition: {x: -6.0920863, y: -2.15, z: 0.042739023}
   m_LocalScale: {x: 1.0782454, y: 1.0782454, z: 1.0782454}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23453,6 +23610,19 @@ PolygonCollider2D:
       - {x: 7.1854324, y: 0.7662637}
       - {x: 7.7967777, y: 2.2435012}
   m_UseDelaunayMesh: 0
+--- !u!114 &1762524262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762524258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &1766591283
 GameObject:
   m_ObjectHideFlags: 0
@@ -23464,9 +23634,10 @@ GameObject:
   - component: {fileID: 1766591284}
   - component: {fileID: 1766591286}
   - component: {fileID: 1766591285}
+  - component: {fileID: 1766591287}
   m_Layer: 0
   m_Name: TinCanHole
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23569,6 +23740,19 @@ PolygonCollider2D:
       - {x: 2.37853, y: -2.1466289}
       - {x: 2.4148817, y: 1.1957572}
   m_UseDelaunayMesh: 0
+--- !u!114 &1766591287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766591283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &1787865393
 GameObject:
   m_ObjectHideFlags: 0
@@ -24129,9 +24313,10 @@ GameObject:
   - component: {fileID: 1827334171}
   - component: {fileID: 1827334170}
   - component: {fileID: 1827334169}
+  - component: {fileID: 1827334172}
   m_Layer: 0
   m_Name: GrayKittenTrigger
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24210,6 +24395,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 940683207}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1827334172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827334168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &1865573008
 GameObject:
   m_ObjectHideFlags: 0
@@ -24891,7 +25089,7 @@ GameObject:
   - component: {fileID: 1900637198}
   m_Layer: 0
   m_Name: Towel
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25560,9 +25758,11 @@ GameObject:
   - component: {fileID: 1981735754}
   - component: {fileID: 1981735753}
   - component: {fileID: 1981735755}
+  - component: {fileID: 1981735756}
+  - component: {fileID: 1981735757}
   m_Layer: 0
   m_Name: KittenGroupDialogueTrigger
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25640,11 +25840,451 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782d22d14239a8f40bac516eaf49f82d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainGroupDialogue: {fileID: 11400000, guid: 811cd355c730b814fbb1a92a9a4fe77e, type: 2}
+  dialogueManager: {fileID: 961425679}
+  conversation: {fileID: 1981735756}
   individualKittenDialogueTriggers:
   - {fileID: 719594252}
   - {fileID: 498737274}
   - {fileID: 1827334168}
+  interactionKey: 101
+--- !u!114 &1981735756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981735752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da65caef9dbc2b7458dc1cf5f4565b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueNodes:
+  - speakerName: Patch
+    dialogueText: Hey, what are you guys doing here? And where are your parents?
+    portrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: 0
+    nextNodeIndex: 1
+    hasChoices: 0
+    choiceOnlyNode: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: White Kitten
+    dialogueText: Oh sir! Please help our mom
+    portrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: 0
+    nextNodeIndex: 2
+    hasChoices: 0
+    choiceOnlyNode: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Patch
+    dialogueText: Wait... What do you mean by help your mom?
+    portrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: 0
+    nextNodeIndex: 3
+    hasChoices: 0
+    choiceOnlyNode: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Orange Kitten
+    dialogueText: Let me explain.
+    portrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: 0
+    nextNodeIndex: 4
+    hasChoices: 0
+    choiceOnlyNode: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Orange Kitten
+    dialogueText: Our mom and us live in this house
+    portrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: 0
+    nextNodeIndex: 5
+    hasChoices: 0
+    choiceOnlyNode: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Orange Kitten
+    dialogueText: And not too long ago, this big bad dog broke in and attacked us!
+    portrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: 0
+    nextNodeIndex: 6
+    hasChoices: 0
+    choiceOnlyNode: 0
+    choices:
+    - choiceText: That dog sounds terrifying...
+      nextNodeIndex: 6
+      changeMood: 1
+      newMood: 3
+      triggerPerceptionChange: 0
+      perceptionDelay: 0
+      perceptionChangeType: 0
+      perceptionTarget: {fileID: 0}
+      replacementSprite: {fileID: 0}
+      perceptionAnimator: {fileID: 0}
+      animationTriggerName: 
+      animationDuration: 0
+    - choiceText: I'm sure that dog isn't that scary!
+      nextNodeIndex: 7
+      changeMood: 1
+      newMood: 0
+      triggerPerceptionChange: 0
+      perceptionDelay: 0
+      perceptionChangeType: 0
+      perceptionTarget: {fileID: 0}
+      replacementSprite: {fileID: 0}
+      perceptionAnimator: {fileID: 0}
+      animationTriggerName: 
+      animationDuration: 0
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Patch
+    dialogueText: That sounds terrifying... but I'll see what I can do.
+    portrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: 0
+    nextNodeIndex: -1
+    hasChoices: 1
+    choiceOnlyNode: 1
+    choices:
+    - choiceText: That dog sounds terrifying...
+      nextNodeIndex: 7
+      changeMood: 1
+      newMood: 3
+      triggerPerceptionChange: 0
+      perceptionDelay: 0
+      perceptionChangeType: 0
+      perceptionTarget: {fileID: 0}
+      replacementSprite: {fileID: 0}
+      perceptionAnimator: {fileID: 0}
+      animationTriggerName: 
+      animationDuration: 0
+    - choiceText: I'm sure that dog isn't that scary!
+      nextNodeIndex: 8
+      changeMood: 1
+      newMood: 0
+      triggerPerceptionChange: 0
+      perceptionDelay: 0
+      perceptionChangeType: 0
+      perceptionTarget: {fileID: 0}
+      replacementSprite: {fileID: 0}
+      perceptionAnimator: {fileID: 0}
+      animationTriggerName: 
+      animationDuration: 0
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Patch
+    dialogueText: That sounds terrifying... but I'll see what I can do
+    portrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: 0
+    nextNodeIndex: 9
+    hasChoices: 0
+    choiceOnlyNode: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Patch
+    dialogueText: I'm sure I can handle him
+    portrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: 0
+    nextNodeIndex: 9
+    hasChoices: 0
+    choiceOnlyNode: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Orange Kitten
+    dialogueText: But our mom protected us from the bad dog!
+    portrait: {fileID: 7289357142524839309, guid: ca74249eb4b4dce47a5fa36a5317ee7f, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: 0
+    nextNodeIndex: 10
+    hasChoices: 0
+    choiceOnlyNode: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: White Kitten
+    dialogueText: But in the process, she got injured and the dog pulled her away!
+    portrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: 0
+    nextNodeIndex: 11
+    hasChoices: 0
+    choiceOnlyNode: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Gray Kitten
+    dialogueText: And now we're just waiting here since we can't fight against that
+      monster.
+    portrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: 0
+    nextNodeIndex: 12
+    hasChoices: 0
+    choiceOnlyNode: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Gray Kitten
+    dialogueText: And that's what happened. Could you please help us and find our
+      mom for us?
+    portrait: {fileID: -4282008722113011192, guid: ad4fa09df7808924ea0bac5aa7b98f90, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: 0
+    nextNodeIndex: 13
+    hasChoices: 0
+    choiceOnlyNode: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: Patch
+    dialogueText: You poor things. Okay I'll see if I can get your mom back.
+    portrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: 0
+    nextNodeIndex: 14
+    hasChoices: 0
+    choiceOnlyNode: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  - speakerName: White Kitten
+    dialogueText: We're counting on you mister!
+    portrait: {fileID: 7468802606173327562, guid: 9ed38ae8574c50e44810e93a4a0eff55, type: 3}
+    requireMood: 0
+    requiredMood: 0
+    failedMoodNodeIndex: 0
+    nextNodeIndex: -1
+    hasChoices: 0
+    choiceOnlyNode: 0
+    choices: []
+    changeMood: 0
+    newMood: 0
+    triggerPerceptionEvent: 0
+    changeMoodDuringPerception: 0
+    perceptionMood: 0
+    perceptionDelay: 0
+    perceptionChangeType: 0
+    perceptionTarget: {fileID: 0}
+    replacementSprite: {fileID: 0}
+    perceptionAnimator: {fileID: 0}
+    animationTriggerName: 
+    animationDuration: 0
+    triggerNPCExit: 0
+    npcExitMover: {fileID: 0}
+  startingNodeIndex: 0
+  perspectiveSetup: {fileID: 0}
+--- !u!114 &1981735757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981735752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &1990919244
 GameObject:
   m_ObjectHideFlags: 0
@@ -25656,9 +26296,10 @@ GameObject:
   - component: {fileID: 1990919245}
   - component: {fileID: 1990919247}
   - component: {fileID: 1990919246}
+  - component: {fileID: 1990919248}
   m_Layer: 0
   m_Name: PuzzleBoxInteract
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25738,6 +26379,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.8813095, y: 1.5074463}
   m_EdgeRadius: 0
+--- !u!114 &1990919248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990919244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &2001774736
 GameObject:
   m_ObjectHideFlags: 0
@@ -27479,9 +28133,10 @@ GameObject:
   - component: {fileID: 2088940405}
   - component: {fileID: 2088940404}
   - component: {fileID: 2088940403}
+  - component: {fileID: 2088940406}
   m_Layer: 0
   m_Name: PosterTrigger
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27533,7 +28188,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -27558,12 +28213,25 @@ Transform:
   m_GameObject: {fileID: 2088940402}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4142892, y: -3.5723898, z: 0}
+  m_LocalPosition: {x: 1.28, y: -2.73, z: 0}
   m_LocalScale: {x: 1.1091821, y: 0.9527591, z: 1.4220284}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2090671161}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2088940406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088940402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &2090671159
 GameObject:
   m_ObjectHideFlags: 0
@@ -27574,7 +28242,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2090671161}
   - component: {fileID: 2090671160}
-  - component: {fileID: 2090671162}
   m_Layer: 0
   m_Name: poster asset
   m_TagString: Untagged
@@ -27653,19 +28320,6 @@ Transform:
   - {fileID: 2088940405}
   m_Father: {fileID: 104425405}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2090671162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2090671159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasBeenInteractedWith: 0
 --- !u!1 &2095806603
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,26 +2,33 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ChaseIntroTrigger : MonoBehaviour
 {
     [Header("Player")]
     public PlayerMovement playerMovement;
+    public InteractionDetector interactionDetector;
 
     [Header("Dialogue UI")]
     public GameObject dialoguePanel;
     public TextMeshProUGUI speakerNameText;
     public TextMeshProUGUI dialogueText;
+    public Image portraitImage;
+
+    [Header("Dialogue Portraits")]
+    public Sprite patchPortrait;
+    public NPCPerspectiveSetup devilDogPerspective;
 
     [Header("Typing")]
     public float typingSpeed = 0.04f;
 
     private string[] speakerNames =
-    {
-        "",
-        "Devil Dog",
-        "Patch"
-    };
+{
+    "Devil Dog",
+    "Devil Dog",
+    "Patch"
+};
 
     private string[] dialogueLines =
     {
@@ -86,6 +93,13 @@ public class ChaseIntroTrigger : MonoBehaviour
     private IEnumerator BeginSequence()
     {
         sequenceRunning = true;
+
+        // Prevent E from activating doors/items while the chase
+        // dialogue is using E.
+        if (interactionDetector != null)
+        {
+            interactionDetector.interactionsLocked = true;
+        }
 
         // Freeze Patch.
         if (playerMovement != null)
@@ -164,7 +178,45 @@ public class ChaseIntroTrigger : MonoBehaviour
             StopCoroutine(typingCoroutine);
         }
 
+        UpdatePortrait();
+
         typingCoroutine = StartCoroutine(TypeCurrentLine());
+    }
+
+    private void UpdatePortrait()
+    {
+        if (portraitImage == null)
+            return;
+
+        // Lines 0 and 1 belong to the Devil Dog sequence.
+        // Use the Devil Dog portrait that matches
+        // Patch's current perspective/mood.
+        if (currentLine == 0 || currentLine == 1)
+        {
+            if (devilDogPerspective != null)
+            {
+                Sprite dogPortrait =
+                    devilDogPerspective.GetCurrentDialoguePortrait();
+
+                if (dogPortrait != null)
+                {
+                    portraitImage.sprite = dogPortrait;
+                    portraitImage.gameObject.SetActive(true);
+                    return;
+                }
+            }
+
+            portraitImage.sprite = null;
+            portraitImage.gameObject.SetActive(false);
+            return;
+        }
+
+        // Line 2 = Patch
+        if (currentLine == 2)
+        {
+            portraitImage.sprite = patchPortrait;
+            portraitImage.gameObject.SetActive(patchPortrait != null);
+        }
     }
 
     private IEnumerator TypeCurrentLine()
@@ -195,6 +247,12 @@ public class ChaseIntroTrigger : MonoBehaviour
         sequenceRunning = false;
 
         dialoguePanel.SetActive(false);
+
+        // World interactions can use E again.
+        if (interactionDetector != null)
+        {
+            interactionDetector.interactionsLocked = false;
+        }
 
         if (ChaseSequenceManager.Instance != null)
         {

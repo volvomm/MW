@@ -41,6 +41,8 @@ public class IdealDialogueManager : MonoBehaviour
 
     private bool perceptionEventRunning = false;
 
+    public System.Action OnDialogueFinished;
+
     private HashSet<int> completedPerceptionEvents =
         new HashSet<int>();
 
@@ -180,9 +182,30 @@ public class IdealDialogueManager : MonoBehaviour
 
         waitingForChoice = false;
 
+        // Turn the normal dialogue panel back on.
+        // If this is a choice-only node, it will be hidden again below.
+        if (dialoguePanel != null)
+        {
+            dialoguePanel.SetActive(true);
+        }
+
+        // CHOICE-ONLY NODE
+        // This node does not display normal dialogue.
+        // It immediately opens Patch's choice UI.
+        if (node.choiceOnlyNode && node.hasChoices)
+        {
+            if (dialoguePanel != null)
+            {
+                dialoguePanel.SetActive(false);
+            }
+
+            ShowChoices(node);
+            return;
+        }
+
         currentFullText = node.dialogueText;
 
-        typingCoroutine = StartCoroutine(TypeDialogue(currentFullText));
+        typingCoroutine = StartCoroutine(TypeDialogue(currentFullText)); 
     }
 
     private IEnumerator TypeDialogue(string textToType)
@@ -203,13 +226,6 @@ public class IdealDialogueManager : MonoBehaviour
 
         isTyping = false;
         typingCoroutine = null;
-
-        DialogueNode node = dialogueNodes[currentNodeIndex];
-
-        if (node.hasChoices)
-        {
-            ShowChoices(node);
-        }
     }
 
     public void CompleteCurrentLine()
@@ -232,12 +248,6 @@ public class IdealDialogueManager : MonoBehaviour
 
         isTyping = false;
 
-        DialogueNode node = dialogueNodes[currentNodeIndex];
-
-        if (node.hasChoices)
-        {
-            ShowChoices(node);
-        }
     }
 
     private void ShowChoices(DialogueNode node)
@@ -361,6 +371,14 @@ public class IdealDialogueManager : MonoBehaviour
         }
 
         DialogueNode currentNode = dialogueNodes[currentNodeIndex];
+
+        // If this line contains choices, wait until the player
+        // presses E after the line has finished before showing them.
+        if (currentNode.hasChoices)
+        {
+            ShowChoices(currentNode);
+            return;
+        }
 
         // Perception transformation event
         if (currentNode.triggerPerceptionEvent &&
@@ -586,6 +604,9 @@ public class IdealDialogueManager : MonoBehaviour
         startingNodeIndex = 0;
 
         currentConversation = null;
+
+        OnDialogueFinished?.Invoke();
+OnDialogueFinished = null;
         
 }
 }

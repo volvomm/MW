@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class DoorChoiceTransition : MonoBehaviour
+public class DoorChoiceTransition : MonoBehaviour, IInteractable
 {
     [Header("UI")]
     public GameObject doorChoicePanel;
@@ -27,51 +27,101 @@ public class DoorChoiceTransition : MonoBehaviour
     private bool playerNearDoor = false;
     private bool choiceOpen = false;
 
-    void Start()
+    private void Start()
     {
-        doorChoicePanel.SetActive(false);
-        fadePanel.alpha = 0;
-    }
-
-    void Update()
-    {
-        if (playerNearDoor && !choiceOpen && Input.GetKeyDown(KeyCode.E))
+        if (doorChoicePanel != null)
         {
-            OpenChoiceBox();
+            doorChoicePanel.SetActive(false);
+        }
+
+        if (fadePanel != null)
+        {
+            fadePanel.alpha = 0;
         }
     }
 
-    void OpenChoiceBox()
+    // =========================================================
+    // IINTERACTABLE
+    // =========================================================
+
+    public void Interact()
     {
-        choiceOpen = true;
-        doorChoicePanel.SetActive(true);
-        messageText.text = message;
+        if (!CanInteract())
+        {
+            return;
+        }
 
-        yesButton.onClick.RemoveAllListeners();
-        noButton.onClick.RemoveAllListeners();
-
-        yesButton.onClick.AddListener(YesEnterRoom);
-        noButton.onClick.AddListener(NoStayHere);
+        OpenChoiceBox();
     }
 
-    void YesEnterRoom()
+    public bool CanInteract()
+    {
+        return !choiceOpen;
+    }
+
+    // =========================================================
+    // DOOR CHOICE
+    // =========================================================
+
+    private void OpenChoiceBox()
+    {
+        choiceOpen = true;
+
+        if (doorChoicePanel != null)
+        {
+            doorChoicePanel.SetActive(true);
+        }
+
+        if (messageText != null)
+        {
+            messageText.text = message;
+        }
+
+        if (yesButton != null)
+        {
+            yesButton.onClick.RemoveAllListeners();
+            yesButton.onClick.AddListener(YesEnterRoom);
+        }
+
+        if (noButton != null)
+        {
+            noButton.onClick.RemoveAllListeners();
+            noButton.onClick.AddListener(NoStayHere);
+        }
+    }
+
+    private void YesEnterRoom()
     {
         StartCoroutine(TransitionRoom());
     }
 
-    void NoStayHere()
+    private void NoStayHere()
     {
-        doorChoicePanel.SetActive(false);
+        if (doorChoicePanel != null)
+        {
+            doorChoicePanel.SetActive(false);
+        }
+
         choiceOpen = false;
     }
 
-    IEnumerator TransitionRoom()
+    // =========================================================
+    // ROOM TRANSITION
+    // =========================================================
+
+    private IEnumerator TransitionRoom()
     {
-        doorChoicePanel.SetActive(false);
+        if (doorChoicePanel != null)
+        {
+            doorChoicePanel.SetActive(false);
+        }
 
         yield return StartCoroutine(Fade(1));
 
-        player.position = targetSpawnPoint.position;
+        if (player != null && targetSpawnPoint != null)
+        {
+            player.position = targetSpawnPoint.position;
+        }
 
         if (mainCamera != null && targetCameraPoint != null)
         {
@@ -87,8 +137,13 @@ public class DoorChoiceTransition : MonoBehaviour
         choiceOpen = false;
     }
 
-    IEnumerator Fade(float targetAlpha)
+    private IEnumerator Fade(float targetAlpha)
     {
+        if (fadePanel == null)
+        {
+            yield break;
+        }
+
         while (!Mathf.Approximately(fadePanel.alpha, targetAlpha))
         {
             fadePanel.alpha = Mathf.MoveTowards(
@@ -100,6 +155,10 @@ public class DoorChoiceTransition : MonoBehaviour
             yield return null;
         }
     }
+
+    // =========================================================
+    // PLAYER RANGE
+    // =========================================================
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -117,7 +176,11 @@ public class DoorChoiceTransition : MonoBehaviour
 
             if (choiceOpen)
             {
-                doorChoicePanel.SetActive(false);
+                if (doorChoicePanel != null)
+                {
+                    doorChoicePanel.SetActive(false);
+                }
+
                 choiceOpen = false;
             }
         }

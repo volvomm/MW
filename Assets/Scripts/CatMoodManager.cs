@@ -1,8 +1,10 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class CatMoodManager : MonoBehaviour
 {
+    public event Action<PatchMood> OnMoodChanged;
     public static CatMoodManager Instance;
 
     public TextMeshProUGUI moodText;

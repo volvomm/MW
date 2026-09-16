@@ -6,6 +6,9 @@ public class MoodPerceptionVisual
     [Header("Mood")]
     public PatchMood mood = PatchMood.None;
 
-    [Header("Visual")]
+    [Header("World Visual")]
     public Sprite sprite;
+
+    [Header("Dialogue Portrait")]
+    public Sprite dialoguePortrait;
 }
