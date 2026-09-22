@@ -12,6 +12,11 @@ public class PuzzleInteractable : MonoBehaviour, IInteractable
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private Image portraitImage;
 
+    [Header("Player Movement Lock")]
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private Rigidbody2D playerRigidbody;
+    [SerializeField] private Animator playerAnimator;
+
     [Header("Response (Top = Higher Priority)")]
     [SerializeField] private List<PuzzleInteractionResponse> response = new List<PuzzleInteractionResponse>();
 
@@ -70,6 +75,9 @@ public class PuzzleInteractable : MonoBehaviour, IInteractable
     {
         isDialogueActive = true;
         dialogueIndex = 0;
+
+        // Stop Patch from moving during dialogue.
+        FreezePlayer();
 
         if (nameText != null)
         {
@@ -215,6 +223,47 @@ public class PuzzleInteractable : MonoBehaviour, IInteractable
 
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
+
+        // Give control back to Patch.
+        UnfreezePlayer();
+    }
+
+    private void FreezePlayer()
+    {
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.linearVelocity = Vector2.zero;
+        }
+
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetFloat("Speed", 0f);
+        }
+
+        if (playerMovement != null)
+        {
+            playerMovement.StopMovementImmediately();
+            playerMovement.enabled = false;
+        }
+    }
+
+    private void UnfreezePlayer()
+    {
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.linearVelocity = Vector2.zero;
+        }
+
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetFloat("Speed", 0f);
+        }
+
+        if (playerMovement != null)
+        {
+            playerMovement.StopMovementImmediately();
+            playerMovement.enabled = true;
+        }
     }
 
 }

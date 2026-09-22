@@ -67,7 +67,7 @@ public class RevealMotherCat : MonoBehaviour, IInteractable
         StartDialogue();
     }
 
-    void Update()
+    private void Update()
     {
         if (!dialogueActive)
             return;
@@ -75,7 +75,9 @@ public class RevealMotherCat : MonoBehaviour, IInteractable
         if (!canUseEForDialogue)
         {
             if (Input.GetKeyUp(KeyCode.E))
+            {
                 canUseEForDialogue = true;
+            }
 
             return;
         }
@@ -84,8 +86,15 @@ public class RevealMotherCat : MonoBehaviour, IInteractable
         {
             if (isTyping)
             {
-                StopCoroutine(typingCoroutine);
-                dialogueText.text = dialogueLines[currentLine].text;
+                if (typingCoroutine != null)
+                {
+                    StopCoroutine(typingCoroutine);
+                    typingCoroutine = null;
+                }
+
+                dialogueText.text =
+                    dialogueLines[currentLine].text;
+
                 isTyping = false;
             }
             else
@@ -97,7 +106,8 @@ public class RevealMotherCat : MonoBehaviour, IInteractable
 
     private void StartDialogue()
     {
-        if (dialogueLines == null || dialogueLines.Length == 0)
+        if (dialogueLines == null ||
+            dialogueLines.Length == 0)
         {
             EndDialogue();
             return;
@@ -108,6 +118,7 @@ public class RevealMotherCat : MonoBehaviour, IInteractable
         currentLine = 0;
 
         dialoguePanel.SetActive(true);
+
         ShowLine();
     }
 
@@ -127,27 +138,39 @@ public class RevealMotherCat : MonoBehaviour, IInteractable
 
     private void ShowLine()
     {
-        DialogueLine line = dialogueLines[currentLine];
+        DialogueLine line =
+            dialogueLines[currentLine];
 
         if (line.speaker == Speaker.Patch)
         {
             nameText.text = "Patch";
 
-            if (portraitImage != null && patchPortrait != null)
-                portraitImage.sprite = patchPortrait;
+            if (portraitImage != null &&
+                patchPortrait != null)
+            {
+                portraitImage.sprite =
+                    patchPortrait;
+            }
         }
         else if (line.speaker == Speaker.MotherCat)
         {
             nameText.text = "Mother Cat";
 
-            if (portraitImage != null && motherCatPortrait != null)
-                portraitImage.sprite = motherCatPortrait;
+            if (portraitImage != null &&
+                motherCatPortrait != null)
+            {
+                portraitImage.sprite =
+                    motherCatPortrait;
+            }
         }
 
         if (typingCoroutine != null)
+        {
             StopCoroutine(typingCoroutine);
+        }
 
-        typingCoroutine = StartCoroutine(TypeLine(line.text));
+        typingCoroutine =
+            StartCoroutine(TypeLine(line.text));
     }
 
     private IEnumerator TypeLine(string line)
@@ -158,17 +181,40 @@ public class RevealMotherCat : MonoBehaviour, IInteractable
         foreach (char letter in line)
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+
+            yield return new WaitForSeconds(
+                typingSpeed
+            );
         }
 
+        dialogueText.text = line;
+
         isTyping = false;
+        typingCoroutine = null;
     }
 
     private void EndDialogue()
     {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
+        }
+
         dialogueActive = false;
+        isTyping = false;
+        canUseEForDialogue = false;
         currentLine = 0;
+
         dialogueText.text = "";
-        dialoguePanel.SetActive(false);
+
+        if (dialoguePanel != null)
+        {
+            dialoguePanel.SetActive(false);
+        }
+
+        // The initial Mother Cat conversation has now finished.
+        // Patch can now ask her for the number reminder.
+        StoryProgress.MotherCatRescueDialogueFinished = true;
     }
 }

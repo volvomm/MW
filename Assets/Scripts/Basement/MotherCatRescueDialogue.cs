@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class MotherCatRescueDialogue : MonoBehaviour
+public class MotherCatRescueDialogue : MonoBehaviour, IInteractable
 {
     [System.Serializable]
     public class DialogueLine
@@ -17,10 +17,6 @@ public class MotherCatRescueDialogue : MonoBehaviour
 
         public Sprite speakerPortrait;
     }
-
-    [Header("First Dialogue Lines")]
-    [Tooltip("This conversation plays the FIRST time Patch talks to the Mother Cat.")]
-    [SerializeField] private DialogueLine[] dialogueLines;
 
     [Header("Repeat Dialogue Lines")]
     [Tooltip("This conversation plays whenever Patch talks to the Mother Cat again while she is still trapped.")]
@@ -46,16 +42,8 @@ public class MotherCatRescueDialogue : MonoBehaviour
     private bool isTyping;
     private string currentCompleteText;
 
-    // Tracks whether the first Mother Cat conversation
-    // has already been completed.
-    private bool firstDialogueCompleted = false;
-
-    // The dialogue array currently being used.
-    private DialogueLine[] activeDialogueLines;
-
     private void Start()
     {
-        // The dialogue should not be visible when the game first begins.
         if (dialoguePanel != null)
         {
             dialoguePanel.SetActive(false);
@@ -76,31 +64,44 @@ public class MotherCatRescueDialogue : MonoBehaviour
         }
     }
 
-    public void BeginDialogue()
+    // =========================================================
+    // IINTERACTABLE
+    // =========================================================
+
+    public bool CanInteract()
     {
-        // Prevent another dialogue from starting
-        // while one is already active.
+        // Patch can only use the reminder dialogue after
+        // the original RevealMotherCat conversation has finished.
+        return StoryProgress.MotherCatRescueDialogueFinished;
+    }
+
+    public void Interact()
+    {
         if (dialogueActive)
         {
             return;
         }
 
-        // Decide which conversation should play.
-        if (!firstDialogueCompleted)
+        BeginDialogue();
+    }
+
+    // =========================================================
+    // START DIALOGUE
+    // =========================================================
+
+    public void BeginDialogue()
+    {
+        if (dialogueActive)
         {
-            activeDialogueLines = dialogueLines;
-        }
-        else
-        {
-            activeDialogueLines = repeatDialogueLines;
+            return;
         }
 
-        // Make sure the selected conversation actually has dialogue.
-        if (activeDialogueLines == null ||
-            activeDialogueLines.Length == 0)
+        // This script now only handles the repeat/reminder dialogue.
+        if (repeatDialogueLines == null ||
+            repeatDialogueLines.Length == 0)
         {
             Debug.LogWarning(
-                "MotherCatRescueDialogue has no dialogue lines assigned for this conversation."
+                "MotherCatRescueDialogue has no repeat dialogue lines assigned."
             );
 
             return;
@@ -119,20 +120,24 @@ public class MotherCatRescueDialogue : MonoBehaviour
         ShowCurrentLine();
     }
 
+    // =========================================================
+    // E INPUT DURING DIALOGUE
+    // =========================================================
+
     private void HandleEPressed()
     {
-        // If the sentence is still typing,
-        // pressing E completes the sentence immediately.
+        // If the line is still typing,
+        // pressing E completes it immediately.
         if (isTyping)
         {
             CompleteCurrentLineImmediately();
             return;
         }
 
-        // Otherwise move to the next line.
+        // Otherwise go to the next line.
         currentLineIndex++;
 
-        if (currentLineIndex >= activeDialogueLines.Length)
+        if (currentLineIndex >= repeatDialogueLines.Length)
         {
             EndDialogue();
             return;
@@ -141,15 +146,26 @@ public class MotherCatRescueDialogue : MonoBehaviour
         ShowCurrentLine();
     }
 
+    // =========================================================
+    // SHOW LINE
+    // =========================================================
+
     private void ShowCurrentLine()
     {
         DialogueLine currentLine =
-            activeDialogueLines[currentLineIndex];
+            repeatDialogueLines[currentLineIndex];
 
-        speakerNameText.text = currentLine.speakerName;
+        if (speakerNameText != null)
+        {
+            speakerNameText.text = currentLine.speakerName;
+        }
 
         currentCompleteText = currentLine.dialogueText;
-        dialogueText.text = "";
+
+        if (dialogueText != null)
+        {
+            dialogueText.text = "";
+        }
 
         if (portraitImage != null)
         {
@@ -169,21 +185,35 @@ public class MotherCatRescueDialogue : MonoBehaviour
             StartCoroutine(TypeCurrentLine());
     }
 
+    // =========================================================
+    // TYPEWRITER
+    // =========================================================
+
     private IEnumerator TypeCurrentLine()
     {
         isTyping = true;
-        dialogueText.text = "";
+
+        if (dialogueText != null)
+        {
+            dialogueText.text = "";
+        }
 
         foreach (char letter in currentCompleteText)
         {
-            dialogueText.text += letter;
+            if (dialogueText != null)
+            {
+                dialogueText.text += letter;
+            }
 
             yield return new WaitForSeconds(
                 typingSpeed
             );
         }
 
-        dialogueText.text = currentCompleteText;
+        if (dialogueText != null)
+        {
+            dialogueText.text = currentCompleteText;
+        }
 
         isTyping = false;
         typingCoroutine = null;
@@ -197,10 +227,17 @@ public class MotherCatRescueDialogue : MonoBehaviour
             typingCoroutine = null;
         }
 
-        dialogueText.text = currentCompleteText;
+        if (dialogueText != null)
+        {
+            dialogueText.text = currentCompleteText;
+        }
 
         isTyping = false;
     }
+
+    // =========================================================
+    // PLAYER MOVEMENT
+    // =========================================================
 
     private void FreezePlayer()
     {
@@ -230,6 +267,10 @@ public class MotherCatRescueDialogue : MonoBehaviour
         }
     }
 
+    // =========================================================
+    // END DIALOGUE
+    // =========================================================
+
     private void EndDialogue()
     {
         if (typingCoroutine != null)
@@ -241,17 +282,10 @@ public class MotherCatRescueDialogue : MonoBehaviour
         isTyping = false;
         dialogueActive = false;
 
-        // If this was the FIRST conversation,
-        // mark it as completed.
-        if (!firstDialogueCompleted)
+        if (dialogueText != null)
         {
-            firstDialogueCompleted = true;
-
-            // Keep your existing story progression behaviour.
-            StoryProgress.MotherCatRescueDialogueFinished = true;
+            dialogueText.text = "";
         }
-
-        dialogueText.text = "";
 
         if (dialoguePanel != null)
         {

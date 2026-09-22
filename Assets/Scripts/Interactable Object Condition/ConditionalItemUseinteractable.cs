@@ -18,6 +18,11 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private Image portraitImage;
 
+    [Header("Player Movement Lock")]
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private Rigidbody2D playerRigidbody;
+    [SerializeField] private Animator playerAnimator;
+
     [Header("Dialogue Data")]
     [SerializeField] private BoxDialogue firstDialogue;
     [SerializeField] private BoxDialogue selectionDialogue;
@@ -256,6 +261,9 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
         isDialogueActive = true;
         dialogueIndex = 0;
 
+        // Stop Patch from moving while dialogue is active.
+        FreezePlayer();
+
         if (nameText != null)
             nameText.SetText(dialogueData.npcName);
 
@@ -369,5 +377,46 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
 
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
+
+        // Give movement back to Patch.
+        UnfreezePlayer();
+    }
+
+    private void FreezePlayer()
+    {
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.linearVelocity = Vector2.zero;
+        }
+
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetFloat("Speed", 0f);
+        }
+
+        if (playerMovement != null)
+        {
+            playerMovement.StopMovementImmediately();
+            playerMovement.enabled = false;
+        }
+    }
+
+    private void UnfreezePlayer()
+    {
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.linearVelocity = Vector2.zero;
+        }
+
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetFloat("Speed", 0f);
+        }
+
+        if (playerMovement != null)
+        {
+            playerMovement.StopMovementImmediately();
+            playerMovement.enabled = true;
+        }
     }
 }
