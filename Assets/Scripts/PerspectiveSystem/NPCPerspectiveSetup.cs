@@ -15,9 +15,33 @@ public class NPCPerspectiveSetup : MonoBehaviour
     [Tooltip("Used if no matching mood visual is found.")]
     public Sprite defaultSprite;
 
+    private PatchMood lastMood;
+
     private void Start()
     {
+        if (moodManager != null)
+        {
+            lastMood = moodManager.currentMood;
+        }
+
         ApplyCurrentMoodVisual();
+    }
+
+    private void Update()
+    {
+        if (moodManager == null)
+        {
+            return;
+        }
+
+        // If Patch's mood changes, immediately update
+        // this NPC's perception visual.
+        if (moodManager.currentMood != lastMood)
+        {
+            lastMood = moodManager.currentMood;
+
+            ApplyCurrentMoodVisual();
+        }
     }
 
     public void ApplyCurrentMoodVisual()
@@ -27,6 +51,7 @@ public class NPCPerspectiveSetup : MonoBehaviour
             Debug.LogWarning(
                 "NPCPerspectiveSetup: No Target Sprite Renderer assigned."
             );
+
             return;
         }
 
@@ -44,13 +69,16 @@ public class NPCPerspectiveSetup : MonoBehaviour
         {
             for (int i = 0; i < moodVisuals.Length; i++)
             {
-                MoodPerceptionVisual visual = moodVisuals[i];
+                MoodPerceptionVisual visual =
+                    moodVisuals[i];
 
                 if (visual != null &&
                     visual.mood == moodManager.currentMood &&
                     visual.sprite != null)
                 {
-                    targetSpriteRenderer.sprite = visual.sprite;
+                    targetSpriteRenderer.sprite =
+                        visual.sprite;
+
                     return;
                 }
             }
@@ -64,11 +92,13 @@ public class NPCPerspectiveSetup : MonoBehaviour
         if (defaultSprite != null &&
             targetSpriteRenderer != null)
         {
-            targetSpriteRenderer.sprite = defaultSprite;
+            targetSpriteRenderer.sprite =
+                defaultSprite;
         }
     }
 
-    // Returns the dialogue portrait that matches Patch's current mood.
+    // Returns the dialogue portrait that matches
+    // Patch's current mood.
     public Sprite GetCurrentDialoguePortrait()
     {
         if (moodManager == null)
@@ -80,7 +110,8 @@ public class NPCPerspectiveSetup : MonoBehaviour
         {
             for (int i = 0; i < moodVisuals.Length; i++)
             {
-                MoodPerceptionVisual visual = moodVisuals[i];
+                MoodPerceptionVisual visual =
+                    moodVisuals[i];
 
                 if (visual != null &&
                     visual.mood == moodManager.currentMood &&

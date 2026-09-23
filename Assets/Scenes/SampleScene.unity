@@ -2861,7 +2861,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: 5271668725521220934, guid: b0a9ce6eca2688f4f850eb84cf76d42e, type: 3}
+  m_Sprite: {fileID: -1694908501075533689, guid: dd4117ec0c2719943b8af1dd8abb2e40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3825,6 +3825,16 @@ MonoBehaviour:
   targetCameraPoint: {fileID: 1024885172}
   fadeSpeed: 1
   message: Would you like to enter the next room?
+  requireKittenGroupDialogue: 1
+  kittenLockedDialogue: I should talk to those kittens first.
+  dialoguePanel: {fileID: 741082908}
+  dialogueText: {fileID: 1219159426}
+  dialogueNameText: {fileID: 1258714718}
+  dialoguePortraitImage: {fileID: 252152096}
+  patchPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+  playerMovement: {fileID: 246482627}
+  playerRigidbody: {fileID: 246482620}
+  playerAnimator: {fileID: 246482625}
 --- !u!60 &274181891
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3905,6 +3915,93 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasBeenInteractedWith: 0
+--- !u!1 &287317199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 287317200}
+  - component: {fileID: 287317201}
+  m_Layer: 0
+  m_Name: 8_teddy 1_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &287317200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287317199}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.24, y: 4.447906, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1865573009}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &287317201
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287317199}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 6753045000193620063, guid: 369125dde9669e948a6f551996acc158, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.79, y: 1.83}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &293030117
 GameObject:
   m_ObjectHideFlags: 0
@@ -4633,7 +4730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &351142274
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5295,7 +5392,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 62.72, y: 8.5, z: 0}
-  m_LocalScale: {x: 0.19745399, y: 0.18741241, z: 0.3015485}
+  m_LocalScale: {x: 0.49, y: 0.46, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1721865779}
@@ -5320,6 +5417,9 @@ MonoBehaviour:
   walkSpeed: 3
   exitPoint: {fileID: 1647285614}
   animator: {fileID: 391222449}
+  playerMovement: {fileID: 0}
+  playerRigidbody: {fileID: 0}
+  playerAnimator: {fileID: 0}
 --- !u!95 &391222449
 Animator:
   serializedVersion: 7
@@ -5380,7 +5480,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 24.869999, y: 15.46}
+    oldSize: {x: 12.434999, y: 7.73}
     newSize: {x: 24.869999, y: 15.46}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -9835,6 +9935,9 @@ MonoBehaviour:
   - speaker: 1
     text: Oh thank you!
   typingSpeed: 0.04
+  playerMovement: {fileID: 246482627}
+  playerRigidbody: {fileID: 246482620}
+  playerAnimator: {fileID: 246482625}
 --- !u!4 &758040798
 Transform:
   m_ObjectHideFlags: 0
@@ -10290,11 +10393,11 @@ Transform:
   m_GameObject: {fileID: 809808363}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.75, y: -0.85497284, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.92, y: -0.28, z: 0}
+  m_LocalScale: {x: 4.5364313, y: 4.712709, z: 2.5026}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 898501633}
+  m_Father: {fileID: 1264672590}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &819603992
 GameObject:
@@ -10932,6 +11035,93 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &870883674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 870883675}
+  - component: {fileID: 870883676}
+  m_Layer: 0
+  m_Name: ColouredMop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &870883675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870883674}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.470001, y: -0.3120956, z: 0}
+  m_LocalScale: {x: 0.8945883, y: 0.8945883, z: 0.8945883}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1865573009}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &870883676
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870883674}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -1694908501075533689, guid: dd4117ec0c2719943b8af1dd8abb2e40, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.99, y: 9.37}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &889180654
 GameObject:
   m_ObjectHideFlags: 0
@@ -11267,7 +11457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basementKey: {fileID: 11400000, guid: 502421c705c1a734094ea59a8d63e138, type: 2}
   cage: {fileID: 890463440}
-  motherCat: {fileID: 186976885}
+  motherCat: {fileID: 898501632}
   motherCatFrontPosition: {fileID: 809808364}
   rescueDialogue: {fileID: 898501634}
 --- !u!60 &890463444
@@ -12770,7 +12960,6 @@ Transform:
   m_LocalScale: {x: 4.5364313, y: 4.712709, z: 2.5026}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 809808364}
   - {fileID: 758040798}
   - {fileID: 186976887}
   m_Father: {fileID: 1264672590}
@@ -12787,13 +12976,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade2712d1146720459a67d14ff817156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basementKey: {fileID: 11400000, guid: 502421c705c1a734094ea59a8d63e138, type: 2}
   repeatDialogueLines:
   - speakerName: Patch
-    dialogueText: hey, what was the last digit for the number box again?
+    dialogueText: Hey, what was the last digit for the number box again?
     speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
   - speakerName: Mother Cat
     dialogueText: It's four
     speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  postRescueDialogueLines:
+  - speakerName: Patch
+    dialogueText: Let's get you to your kittens now
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+  - speakerName: Mother Cat
+    dialogueText: Wait! I'm afraid that the dog will attack us again if I go back
+      up
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  - speakerName: Mother Cat
+    dialogueText: Could you deal with him first before I go up?
+    speakerPortrait: {fileID: 3312542217912747725, guid: 98ab0bf0974325f468fa1757491447de, type: 3}
+  - speakerName: Patch
+    dialogueText: Okay, I'll see what I can do
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
   dialoguePanel: {fileID: 741082908}
   speakerNameText: {fileID: 1258714718}
   dialogueText: {fileID: 1219159426}
@@ -15496,6 +15700,7 @@ GameObject:
   - component: {fileID: 1041052575}
   - component: {fileID: 1041052577}
   - component: {fileID: 1041052578}
+  - component: {fileID: 1041052579}
   m_Layer: 0
   m_Name: Background_6-1(Basement)
   m_TagString: Untagged
@@ -15682,6 +15887,50 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 19.2, y: 0.114124775}
   m_EdgeRadius: 0
+--- !u!68 &1041052579
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041052574}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -9.600009, y: -5.2538524}
+  - {x: -9.617996, y: -4.287683}
+  - {x: -5.9449425, y: -4.2781444}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1041853447
 GameObject:
   m_ObjectHideFlags: 0
@@ -16817,7 +17066,7 @@ Transform:
   m_GameObject: {fileID: 1116753996}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.8712192, w: 0.49089414}
-  m_LocalPosition: {x: 3.300003, y: 0.46790314, z: 0}
+  m_LocalPosition: {x: 3.73, y: -0.67, z: 0}
   m_LocalScale: {x: 0.07059723, y: 0.07059723, z: 0.07059723}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18758,6 +19007,7 @@ Transform:
   m_Children:
   - {fileID: 218158177}
   - {fileID: 898501633}
+  - {fileID: 809808364}
   - {fileID: 1570231893}
   - {fileID: 391222447}
   - {fileID: 1973829503}
@@ -18860,10 +19110,16 @@ MonoBehaviour:
   firstDialogueLines:
   - speakerName: Patch
     speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
-    sentence: Hello
+    sentence: Hello... Why are you standing there...
   - speakerName: Devil Dog
     speakerPortrait: {fileID: 1854476141901762521, guid: 144ad7061d030d04a86b12d06ca1d6f9, type: 3}
-    sentence: Go away
+    sentence: I'm guarding the exit so those kittens can't escape!
+  - speakerName: Patch
+    speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
+    sentence: Can I leave?
+  - speakerName: Devil Dog
+    speakerPortrait: {fileID: 1854476141901762521, guid: 144ad7061d030d04a86b12d06ca1d6f9, type: 3}
+    sentence: No! Now scram before I decide to make you my next target!
   lureDialogueLines:
   - speakerName: Patch
     speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
@@ -19208,6 +19464,16 @@ MonoBehaviour:
   targetCameraPoint: {fileID: 1464150249}
   fadeSpeed: 1
   message: Would you like to enter the next room?
+  requireKittenGroupDialogue: 0
+  kittenLockedDialogue: I should talk to those kittens first.
+  dialoguePanel: {fileID: 0}
+  dialogueText: {fileID: 0}
+  dialogueNameText: {fileID: 0}
+  dialoguePortraitImage: {fileID: 0}
+  patchPortrait: {fileID: 0}
+  playerMovement: {fileID: 0}
+  playerRigidbody: {fileID: 0}
+  playerAnimator: {fileID: 0}
 --- !u!60 &1319660936
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -20206,9 +20472,10 @@ GameObject:
   - component: {fileID: 1491490781}
   - component: {fileID: 1491490780}
   - component: {fileID: 1491490783}
+  - component: {fileID: 1491490784}
   m_Layer: 0
   m_Name: Shoebox
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20257,7 +20524,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: 2844303880100389494, guid: dd5050c5f6718fa40ac8b95ad557ee5a, type: 3}
+  m_Sprite: {fileID: -2211647720432333837, guid: 9dc30edb7028ef146a59be7462062d3c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -20363,6 +20630,19 @@ PolygonCollider2D:
       - {x: 1.155, y: -0.71}
       - {x: 1.285, y: -0.29}
   m_UseDelaunayMesh: 0
+--- !u!114 &1491490784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491490779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &1492905133
 GameObject:
   m_ObjectHideFlags: 0
@@ -21913,6 +22193,9 @@ MonoBehaviour:
   walkSpeed: 3
   exitPoint: {fileID: 1647285614}
   animator: {fileID: 1570231895}
+  playerMovement: {fileID: 246482627}
+  playerRigidbody: {fileID: 246482620}
+  playerAnimator: {fileID: 246482625}
 --- !u!114 &1570231897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21933,7 +22216,7 @@ MonoBehaviour:
     dialoguePortrait: {fileID: 21300000, guid: af311ef8af979734c9719ac6c7364d3f, type: 3}
   - mood: 3
     sprite: {fileID: 3661768967120018263, guid: 3368a631f386fe4468b2ebd7b040e3eb, type: 3}
-    dialoguePortrait: {fileID: -1192571620878233729, guid: d2e493c250bcf7245ad97022c6b85393, type: 3}
+    dialoguePortrait: {fileID: 3661768967120018263, guid: 3368a631f386fe4468b2ebd7b040e3eb, type: 3}
   defaultSprite: {fileID: 0}
 --- !u!1 &1577981084
 GameObject:
@@ -24192,9 +24475,9 @@ MonoBehaviour:
   dialogueText: {fileID: 1219159426}
   nameText: {fileID: 1258714718}
   portraitImage: {fileID: 252152096}
-  playerMovement: {fileID: 0}
-  playerRigidbody: {fileID: 0}
-  playerAnimator: {fileID: 0}
+  playerMovement: {fileID: 246482627}
+  playerRigidbody: {fileID: 246482620}
+  playerAnimator: {fileID: 246482625}
   response:
   - conditions: []
     dialougeData: {fileID: 11400000, guid: c0fea6e0adc2d3c46946944d875d1c7f, type: 2}
@@ -24278,7 +24561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1755760993
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24323,7 +24606,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: 3190083182141113836, guid: 6731b3bd570480449a1f133af6746e54, type: 3}
+  m_Sprite: {fileID: 6753045000193620063, guid: 369125dde9669e948a6f551996acc158, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -25142,6 +25425,93 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817523883}
   m_CullTransparentMesh: 1
+--- !u!1 &1818856053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1818856054}
+  - component: {fileID: 1818856055}
+  m_Layer: 0
+  m_Name: shoeboxcoloured
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1818856054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818856053}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.64, y: -0.66, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1865573009}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1818856055
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818856053}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -2211647720432333837, guid: 9dc30edb7028ef146a59be7462062d3c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.71, y: 1.92}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1826168008
 GameObject:
   m_ObjectHideFlags: 0
@@ -25453,9 +25823,12 @@ Transform:
   - {fileID: 1116753998}
   - {fileID: 1048507994}
   - {fileID: 1491490781}
+  - {fileID: 1818856054}
   - {fileID: 1207670550}
   - {fileID: 1755760994}
+  - {fileID: 287317200}
   - {fileID: 228039767}
+  - {fileID: 870883675}
   - {fileID: 1059128425}
   m_Father: {fileID: 1699842733}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25636,6 +26009,16 @@ MonoBehaviour:
   targetCameraPoint: {fileID: 2006290210}
   fadeSpeed: 1
   message: Do you want to enter the Basement?
+  requireKittenGroupDialogue: 0
+  kittenLockedDialogue: I should talk to those kittens first.
+  dialoguePanel: {fileID: 0}
+  dialogueText: {fileID: 0}
+  dialogueNameText: {fileID: 0}
+  dialoguePortraitImage: {fileID: 0}
+  patchPortrait: {fileID: 0}
+  playerMovement: {fileID: 0}
+  playerRigidbody: {fileID: 0}
+  playerAnimator: {fileID: 0}
 --- !u!60 &1876061789
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -26671,7 +27054,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.47, y: 12.55, z: 0}
-  m_LocalScale: {x: 0.25061747, y: 0.23787226, z: 0.38273892}
+  m_LocalScale: {x: 0.49, y: 0.46, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1264672590}
@@ -26857,10 +27240,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 961425679}
   conversation: {fileID: 1981735756}
-  individualKittenDialogueTriggers:
-  - {fileID: 719594252}
-  - {fileID: 498737274}
-  - {fileID: 1827334168}
   interactionKey: 101
 --- !u!114 &1981735756
 MonoBehaviour:
@@ -27616,9 +27995,10 @@ GameObject:
   - component: {fileID: 2015476427}
   - component: {fileID: 2015476426}
   - component: {fileID: 2015476428}
+  - component: {fileID: 2015476429}
   m_Layer: 0
   m_Name: Puzzle Box
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27667,7 +28047,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: -7321292319572301018, guid: 61070706862f449439901527241965fb, type: 3}
+  m_Sprite: {fileID: 2360823079359511070, guid: 144366ef0f204f04fa6f54b8f1a06f71, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -27763,6 +28143,19 @@ PolygonCollider2D:
       - {x: -0.13499999, y: -0.64}
       - {x: -0.125, y: -0.65}
   m_UseDelaunayMesh: 0
+--- !u!114 &2015476429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015476425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &2021795775
 GameObject:
   m_ObjectHideFlags: 0
@@ -29894,6 +30287,16 @@ MonoBehaviour:
   targetCameraPoint: {fileID: 1024885172}
   fadeSpeed: 1
   message: Do you want to leave the Basement?
+  requireKittenGroupDialogue: 0
+  kittenLockedDialogue: I should talk to those kittens first.
+  dialoguePanel: {fileID: 0}
+  dialogueText: {fileID: 0}
+  dialogueNameText: {fileID: 0}
+  dialoguePortraitImage: {fileID: 0}
+  patchPortrait: {fileID: 0}
+  playerMovement: {fileID: 0}
+  playerRigidbody: {fileID: 0}
+  playerAnimator: {fileID: 0}
 --- !u!60 &2128493941
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -6,9 +6,6 @@ public class KittenGroupTrigger : MonoBehaviour
     public IdealDialogueManager dialogueManager;
     public NPCDialogueConversation conversation;
 
-    [Header("Individual Kitten Dialogues")]
-    public GameObject[] individualKittenDialogueTriggers;
-
     [Header("Interaction")]
     public KeyCode interactionKey = KeyCode.E;
 
@@ -17,13 +14,10 @@ public class KittenGroupTrigger : MonoBehaviour
 
     private void Start()
     {
-        foreach (GameObject trigger in individualKittenDialogueTriggers)
-        {
-            if (trigger != null)
-            {
-                trigger.SetActive(false);
-            }
-        }
+        // If the dialogue has already been completed,
+        // remember that state.
+        mainDialogueFinished =
+            StoryProgress.KittenGroupDialogueFinished;
     }
 
     private void Update()
@@ -42,12 +36,15 @@ public class KittenGroupTrigger : MonoBehaviour
             // Start the conversation.
             if (!dialogueManager.IsDialogueActive)
             {
-                dialogueManager.OnDialogueFinished = FinishMainDialogue;
+                dialogueManager.OnDialogueFinished =
+                    FinishMainDialogue;
+
                 dialogueManager.StartDialogue(conversation);
                 return;
             }
 
-            // Only control dialogue if THIS is the active conversation.
+            // Only control dialogue if THIS is
+            // the active conversation.
             if (dialogueManager.CurrentConversation != conversation)
                 return;
 
@@ -56,7 +53,8 @@ public class KittenGroupTrigger : MonoBehaviour
             {
                 dialogueManager.CompleteCurrentLine();
             }
-            // Otherwise E advances, unless we're choosing an answer.
+            // Otherwise E advances unless we're
+            // choosing an answer.
             else if (!dialogueManager.IsWaitingForChoice)
             {
                 dialogueManager.ContinueDialogue();
@@ -68,13 +66,12 @@ public class KittenGroupTrigger : MonoBehaviour
     {
         mainDialogueFinished = true;
 
-        foreach (GameObject trigger in individualKittenDialogueTriggers)
-        {
-            if (trigger != null)
-            {
-                trigger.SetActive(true);
-            }
-        }
+        // Unlock the door to the trapdoor room.
+        StoryProgress.KittenGroupDialogueFinished = true;
+
+        // IMPORTANT:
+        // We do NOT unlock the individual kittens here.
+        // Mother Cat will unlock those later.
 
         gameObject.SetActive(false);
     }

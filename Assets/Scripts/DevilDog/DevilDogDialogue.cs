@@ -71,6 +71,12 @@ public class DevilDogDialogue : MonoBehaviour
         {
             interactionIcon.SetActive(false);
         }
+
+        // Keep normal dialogue X disabled.
+        if (closeButton != null)
+        {
+            closeButton.SetActive(false);
+        }
     }
 
     private void Update()
@@ -80,6 +86,8 @@ public class DevilDogDialogue : MonoBehaviour
             return;
         }
 
+        // If dialogue is already running,
+        // E advances/completes the current line.
         if (dialogueIsActive)
         {
             HandleDialogueInput();
@@ -91,16 +99,20 @@ public class DevilDogDialogue : MonoBehaviour
             return;
         }
 
-        // FIRST INTERACTION:
-        // Patch has not spoken to the Devil Dog yet.
+        // =====================================================
+        // FIRST INTERACTION
+        // =====================================================
+
         if (!firstDialogueCompleted)
         {
             StartFirstDialogue();
             return;
         }
 
-        // SECOND INTERACTION:
-        // Only becomes available after BOTH story requirements are complete.
+        // =====================================================
+        // SECOND INTERACTION / LURE DIALOGUE
+        // =====================================================
+
         if (!lureDialogueCompleted &&
             StoryProgress.MotherCatRescueDialogueFinished &&
             StoryProgress.RecorderPuzzleFinished)
@@ -108,10 +120,11 @@ public class DevilDogDialogue : MonoBehaviour
             StartLureDialogue();
             return;
         }
-
-        // If neither condition is available,
-        // pressing E does nothing for now.
     }
+
+    // =========================================================
+    // FIRST DEVIL DOG DIALOGUE
+    // =========================================================
 
     private void StartFirstDialogue()
     {
@@ -132,6 +145,10 @@ public class DevilDogDialogue : MonoBehaviour
         StartDialogue();
     }
 
+    // =========================================================
+    // SECOND DEVIL DOG / LURE DIALOGUE
+    // =========================================================
+
     private void StartLureDialogue()
     {
         if (lureDialogueLines == null ||
@@ -151,6 +168,10 @@ public class DevilDogDialogue : MonoBehaviour
         StartDialogue();
     }
 
+    // =========================================================
+    // START DIALOGUE
+    // =========================================================
+
     private void StartDialogue()
     {
         dialogueIsActive = true;
@@ -166,15 +187,21 @@ public class DevilDogDialogue : MonoBehaviour
             dialoguePanel.SetActive(true);
         }
 
+        // Keep normal dialogue X disabled.
         if (closeButton != null)
         {
             closeButton.SetActive(false);
         }
 
+        // Freeze Patch while talking.
         SetPlayerMovement(false);
 
         DisplayCurrentLine();
     }
+
+    // =========================================================
+    // DIALOGUE INPUT
+    // =========================================================
 
     private void HandleDialogueInput()
     {
@@ -195,6 +222,10 @@ public class DevilDogDialogue : MonoBehaviour
         DisplayCurrentLine();
     }
 
+    // =========================================================
+    // DISPLAY CURRENT LINE
+    // =========================================================
+
     private void DisplayCurrentLine()
     {
         DialogueLine line =
@@ -207,7 +238,8 @@ public class DevilDogDialogue : MonoBehaviour
 
         if (speakerPortraitImage != null)
         {
-            speakerPortraitImage.sprite = line.speakerPortrait;
+            speakerPortraitImage.sprite =
+                line.speakerPortrait;
 
             speakerPortraitImage.enabled =
                 line.speakerPortrait != null;
@@ -219,8 +251,14 @@ public class DevilDogDialogue : MonoBehaviour
         }
 
         typingCoroutine =
-            StartCoroutine(TypeSentence(line.sentence));
+            StartCoroutine(
+                TypeSentence(line.sentence)
+            );
     }
+
+    // =========================================================
+    // TYPEWRITER
+    // =========================================================
 
     private IEnumerator TypeSentence(string sentence)
     {
@@ -233,7 +271,9 @@ public class DevilDogDialogue : MonoBehaviour
         {
             dialogueText.maxVisibleCharacters = i;
 
-            yield return new WaitForSeconds(typingSpeed);
+            yield return new WaitForSeconds(
+                typingSpeed
+            );
         }
 
         isTyping = false;
@@ -252,14 +292,14 @@ public class DevilDogDialogue : MonoBehaviour
             currentDialogueLines[currentLineIndex];
 
         dialogueText.text = line.sentence;
-
-        //dialogueText.maxVisibleCharacters =
-        //line.sentence.Length;
-
         dialogueText.maxVisibleCharacters = 100;
 
         isTyping = false;
     }
+
+    // =========================================================
+    // END DIALOGUE
+    // =========================================================
 
     private void EndDialogue()
     {
@@ -277,19 +317,25 @@ public class DevilDogDialogue : MonoBehaviour
             dialoguePanel.SetActive(false);
         }
 
+        // Keep normal dialogue X disabled.
         if (closeButton != null)
         {
-            closeButton.SetActive(true);
+            closeButton.SetActive(false);
         }
 
-        SetPlayerMovement(true);
-
+        // =====================================================
         // FIRST DEVIL DOG CONVERSATION FINISHED
+        // =====================================================
+
         if (!playingLureDialogue)
         {
             firstDialogueCompleted = true;
 
             StoryProgress.HasTalkedToDevilDog = true;
+
+            // Nothing happens after the first conversation,
+            // so Patch can move immediately.
+            SetPlayerMovement(true);
 
             if (interactionIcon != null &&
                 playerIsInRange &&
@@ -302,7 +348,10 @@ public class DevilDogDialogue : MonoBehaviour
             return;
         }
 
+        // =====================================================
         // SECOND / LURE CONVERSATION FINISHED
+        // =====================================================
+
         lureDialogueCompleted = true;
 
         StoryProgress.DevilDogLureDialogueFinished = true;
@@ -311,6 +360,11 @@ public class DevilDogDialogue : MonoBehaviour
         {
             interactionIcon.SetActive(false);
         }
+
+        // Keep Patch frozen.
+        // DevilDogWalkOff will restore Patch's movement
+        // when the dog reaches its ExitPoint.
+        SetPlayerMovement(false);
 
         if (devilDogWalkOff != null)
         {
@@ -322,8 +376,16 @@ public class DevilDogDialogue : MonoBehaviour
                 "DevilDogWalkOff has not been assigned.",
                 this
             );
+
+            // Safety fallback so Patch isn't permanently frozen
+            // if DevilDogWalkOff was not assigned.
+            SetPlayerMovement(true);
         }
     }
+
+    // =========================================================
+    // PLAYER MOVEMENT
+    // =========================================================
 
     private void SetPlayerMovement(bool canMove)
     {
@@ -340,6 +402,10 @@ public class DevilDogDialogue : MonoBehaviour
         }
     }
 
+    // =========================================================
+    // PLAYER ENTERS RANGE
+    // =========================================================
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player"))
@@ -349,7 +415,8 @@ public class DevilDogDialogue : MonoBehaviour
 
         playerIsInRange = true;
 
-        // Update the Devil Dog's appearance based on Patch's current mood.
+        // Update Devil Dog's appearance based on
+        // Patch's current Perspective System mood.
         if (perspectiveSetup != null)
         {
             perspectiveSetup.ApplyCurrentMoodVisual();
@@ -385,6 +452,10 @@ public class DevilDogDialogue : MonoBehaviour
             interactionIcon.SetActive(false);
         }
     }
+
+    // =========================================================
+    // PLAYER LEAVES RANGE
+    // =========================================================
 
     private void OnTriggerExit2D(Collider2D other)
     {

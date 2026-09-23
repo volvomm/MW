@@ -18,9 +18,26 @@ public class MotherCatRescueDialogue : MonoBehaviour, IInteractable
         public Sprite speakerPortrait;
     }
 
-    [Header("Repeat Dialogue Lines")]
-    [Tooltip("This conversation plays whenever Patch talks to the Mother Cat again while she is still trapped.")]
-    [SerializeField] private DialogueLine[] repeatDialogueLines;
+    [Header("Required Item")]
+    [Tooltip("The Basement Key used to free Mother Cat.")]
+    [SerializeField] private InventoryItemData basementKey;
+
+    [Header("Repeat Number Dialogue Lines")]
+    [Tooltip(
+        "Plays when Patch talks to Mother Cat again " +
+        "while she is still trapped."
+    )]
+    [SerializeField]
+    private DialogueLine[] repeatDialogueLines;
+
+    [Header("Post Rescue Dialogue Lines")]
+    [Tooltip(
+        "Plays immediately after Patch frees Mother Cat. " +
+        "This is where she tells Patch that the Devil Dog " +
+        "must be dealt with first."
+    )]
+    [SerializeField]
+    private DialogueLine[] postRescueDialogueLines;
 
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
@@ -40,7 +57,13 @@ public class MotherCatRescueDialogue : MonoBehaviour, IInteractable
 
     private bool dialogueActive;
     private bool isTyping;
+
     private string currentCompleteText;
+
+    private DialogueLine[] activeDialogueLines;
+
+    // True once Mother Cat has been physically freed.
+    private bool motherCatFreed = false;
 
     private void Start()
     {
@@ -70,45 +93,106 @@ public class MotherCatRescueDialogue : MonoBehaviour, IInteractable
 
     public bool CanInteract()
     {
-        // Patch can only use the reminder dialogue after
-        // the original RevealMotherCat conversation has finished.
-        return StoryProgress.MotherCatRescueDialogueFinished;
+        // The original reveal conversation must
+        // already have been completed.
+        if (!StoryProgress.MotherCatRescueDialogueFinished)
+        {
+            return false;
+        }
+
+        // Once Mother Cat has been freed, this component
+        // should no longer handle normal world interaction.
+        //
+        // The later MotherCatReunionSequence will take over
+        // after the Devil Dog has been trapped.
+        if (motherCatFreed)
+        {
+            return false;
+        }
+
+        // Once Patch has the Basement Key, the number reminder
+        // should stop. Patch should use the key on the cage.
+        if (InventorySystem.Instance != null &&
+            InventorySystem.Instance.HasItem(basementKey))
+        {
+            return false;
+        }
+
+        return true;
     }
 
     public void Interact()
+    {
+        if (!CanInteract())
+        {
+            return;
+        }
+
+        BeginNumberReminderDialogue();
+    }
+
+    // =========================================================
+    // NUMBER REMINDER DIALOGUE
+    // =========================================================
+
+    private void BeginNumberReminderDialogue()
     {
         if (dialogueActive)
         {
             return;
         }
 
-        BeginDialogue();
+        if (repeatDialogueLines == null ||
+            repeatDialogueLines.Length == 0)
+        {
+            Debug.LogWarning(
+                "MotherCatRescueDialogue: " +
+                "No repeat number dialogue lines assigned."
+            );
+
+            return;
+        }
+
+        StartDialogue(repeatDialogueLines);
+    }
+
+    // =========================================================
+    // POST RESCUE DIALOGUE
+    // =========================================================
+
+    public void BeginPostRescueDialogue()
+    {
+        if (dialogueActive)
+        {
+            return;
+        }
+
+        motherCatFreed = true;
+
+        if (postRescueDialogueLines == null ||
+            postRescueDialogueLines.Length == 0)
+        {
+            Debug.LogWarning(
+                "MotherCatRescueDialogue: " +
+                "No post rescue dialogue lines assigned."
+            );
+
+            return;
+        }
+
+        StartDialogue(postRescueDialogueLines);
     }
 
     // =========================================================
     // START DIALOGUE
     // =========================================================
 
-    public void BeginDialogue()
+    private void StartDialogue(DialogueLine[] lines)
     {
-        if (dialogueActive)
-        {
-            return;
-        }
+        activeDialogueLines = lines;
 
-        // This script now only handles the repeat/reminder dialogue.
-        if (repeatDialogueLines == null ||
-            repeatDialogueLines.Length == 0)
-        {
-            Debug.LogWarning(
-                "MotherCatRescueDialogue has no repeat dialogue lines assigned."
-            );
-
-            return;
-        }
-
-        dialogueActive = true;
         currentLineIndex = 0;
+        dialogueActive = true;
 
         FreezePlayer();
 
@@ -121,23 +205,21 @@ public class MotherCatRescueDialogue : MonoBehaviour, IInteractable
     }
 
     // =========================================================
-    // E INPUT DURING DIALOGUE
+    // E INPUT
     // =========================================================
 
     private void HandleEPressed()
     {
-        // If the line is still typing,
-        // pressing E completes it immediately.
         if (isTyping)
         {
             CompleteCurrentLineImmediately();
             return;
         }
 
-        // Otherwise go to the next line.
         currentLineIndex++;
 
-        if (currentLineIndex >= repeatDialogueLines.Length)
+        if (activeDialogueLines == null ||
+            currentLineIndex >= activeDialogueLines.Length)
         {
             EndDialogue();
             return;
@@ -147,20 +229,29 @@ public class MotherCatRescueDialogue : MonoBehaviour, IInteractable
     }
 
     // =========================================================
-    // SHOW LINE
+    // SHOW CURRENT LINE
     // =========================================================
 
     private void ShowCurrentLine()
     {
+        if (activeDialogueLines == null ||
+            currentLineIndex < 0 ||
+            currentLineIndex >= activeDialogueLines.Length)
+        {
+            return;
+        }
+
         DialogueLine currentLine =
-            repeatDialogueLines[currentLineIndex];
+            activeDialogueLines[currentLineIndex];
 
         if (speakerNameText != null)
         {
-            speakerNameText.text = currentLine.speakerName;
+            speakerNameText.text =
+                currentLine.speakerName;
         }
 
-        currentCompleteText = currentLine.dialogueText;
+        currentCompleteText =
+            currentLine.dialogueText;
 
         if (dialogueText != null)
         {
@@ -179,6 +270,7 @@ public class MotherCatRescueDialogue : MonoBehaviour, IInteractable
         if (typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
         }
 
         typingCoroutine =
@@ -212,7 +304,8 @@ public class MotherCatRescueDialogue : MonoBehaviour, IInteractable
 
         if (dialogueText != null)
         {
-            dialogueText.text = currentCompleteText;
+            dialogueText.text =
+                currentCompleteText;
         }
 
         isTyping = false;
@@ -229,7 +322,8 @@ public class MotherCatRescueDialogue : MonoBehaviour, IInteractable
 
         if (dialogueText != null)
         {
-            dialogueText.text = currentCompleteText;
+            dialogueText.text =
+                currentCompleteText;
         }
 
         isTyping = false;
@@ -281,6 +375,8 @@ public class MotherCatRescueDialogue : MonoBehaviour, IInteractable
 
         isTyping = false;
         dialogueActive = false;
+
+        activeDialogueLines = null;
 
         if (dialogueText != null)
         {

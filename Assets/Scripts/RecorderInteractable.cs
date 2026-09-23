@@ -136,6 +136,33 @@ public class RecorderInteractable : MonoBehaviour, IInteractable
             return;
         }
 
+        // =========================================================
+        // MAKE ABSOLUTELY SURE THE RECORDER CLOSE-UP IS CLOSED
+        // =========================================================
+
+        if (recorderInspection != null)
+        {
+            recorderInspection.HideRecorder();
+        }
+
+        inspectionOpen = false;
+
+        // The recorder has already finished playing.
+        isPlayingAudio = false;
+
+        // Hide the X button.
+        if (closeButton != null)
+        {
+            closeButton.SetActive(false);
+        }
+
+        // Disable the recorder buttons.
+        SetRecorderButtonsInteractable(false);
+
+        // =========================================================
+        // SHOW THE "ALREADY FINISHED" DIALOGUE
+        // =========================================================
+
         showingAlreadyDoneDialogue = true;
 
         // Freeze Patch while this normal dialogue is visible.
@@ -144,7 +171,6 @@ public class RecorderInteractable : MonoBehaviour, IInteractable
             playerMovement.enabled = false;
         }
 
-        // Do not show the recorder close-up.
         StartDialogue(alreadyDoneDialogueData);
     }
 

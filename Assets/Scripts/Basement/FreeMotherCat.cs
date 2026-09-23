@@ -2,14 +2,26 @@ using UnityEngine;
 
 public class FreeMotherCat : MonoBehaviour, IInteractable
 {
+    [Header("Required Item")]
     public InventoryItemData basementKey;
 
+    [Header("Cage")]
     public GameObject cage;
+
+    [Header("Mother Cat")]
+    [Tooltip(
+        "Assign the parent MotherCat GameObject here, " +
+        "not MotherCatSprite."
+    )]
     public GameObject motherCat;
 
+    [Tooltip(
+        "Position where Mother Cat should stand " +
+        "after being freed."
+    )]
     public Transform motherCatFrontPosition;
 
-    [Header("Dialogue")]
+    [Header("Post Rescue Dialogue")]
     [SerializeField]
     private MotherCatRescueDialogue rescueDialogue;
 
@@ -17,34 +29,56 @@ public class FreeMotherCat : MonoBehaviour, IInteractable
 
     public bool CanInteract()
     {
-        return !alreadyFreed;
+        if (alreadyFreed)
+        {
+            return false;
+        }
+
+        if (InventorySystem.Instance == null)
+        {
+            return false;
+        }
+
+        return InventorySystem.Instance.HasItem(
+            basementKey
+        );
     }
 
     public void Interact()
     {
-        if (alreadyFreed)
+        if (!CanInteract())
+        {
             return;
-
-        if (InventorySystem.Instance == null)
-            return;
-
-        if (!InventorySystem.Instance.HasItem(basementKey))
-            return;
+        }
 
         alreadyFreed = true;
 
-        motherCat.transform.position = motherCatFrontPosition.position;
+        // Move the entire Mother Cat hierarchy
+        // outside the cage.
+        if (motherCat != null &&
+            motherCatFrontPosition != null)
+        {
+            motherCat.transform.position =
+                motherCatFrontPosition.position;
+        }
 
-        cage.SetActive(false);
+        // Remove the cage.
+        if (cage != null)
+        {
+            cage.SetActive(false);
+        }
 
+        // Start the special conversation that happens
+        // immediately after Mother Cat is freed.
         if (rescueDialogue != null)
         {
-            rescueDialogue.BeginDialogue();
+            rescueDialogue.BeginPostRescueDialogue();
         }
         else
         {
             Debug.LogWarning(
-                "The Rescue Dialogue field has not been assigned on FreeMotherCat."
+                "FreeMotherCat: " +
+                "Rescue Dialogue has not been assigned."
             );
         }
     }

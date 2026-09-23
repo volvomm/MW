@@ -41,11 +41,18 @@ public class RevealMotherCat : MonoBehaviour, IInteractable
     [Header("Dialogue Settings")]
     public float typingSpeed = 0.04f;
 
+    [Header("Player Movement Lock")]
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private Rigidbody2D playerRigidbody;
+    [SerializeField] private Animator playerAnimator;
+
     private bool alreadyRevealed = false;
     private bool dialogueActive = false;
     private bool isTyping = false;
     private bool canUseEForDialogue = false;
+
     private int currentLine = 0;
+
     private Coroutine typingCoroutine;
 
     public bool CanInteract()
@@ -56,7 +63,9 @@ public class RevealMotherCat : MonoBehaviour, IInteractable
     public void Interact()
     {
         if (alreadyRevealed)
+        {
             return;
+        }
 
         alreadyRevealed = true;
 
@@ -70,7 +79,9 @@ public class RevealMotherCat : MonoBehaviour, IInteractable
     private void Update()
     {
         if (!dialogueActive)
+        {
             return;
+        }
 
         if (!canUseEForDialogue)
         {
@@ -117,7 +128,13 @@ public class RevealMotherCat : MonoBehaviour, IInteractable
         canUseEForDialogue = false;
         currentLine = 0;
 
-        dialoguePanel.SetActive(true);
+        // Freeze Patch for the entire conversation.
+        FreezePlayer();
+
+        if (dialoguePanel != null)
+        {
+            dialoguePanel.SetActive(true);
+        }
 
         ShowLine();
     }
@@ -176,6 +193,7 @@ public class RevealMotherCat : MonoBehaviour, IInteractable
     private IEnumerator TypeLine(string line)
     {
         isTyping = true;
+
         dialogueText.text = "";
 
         foreach (char letter in line)
@@ -213,8 +231,53 @@ public class RevealMotherCat : MonoBehaviour, IInteractable
             dialoguePanel.SetActive(false);
         }
 
-        // The initial Mother Cat conversation has now finished.
-        // Patch can now ask her for the number reminder.
+        // Give Patch control back only after the conversation ends.
+        UnfreezePlayer();
+
         StoryProgress.MotherCatRescueDialogueFinished = true;
+
+        // Mother Cat has now told Patch to talk to
+        // the kittens for the puzzle-box number hints.
+        StoryProgress.KittenNumberHintsUnlocked = true;
+    }
+
+    private void FreezePlayer()
+    {
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.linearVelocity =
+                Vector2.zero;
+        }
+
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetFloat("Speed", 0f);
+        }
+
+        if (playerMovement != null)
+        {
+            playerMovement.StopMovementImmediately();
+            playerMovement.enabled = false;
+        }
+    }
+
+    private void UnfreezePlayer()
+    {
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.linearVelocity =
+                Vector2.zero;
+        }
+
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetFloat("Speed", 0f);
+        }
+
+        if (playerMovement != null)
+        {
+            playerMovement.StopMovementImmediately();
+            playerMovement.enabled = true;
+        }
     }
 }

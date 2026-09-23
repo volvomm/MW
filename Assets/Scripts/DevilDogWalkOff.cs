@@ -9,6 +9,11 @@ public class DevilDogWalkOff : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private Animator animator;
 
+    [Header("Player Movement Lock")]
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private Rigidbody2D playerRigidbody;
+    [SerializeField] private Animator playerAnimator;
+
     private bool isWalkingAway = false;
 
     private void Update()
@@ -18,14 +23,16 @@ public class DevilDogWalkOff : MonoBehaviour
             return;
         }
 
-        // Move the Devil Dog to the left.
-        transform.position += Vector3.left * walkSpeed * Time.deltaTime;
+        // Move Devil Dog to the left.
+        transform.position +=
+            Vector3.left * walkSpeed * Time.deltaTime;
 
-        // Once the dog reaches the exit point, remove him from this room.
-        if (exitPoint != null && transform.position.x <= exitPoint.position.x)
+        // Once Devil Dog reaches the exit point,
+        // finish the sequence.
+        if (exitPoint != null &&
+            transform.position.x <= exitPoint.position.x)
         {
-            isWalkingAway = false;
-            gameObject.SetActive(false);
+            FinishWalkingAway();
         }
     }
 
@@ -38,10 +45,70 @@ public class DevilDogWalkOff : MonoBehaviour
 
         isWalkingAway = true;
 
+        // Freeze Patch once at the start.
+        FreezePlayer();
+
         if (animator != null)
         {
             animator.enabled = true;
-            animator.Play("DevilDogWalk", 0, 0f);
+
+            animator.Play(
+                "DevilDogWalk",
+                0,
+                0f
+            );
+        }
+    }
+
+    private void FinishWalkingAway()
+    {
+        isWalkingAway = false;
+
+        // IMPORTANT:
+        // Restore Patch's movement BEFORE disabling Devil Dog.
+        UnfreezePlayer();
+
+        // Devil Dog disappears from this room.
+        gameObject.SetActive(false);
+    }
+
+    private void FreezePlayer()
+    {
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.linearVelocity =
+                Vector2.zero;
+        }
+
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetFloat("Speed", 0f);
+        }
+
+        if (playerMovement != null)
+        {
+            playerMovement.StopMovementImmediately();
+            playerMovement.enabled = false;
+        }
+    }
+
+    private void UnfreezePlayer()
+    {
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.linearVelocity =
+                Vector2.zero;
+        }
+
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetFloat("Speed", 0f);
+        }
+
+        if (playerMovement != null)
+        {
+            playerMovement.StopMovementImmediately();
+            playerMovement.enabled = true;
         }
     }
 }

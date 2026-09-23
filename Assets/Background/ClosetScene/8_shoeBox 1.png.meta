@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5e706a44ad1e893418909d5940ae50e3
+guid: 9dc30edb7028ef146a59be7462062d3c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2430059887727515717
-    second: Padlock_Silver_Clip_Art-1443_0
+      213: -2211647720432333837
+    second: 8_shoeBox 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Padlock_Silver_Clip_Art-1443_0
+      name: 8_shoeBox 1_0
       rect:
         serializedVersion: 2
-        x: 93
-        y: 85
-        width: 5800
-        height: 7848
+        x: 422
+        y: 374
+        width: 271
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5489ce6c79e49b120800000000000000
-      internalID: 2430059887727515717
+      spriteID: 3fb0457bd16ae41e0800000000000000
+      internalID: -2211647720432333837
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Padlock_Silver_Clip_Art-1443_0: 2430059887727515717
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

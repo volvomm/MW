@@ -14,6 +14,13 @@ public class KittenIndividualTrigger : MonoBehaviour
             return;
         }
 
+        // Individual kitten dialogue is locked until
+        // Mother Cat tells Patch to ask them for hints.
+        if (!StoryProgress.KittenNumberHintsUnlocked)
+        {
+            return;
+        }
+
         if (waitingForKeyRelease)
         {
             if (Input.GetKeyUp(KeyCode.E))
@@ -26,13 +33,22 @@ public class KittenIndividualTrigger : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            if (KittenGroupDialogueManager.Instance == null)
+            {
+                return;
+            }
+
             if (KittenGroupDialogueManager.Instance.IsDialogueActive())
             {
                 return;
             }
 
             waitingForKeyRelease = true;
-            KittenGroupDialogueManager.Instance.StartDialogue(individualDialogue, OnDialogueFinished);
+
+            KittenGroupDialogueManager.Instance.StartDialogue(
+                individualDialogue,
+                OnDialogueFinished
+            );
         }
     }
 
