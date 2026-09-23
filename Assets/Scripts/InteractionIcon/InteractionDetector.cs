@@ -62,24 +62,37 @@ public class InteractionDetector : MonoBehaviour
         if (collision.CompareTag("Interactable"))
         {
             FirstTimeInteractable firstTime =
-    collision.GetComponent<FirstTimeInteractable>();
+                FindFirstTimeInteractable(collision);
+
+            IInteractable iconInteractable =
+                FindInteractable(collision);
 
             if (firstTime != null)
             {
-                firstTimeInRange = firstTime;
+                // If this object uses IInteractable,
+                // only allow the ! icon when the object
+                // can actually be interacted with.
+                bool canShowIcon =
+                    iconInteractable == null ||
+                    iconInteractable.CanInteract();
 
-                if (!firstTimeInRange.HasBeenInteractedWith)
+                if (canShowIcon)
                 {
-                    if (interactionIcon != null)
+                    firstTimeInRange = firstTime;
+
+                    if (!firstTimeInRange.HasBeenInteractedWith)
                     {
-                        interactionIcon.SetActive(true);
+                        if (interactionIcon != null)
+                        {
+                            interactionIcon.SetActive(true);
+                        }
                     }
-                }
-                else
-                {
-                    if (interactionIcon != null)
+                    else
                     {
-                        interactionIcon.SetActive(false);
+                        if (interactionIcon != null)
+                        {
+                            interactionIcon.SetActive(false);
+                        }
                     }
                 }
             }

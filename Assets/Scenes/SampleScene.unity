@@ -645,9 +645,10 @@ GameObject:
   - component: {fileID: 74259057}
   - component: {fileID: 74259060}
   - component: {fileID: 74259061}
+  - component: {fileID: 74259062}
   m_Layer: 0
   m_Name: 'double wooden planks '
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -879,6 +880,19 @@ MonoBehaviour:
   woodenPlankItem: {fileID: 11400000, guid: bf581722a9d92e94a8a4ca985a7fd9c4, type: 2}
   doublePlanks: {fileID: 74259056}
   singlePlank: {fileID: 934646667}
+--- !u!114 &74259062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74259056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbd1f303a1a83f4c821f30402b0f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenInteractedWith: 0
 --- !u!1 &85504994
 GameObject:
   m_ObjectHideFlags: 0
@@ -4095,7 +4109,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: -6730134409476820624, guid: b3daf84493c8f5c49b6570c24d2af9f4, type: 3}
+  m_Sprite: {fileID: -3946136548362099138, guid: ada5c5edb53c1374ba4722a3010f706d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4536,7 +4550,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: 1573451829454297924, guid: 17d82e41e2ccb724083b656da28b49ae, type: 3}
+  m_Sprite: {fileID: 8405506118304158733, guid: a27f23a526f01484ea0b8f1c7cb436b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8486,7 +8500,7 @@ Transform:
   m_GameObject: {fileID: 631495129}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -801.39, y: -708.75, z: 0.08984278}
+  m_LocalPosition: {x: -802.41, y: -707.19, z: 0.08984278}
   m_LocalScale: {x: 2.1380847, y: 2.1380847, z: 2.1380847}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13617,6 +13631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 934646669}
   - component: {fileID: 934646668}
+  - component: {fileID: 934646670}
   m_Layer: 0
   m_Name: 'singular wooden planks '
   m_TagString: Untagged
@@ -13694,6 +13709,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &934646670
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934646667}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.21, y: 2.67}
+    newSize: {x: 5.21, y: 2.67}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 5.21, y: 2.67}
+  m_EdgeRadius: 0
 --- !u!1 &940683206
 GameObject:
   m_ObjectHideFlags: 0
@@ -15269,7 +15330,7 @@ MonoBehaviour:
     itemToPickup: {fileID: 11400000, guid: b06d46e5d2fa1344ea9e3f84fdc59378, type: 2}
     actionsAfterComplete: []
   disableOjectAfterPickup: 1
-  destroyObjectAfterPickup: 0
+  destroyObjectAfterPickup: 1
 --- !u!61 &1018709640
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19123,10 +19184,10 @@ MonoBehaviour:
   lureDialogueLines:
   - speakerName: Patch
     speakerPortrait: {fileID: 21300000, guid: df2987c3ff729bc479afcc5c5f174e97, type: 3}
-    sentence: I find kittens
+    sentence: I found the kittens! They're hiding in the closet!
   - speakerName: Devil Dog
     speakerPortrait: {fileID: 1854476141901762521, guid: 144ad7061d030d04a86b12d06ca1d6f9, type: 3}
-    sentence: Aight Bet
+    sentence: The closet? Let me check it out for myself.
   dialoguePanel: {fileID: 741082908}
   speakerNameText: {fileID: 1258714718}
   dialogueText: {fileID: 1219159426}
@@ -20884,7 +20945,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: 8437453352812084258, guid: e6c1f51a90584b2479f402ac04b2db39, type: 3}
+  m_Sprite: {fileID: 8954530437260636757, guid: ec1a74c0e8551b54ea7e5ecbc1d8389c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
