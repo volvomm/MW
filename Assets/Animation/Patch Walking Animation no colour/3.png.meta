@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: a108f3597bda987489cdfae84940870e
+guid: 1a16f405cfa34b046acb5f333f0a1116
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3615800955920468080
-    second: 7_birdCage(covered) 1_0
+      213: -6470460504253458178
+    second: 3_0
+  - first:
+      213: 6623151957235123224
+    second: 3_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,23 +103,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 7_birdCage(covered) 1_0
+      name: 3_0
       rect:
         serializedVersion: 2
-        x: 1307
-        y: 321
-        width: 571
-        height: 506
+        x: 1265
+        y: 368
+        width: 1709
+        height: 967
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 097b7db103812ddc0800000000000000
-      internalID: -3615800955920468080
+      spriteID: ef817ce047e4436a0800000000000000
+      internalID: -6470460504253458178
       vertices: []
       indices: 
       edges: []
@@ -125,7 +128,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 120204c7e3c961d42b2eefd98e98f79f
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +138,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      7_birdCage(covered) 1_0: -3615800955920468080
+      3_0: -6470460504253458178
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

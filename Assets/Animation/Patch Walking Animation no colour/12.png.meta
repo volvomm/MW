@@ -1,10 +1,25 @@
 fileFormatVersion: 2
-guid: a108f3597bda987489cdfae84940870e
+guid: 8a0719b77e321e64fb4ae1e9ef1dc04f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3615800955920468080
-    second: 7_birdCage(covered) 1_0
+      213: -1540426309290004842
+    second: 12_0
+  - first:
+      213: 6771243069604559848
+    second: 12_1
+  - first:
+      213: 1771347820532908627
+    second: 12_2
+  - first:
+      213: -7656541741795238875
+    second: 12_3
+  - first:
+      213: -2551636932565023143
+    second: 12_4
+  - first:
+      213: 4257793103239855061
+    second: 12_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +61,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,23 +115,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 7_birdCage(covered) 1_0
+      name: 12_0
       rect:
         serializedVersion: 2
-        x: 1307
-        y: 321
-        width: 571
-        height: 506
+        x: 1276
+        y: 345
+        width: 1697
+        height: 990
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 097b7db103812ddc0800000000000000
-      internalID: -3615800955920468080
+      spriteID: 69e6a18ee6e4f9ae0800000000000000
+      internalID: -1540426309290004842
       vertices: []
       indices: 
       edges: []
@@ -125,7 +140,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 873b0fd9c16351b46996ddfff3fefe1f
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +150,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      7_birdCage(covered) 1_0: -3615800955920468080
+      12_0: -1540426309290004842
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
