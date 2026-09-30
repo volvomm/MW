@@ -1,3 +1,5 @@
+
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +8,13 @@ public class InteractionDetector : MonoBehaviour
     private IInteractable interactableInRange = null;
     private SpriteOutlineController currentOutline = null;
     private FirstTimeInteractable firstTimeInRange = null;
+
+    // Keeps the tin can dialogue active while E advances it.
+    private ConditionalItemUseInteractable activeTinCanDialogue;
+
+    // Tracks nearby interaction triggers.
+    private readonly List<Collider2D> nearbyTriggers =
+        new List<Collider2D>();
 
     [Header("Interaction Lock")]
     public bool interactionsLocked = false;
@@ -16,9 +25,27 @@ public class InteractionDetector : MonoBehaviour
     private void Start()
     {
         if (interactionIcon != null)
-        {
             interactionIcon.SetActive(false);
+    }
+
+    private void Update()
+    {
+        // While the tin can dialogue is running,
+        // hide the E indicator and keep its interaction.
+        if (activeTinCanDialogue != null)
+        {
+            if (activeTinCanDialogue.IsDialogueActive)
+            {
+                if (interactionIcon != null)
+                    interactionIcon.SetActive(false);
+
+                return;
+            }
+
+            activeTinCanDialogue = null;
         }
+
+        RefreshNearbyInteractions();
     }
 
     public void OnInteract(InputAction.CallbackContext context)
@@ -26,166 +53,196 @@ public class InteractionDetector : MonoBehaviour
         if (!context.performed)
             return;
 
-        // A dialogue/cutscene currently owns the E key.
-        // Do not activate world interactables.
+        // The tin can dialogue has priority while active.
+        // It must still receive E even when its
+        // CanInteract() method returns false.
+        if (activeTinCanDialogue != null)
+        {
+            if (activeTinCanDialogue.IsDialogueActive)
+            {
+                activeTinCanDialogue.Interact();
+            }
+
+            if (!activeTinCanDialogue.IsDialogueActive)
+            {
+                activeTinCanDialogue = null;
+                RefreshNearbyInteractions();
+            }
+
+            return;
+        }
+
+        // Other dialogue and cutscenes can lock E.
         if (interactionsLocked)
             return;
 
-        // First-time interaction system.
-        // This works even for interactions such as the kittens,
-        // which handle E through their own scripts.
+        RefreshNearbyInteractions();
+
+        // Preserve first-time tracking for existing scripts.
+        // This no longer controls the E indicator.
         if (firstTimeInRange != null &&
             !firstTimeInRange.HasBeenInteractedWith)
         {
             firstTimeInRange.MarkAsInteracted();
-
-            if (interactionIcon != null)
-            {
-                interactionIcon.SetActive(false);
-            }
         }
 
-        // If this object uses IInteractable,
-        // perform its normal interaction.
         if (interactableInRange == null)
             return;
 
+        if (!interactableInRange.CanInteract())
+            return;
+
+        // Remember the tin can before starting dialogue.
+        ConditionalItemUseInteractable tinCan =
+            interactableInRange as ConditionalItemUseInteractable;
+
         interactableInRange.Interact();
+
+        if (tinCan != null && tinCan.IsDialogueActive)
+        {
+            activeTinCanDialogue = tinCan;
+        }
+
+        RefreshNearbyInteractions();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // ---------------------------------------------
-        // FIRST-TIME INTERACTION ICON
-        // ---------------------------------------------
+        if (!IsInteractionTrigger(collision))
+            return;
 
-        if (collision.CompareTag("Interactable"))
+        if (!nearbyTriggers.Contains(collision))
         {
-            FirstTimeInteractable firstTime =
-                FindFirstTimeInteractable(collision);
-
-            IInteractable iconInteractable =
-                FindInteractable(collision);
-
-            if (firstTime != null)
-            {
-                // If this object uses IInteractable,
-                // only allow the ! icon when the object
-                // can actually be interacted with.
-                bool canShowIcon =
-                    iconInteractable == null ||
-                    iconInteractable.CanInteract();
-
-                if (canShowIcon)
-                {
-                    firstTimeInRange = firstTime;
-
-                    if (!firstTimeInRange.HasBeenInteractedWith)
-                    {
-                        if (interactionIcon != null)
-                        {
-                            interactionIcon.SetActive(true);
-                        }
-                    }
-                    else
-                    {
-                        if (interactionIcon != null)
-                        {
-                            interactionIcon.SetActive(false);
-                        }
-                    }
-                }
-            }
+            nearbyTriggers.Add(collision);
         }
 
-        // ---------------------------------------------
-        // NORMAL IINTERACTABLE SYSTEM
-        // ---------------------------------------------
+        RefreshNearbyInteractions();
+    }
 
-        IInteractable interactable = FindInteractable(collision);
-
-        if (interactable == null)
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (!IsInteractionTrigger(collision))
             return;
 
-        if (!interactable.CanInteract())
-            return;
-
-        ClearCurrentOutline();
-
-        interactableInRange = interactable;
-
-        currentOutline = FindOutlineController(collision);
-
-        if (currentOutline != null)
+        if (!nearbyTriggers.Contains(collision))
         {
-            currentOutline.SetVisible(true);
+            nearbyTriggers.Add(collision);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        // ---------------------------------------------
-        // FIRST-TIME INTERACTION ICON
-        // ---------------------------------------------
+        nearbyTriggers.Remove(collision);
+        RefreshNearbyInteractions();
+    }
 
-        if (collision.CompareTag("Interactable"))
+    private bool IsInteractionTrigger(Collider2D collision)
+    {
+        if (collision == null || !collision.isTrigger)
+            return false;
+
+        return FindInteractable(collision) != null ||
+               FindFirstTimeInteractable(collision) != null;
+    }
+
+    private void RefreshNearbyInteractions()
+    {
+        IInteractable nextInteractable = null;
+        FirstTimeInteractable nextFirstTime = null;
+        SpriteOutlineController nextOutline = null;
+
+        bool canShowIcon = false;
+
+        // Most recently entered available trigger wins.
+        for (int i = nearbyTriggers.Count - 1; i >= 0; i--)
         {
-            FirstTimeInteractable exitingFirstTime =
-     collision.GetComponent<FirstTimeInteractable>();
+            Collider2D trigger = nearbyTriggers[i];
 
-            if (exitingFirstTime != null &&
-                exitingFirstTime == firstTimeInRange)
+            if (trigger == null ||
+                !trigger.enabled ||
+                !trigger.gameObject.activeInHierarchy)
             {
-                if (interactionIcon != null)
-                {
-                    interactionIcon.SetActive(false);
-                }
+                nearbyTriggers.RemoveAt(i);
+                continue;
+            }
 
-                firstTimeInRange = null;
+            IInteractable candidate =
+                FindInteractable(trigger);
+
+            FirstTimeInteractable firstTime =
+                FindFirstTimeInteractable(trigger);
+
+            // Don't select objects that cannot currently
+            // be interacted with.
+            if (candidate != null &&
+                !candidate.CanInteract())
+            {
+                continue;
+            }
+
+            if (candidate == null && firstTime == null)
+                continue;
+
+            nextInteractable = candidate;
+            nextFirstTime = firstTime;
+            nextOutline = FindOutlineController(trigger);
+
+            canShowIcon = true;
+            break;
+        }
+
+        // Update the visible outline.
+        if (currentOutline != nextOutline)
+        {
+            ClearCurrentOutline();
+
+            currentOutline = nextOutline;
+
+            if (currentOutline != null)
+            {
+                currentOutline.SetVisible(true);
             }
         }
 
-        // ---------------------------------------------
-        // NORMAL IINTERACTABLE SYSTEM
-        // ---------------------------------------------
+        interactableInRange = nextInteractable;
+        firstTimeInRange = nextFirstTime;
 
-        IInteractable interactable = FindInteractable(collision);
+        // The E indicator appears whenever Patch
+        // is inside an available interaction trigger.
+        if (interactionIcon != null)
+        {
+            bool shouldShow =
+                canShowIcon && !interactionsLocked;
 
-        if (interactable == null)
-            return;
-
-        if (interactable != interactableInRange)
-            return;
-
-        ClearCurrentOutline();
-
-        interactableInRange = null;
+            if (interactionIcon.activeSelf != shouldShow)
+            {
+                interactionIcon.SetActive(shouldShow);
+            }
+        }
     }
 
-    private IInteractable FindInteractable(Collider2D collision)
+    private IInteractable FindInteractable(
+        Collider2D collision)
     {
         if (collision == null)
             return null;
 
-        // 1. Exact GameObject
-        IInteractable interactable =
+        IInteractable result =
             collision.GetComponent<IInteractable>();
 
-        if (interactable != null)
-            return interactable;
+        if (result == null)
+        {
+            result =
+                collision.GetComponentInParent<IInteractable>();
+        }
 
-        // 2. Parent
-        interactable =
-            collision.GetComponentInParent<IInteractable>();
+        if (result == null)
+        {
+            result =
+                collision.GetComponentInChildren<IInteractable>(true);
+        }
 
-        if (interactable != null)
-            return interactable;
-
-        // 3. Children
-        interactable =
-            collision.GetComponentInChildren<IInteractable>(true);
-
-        return interactable;
+        return result;
     }
 
     private FirstTimeInteractable FindFirstTimeInteractable(
@@ -194,25 +251,23 @@ public class InteractionDetector : MonoBehaviour
         if (collision == null)
             return null;
 
-        // 1. Exact GameObject
-        FirstTimeInteractable firstTime =
+        FirstTimeInteractable result =
             collision.GetComponent<FirstTimeInteractable>();
 
-        if (firstTime != null)
-            return firstTime;
+        if (result == null)
+        {
+            result =
+                collision.GetComponentInParent<FirstTimeInteractable>();
+        }
 
-        // 2. Parent
-        firstTime =
-            collision.GetComponentInParent<FirstTimeInteractable>();
+        if (result == null)
+        {
+            result =
+                collision.GetComponentInChildren<FirstTimeInteractable>(
+                    true);
+        }
 
-        if (firstTime != null)
-            return firstTime;
-
-        // 3. Children
-        firstTime =
-            collision.GetComponentInChildren<FirstTimeInteractable>(true);
-
-        return firstTime;
+        return result;
     }
 
     private SpriteOutlineController FindOutlineController(
@@ -221,22 +276,23 @@ public class InteractionDetector : MonoBehaviour
         if (collision == null)
             return null;
 
-        SpriteOutlineController outline =
+        SpriteOutlineController result =
             collision.GetComponent<SpriteOutlineController>();
 
-        if (outline != null)
-            return outline;
+        if (result == null)
+        {
+            result =
+                collision.GetComponentInParent<SpriteOutlineController>();
+        }
 
-        outline =
-            collision.GetComponentInParent<SpriteOutlineController>();
+        if (result == null)
+        {
+            result =
+                collision.GetComponentInChildren<SpriteOutlineController>(
+                    true);
+        }
 
-        if (outline != null)
-            return outline;
-
-        outline =
-            collision.GetComponentInChildren<SpriteOutlineController>(true);
-
-        return outline;
+        return result;
     }
 
     private void ClearCurrentOutline()
@@ -245,6 +301,22 @@ public class InteractionDetector : MonoBehaviour
         {
             currentOutline.SetVisible(false);
             currentOutline = null;
+        }
+    }
+
+    private void OnDisable()
+    {
+        ClearCurrentOutline();
+
+        nearbyTriggers.Clear();
+
+        interactableInRange = null;
+        firstTimeInRange = null;
+        activeTinCanDialogue = null;
+
+        if (interactionIcon != null)
+        {
+            interactionIcon.SetActive(false);
         }
     }
 }

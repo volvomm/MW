@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class SceneTransition : MonoBehaviour
@@ -8,44 +9,90 @@ public class SceneTransition : MonoBehaviour
     [SerializeField] private Transform cameraTargetPosition;
     [SerializeField] private Transform mainCamera;
 
-
     [Header("Lock State")]
     [SerializeField] private bool canTransition = true;
 
-    //Its for the locked door
-    // This can be use for other locked door with different required Key Item
-    [Header("RequiredKey")]
+    [Header("Required Key")]
     [SerializeField] private InventoryItemData requiredKey;
+
+    [Header("Tin Can Entrance")]
+    [Tooltip("Enable ONLY for the slime-covered tin can entrance.")]
+    [SerializeField] private bool useTinCanEntrance = false;
+
+    [Tooltip("Patch must walk this far into the entrance before transitioning.")]
+    [SerializeField] private float entranceDepth = 0.3f;
+
+    [Tooltip("Enable if Patch enters the hole by moving left instead of right.")]
+    [SerializeField] private bool enterFromRight = true;
 
     public InventoryItemData RequiredKey => requiredKey;
     public bool CanTransition => canTransition;
 
+    private bool isTransitioning = false;
+
     private void Awake()
     {
-        // The door thet need 'requiredKey', its automatically locked from the first time.
-
-        //Check the player's inventory for a specific key
-        //IF they have the key, allow them to open the door "can transition =true" 
         if (requiredKey != null)
         {
             canTransition = false;
         }
     }
 
-    // if the door is opended
     public void SetTransitionEnabled(bool enabledState)
     {
         canTransition = enabledState;
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        TryTransition(collision);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        // Allows Patch to enter immediately after
+        // unlocking the entrance while already
+        // overlapping its trigger.
+        if (useTinCanEntrance)
+        {
+            TryTransition(collision);
+        }
+    }
+
+    private void TryTransition(Collider2D collision)
     {
         if (!collision.CompareTag("Player"))
             return;
 
-        // if the door is still locked, it does nothing.
-        if (!canTransition)
+        if (!canTransition || isTransitioning)
             return;
+
+        if (useTinCanEntrance)
+        {
+            // Require Patch to move sufficiently far
+            // into the entrance, rather than teleporting
+            // immediately when the towel is used.
+            float entranceCenterX = transform.position.x;
+
+            if (enterFromRight)
+            {
+                if (collision.transform.position.x >
+                    entranceCenterX - entranceDepth)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                if (collision.transform.position.x <
+                    entranceCenterX + entranceDepth)
+                {
+                    return;
+                }
+            }
+        }
+
+        isTransitioning = true;
 
         if (player != null && playerTargetPosition != null)
         {
@@ -54,17 +101,16 @@ public class SceneTransition : MonoBehaviour
 
         if (mainCamera != null && cameraTargetPosition != null)
         {
+            Vector3 newCameraPosition = mainCamera.position;
 
-                Vector3 newCameraPosition = mainCamera.position;
-                newCameraPosition.x = cameraTargetPosition.position.x;
-                newCameraPosition.y = cameraTargetPosition.position.y;
-                newCameraPosition.z = mainCamera.position.z;
+            newCameraPosition.x = cameraTargetPosition.position.x;
+            newCameraPosition.y = cameraTargetPosition.position.y;
 
-                mainCamera.position = newCameraPosition;
+            mainCamera.position = newCameraPosition;
         }
 
-        Debug.Log(canTransition + " " + gameObject.name); 
+        Debug.Log("Transition completed: " + gameObject.name);
+
+        isTransitioning = false;
     }
-
-
 }

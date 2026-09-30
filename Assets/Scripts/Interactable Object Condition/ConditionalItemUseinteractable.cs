@@ -58,8 +58,12 @@ public class ConditionalItemUseInteractable : MonoBehaviour, IInteractable, IIve
     public bool CanInteract()
     {
         return !isDialogueActive;
-    }
 
+    }
+    public bool IsDialogueActive
+{
+    get { return isDialogueActive; }
+}
     private void Awake()
     {
         inventoryUI = FindFirstObjectByType<InventoryUIController>();
