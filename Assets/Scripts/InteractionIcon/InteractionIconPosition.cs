@@ -6,9 +6,11 @@ public class InteractionIconPosition : MonoBehaviour
     [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private Transform interactionIcon;
 
-    [Header("Icon Position")]
-    [SerializeField] private float facingRightX = 0.5f;
-    [SerializeField] private float facingLeftX = -0.5f;
+    [Header("Facing Right Icon Position")]
+    [SerializeField] private Vector2 facingRightPosition = new Vector2(0.5f, 0.5f);
+
+    [Header("Facing Left Icon Position")]
+    [SerializeField] private Vector2 facingLeftPosition = new Vector2(-0.5f, 0.5f);
 
     private void LateUpdate()
     {
@@ -19,13 +21,15 @@ public class InteractionIconPosition : MonoBehaviour
 
         if (playerSprite.flipX)
         {
-            // Patch is facing left
-            iconPosition.x = facingLeftX;
+            // Patch is facing left.
+            iconPosition.x = facingLeftPosition.x;
+            iconPosition.y = facingLeftPosition.y;
         }
         else
         {
-            // Patch is facing right
-            iconPosition.x = facingRightX;
+            // Patch is facing right.
+            iconPosition.x = facingRightPosition.x;
+            iconPosition.y = facingRightPosition.y;
         }
 
         interactionIcon.localPosition = iconPosition;

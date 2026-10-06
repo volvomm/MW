@@ -48,6 +48,15 @@ public class DoorQuestionTransition : MonoBehaviour
     private string barricadeDialogue =
         "Now it's time to reunite the mother with her kittens.";
 
+    [Header("Three Plank Barricade System")]
+    [SerializeField]
+    private WoodenPlankBarricade woodenPlankBarricade;
+
+    [TextArea(3, 6)]
+    [SerializeField]
+    private string firstPlankPlacementDialogue =
+        "Now I need to carefully put this down.";
+
     [SerializeField] private float typingSpeed = 0.04f;
 
     [Header("Player Movement")]
@@ -60,6 +69,10 @@ public class DoorQuestionTransition : MonoBehaviour
     private bool isTyping;
 
     private bool closetBarricaded;
+
+    // True while the special dialogue before WoodLean1
+    // is being shown.
+    private bool waitingToPlaceFirstPlank;
 
     private Coroutine typingCoroutine;
 
@@ -132,39 +145,73 @@ public class DoorQuestionTransition : MonoBehaviour
             return;
         }
 
-        // After talking to Devil Dog but BEFORE
-        // the final trapdoor sequence, the closet still
-        // works normally.
+        // Patch has talked to the Devil Dog,
+        // but the spinning lock has NOT been completed yet.
+        //
+        // Do not show the "Enter the closet?" question.
+        // Patch must interact with the locked door handle
+        // and complete the spinning lock minigame first.
+        if (!StoryProgress.ClosetLockMinigameCompleted)
+        {
+            return;
+        }
+
+        // The Devil Dog has been spoken to AND
+        // the spinning lock minigame has been completed.
+        //
+        // The closet can now be entered normally.
         OpenQuestion();
     }
 
     private void TryBarricadeCloset()
     {
-        // Already finished. Don't do anything again.
-        if (closetBarricaded)
+        // All three planks have already been placed.
+        if (StoryProgress.ClosetBarricaded)
         {
             return;
         }
 
-        if (InventorySystem.Instance == null)
+        if (woodenPlankBarricade == null)
         {
             Debug.LogWarning(
-                "DoorQuestionTransition: InventorySystem.Instance was not found."
+                "DoorQuestionTransition: Wooden Plank Barricade has not been assigned."
             );
 
             return;
         }
 
-        // Patch MUST have the wooden plank.
-        if (woodenPlankItem == null ||
-            !InventorySystem.Instance.HasItem(woodenPlankItem))
+        // Patch must actually be carrying the current plank.
+        if (!woodenPlankBarricade.CanPlacePlank())
         {
-            // No dialogue and no door question.
-            // Patch simply needs to collect the plank first.
             return;
         }
 
-        BarricadeCloset();
+        // ------------------------------------------------
+        // FIRST PLANK ONLY
+        // ------------------------------------------------
+        //
+        // No planks have been placed yet, so Patch says
+        // his line BEFORE walking into position.
+        if (StoryProgress.ClosetPlanksPlaced == 0)
+        {
+            waitingToPlaceFirstPlank = true;
+
+            StartPatchDialogue(firstPlankPlacementDialogue);
+            return;
+        }
+
+        // ------------------------------------------------
+        // SECOND AND THIRD PLANKS
+        // ------------------------------------------------
+        //
+        // No dialogue. Immediately begin the normal
+        // auto-walk + QTE sequence.
+        woodenPlankBarricade.StartPlankPlacement();
+    }
+
+    public void PlayBarricadeFinishedDialogue()
+    {
+        StartPatchDialogue(barricadeDialogue);
     }
 
     private void BarricadeCloset()
@@ -334,6 +381,26 @@ public class DoorQuestionTransition : MonoBehaviour
             closeButton.SetActive(true);
         }
 
+        // ------------------------------------------------
+        // FIRST WOODLEAN PLACEMENT
+        // ------------------------------------------------
+        //
+        // If this was the special dialogue before placing
+        // WoodLean1, immediately begin the existing
+        // auto-walk + QTE sequence.
+        if (waitingToPlaceFirstPlank)
+        {
+            waitingToPlaceFirstPlank = false;
+
+            if (woodenPlankBarricade != null)
+            {
+                woodenPlankBarricade.StartPlankPlacement();
+            }
+
+            return;
+        }
+
+        // All other Patch dialogues behave normally.
         SetPlayerMovement(true);
     }
 
@@ -359,6 +426,9 @@ public class DoorQuestionTransition : MonoBehaviour
     private void OpenQuestion()
     {
         questionOpen = true;
+
+        // Freeze Patch while the Yes/No question is open.
+        SetPlayerMovement(false);
 
         if (questionPanel != null)
         {
@@ -390,6 +460,9 @@ public class DoorQuestionTransition : MonoBehaviour
         }
 
         questionOpen = false;
+
+        // Patch can move again after choosing No.
+        SetPlayerMovement(true);
     }
 
     private IEnumerator FadeAndMove()
@@ -398,6 +471,9 @@ public class DoorQuestionTransition : MonoBehaviour
         {
             questionPanel.SetActive(false);
         }
+
+        // Patch remains frozen during the transition.
+        SetPlayerMovement(false);
 
         yield return StartCoroutine(Fade(1f));
 
@@ -418,6 +494,10 @@ public class DoorQuestionTransition : MonoBehaviour
         yield return StartCoroutine(Fade(0f));
 
         questionOpen = false;
+
+        // Transition is completely finished.
+        // Patch can move again.
+        SetPlayerMovement(true);
     }
 
     private IEnumerator Fade(float targetAlpha)

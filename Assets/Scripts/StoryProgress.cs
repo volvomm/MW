@@ -2,6 +2,8 @@ public static class StoryProgress
 {
     public static bool HasTalkedToDevilDog = false;
 
+    public static bool ClosetLockMinigameCompleted = false;
+
     public static bool MotherCatRescueDialogueFinished = false;
 
     public static bool RecorderPuzzleFinished = false;
@@ -11,6 +13,8 @@ public static class StoryProgress
     public static bool DevilDogTrapdoorSequenceFinished = false;
 
     public static bool ClosetBarricaded = false;
+
+    public static int ClosetPlanksPlaced = 0;
 
     public static bool MotherCatReunited = false;
 

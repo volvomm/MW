@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,6 +10,11 @@ public class InteractionDetector : MonoBehaviour
 
     // Keeps the tin can dialogue active while E advances it.
     private ConditionalItemUseInteractable activeTinCanDialogue;
+
+    // Keeps the closet lock dialogue active while E advances it.
+    // This is especially important for the completion dialogue,
+    // because normal world interactions are locked during the minigame.
+    private ClosetLockInteractable activeClosetLockDialogue;
 
     // Tracks nearby interaction triggers.
     private readonly List<Collider2D> nearbyTriggers =
@@ -45,6 +49,21 @@ public class InteractionDetector : MonoBehaviour
             activeTinCanDialogue = null;
         }
 
+        // While the closet lock dialogue is running,
+        // hide the normal E interaction indicator.
+        if (activeClosetLockDialogue != null)
+        {
+            if (activeClosetLockDialogue.IsDialogueActive)
+            {
+                if (interactionIcon != null)
+                    interactionIcon.SetActive(false);
+
+                return;
+            }
+
+            activeClosetLockDialogue = null;
+        }
+
         RefreshNearbyInteractions();
     }
 
@@ -52,6 +71,10 @@ public class InteractionDetector : MonoBehaviour
     {
         if (!context.performed)
             return;
+
+        // -----------------------------------------------------
+        // TIN CAN DIALOGUE
+        // -----------------------------------------------------
 
         // The tin can dialogue has priority while active.
         // It must still receive E even when its
@@ -72,7 +95,41 @@ public class InteractionDetector : MonoBehaviour
             return;
         }
 
-        // Other dialogue and cutscenes can lock E.
+        // -----------------------------------------------------
+        // CLOSET LOCK DIALOGUE
+        // -----------------------------------------------------
+
+        // If the closet lock currently owns a dialogue,
+        // allow E to continue advancing that dialogue even
+        // while normal world interactions are locked.
+        //
+        // This allows:
+        //
+        // Opening dialogue
+        // -> E
+        // -> Minigame
+        //
+        // and later:
+        //
+        // 3/3
+        // -> Completion dialogue
+        // -> E
+        // -> Finish unlocking.
+        if (activeClosetLockDialogue != null &&
+            activeClosetLockDialogue.IsDialogueActive)
+        {
+            activeClosetLockDialogue.Interact();
+
+            if (!activeClosetLockDialogue.IsDialogueActive)
+            {
+                activeClosetLockDialogue = null;
+            }
+
+            return;
+        }
+
+        // Other dialogue, minigames and cutscenes
+        // can lock normal world interactions.
         if (interactionsLocked)
             return;
 
@@ -92,15 +149,32 @@ public class InteractionDetector : MonoBehaviour
         if (!interactableInRange.CanInteract())
             return;
 
-        // Remember the tin can before starting dialogue.
+        // Remember whether this is the tin can before
+        // starting the interaction.
         ConditionalItemUseInteractable tinCan =
             interactableInRange as ConditionalItemUseInteractable;
 
+        // Remember whether this is the closet lock before
+        // starting the interaction.
+        ClosetLockInteractable closetLock =
+            interactableInRange as ClosetLockInteractable;
+
+        // Start/advance the selected interaction.
         interactableInRange.Interact();
 
+        // If this interaction started the tin can dialogue,
+        // remember it.
         if (tinCan != null && tinCan.IsDialogueActive)
         {
             activeTinCanDialogue = tinCan;
+        }
+
+        // If this interaction started the closet-lock dialogue,
+        // remember it so E can continue controlling that dialogue
+        // even when the minigame locks normal interactions.
+        if (closetLock != null && closetLock.IsDialogueActive)
+        {
+            activeClosetLockDialogue = closetLock;
         }
 
         RefreshNearbyInteractions();
@@ -312,7 +386,9 @@ public class InteractionDetector : MonoBehaviour
 
         interactableInRange = null;
         firstTimeInRange = null;
+
         activeTinCanDialogue = null;
+        activeClosetLockDialogue = null;
 
         if (interactionIcon != null)
         {

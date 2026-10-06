@@ -87,7 +87,7 @@ public class RecorderInteractable : MonoBehaviour, IInteractable
 
     public bool CanInteract()
     {
-        return !inspectionOpen;
+        return true;
     }
 
     public void Interact()

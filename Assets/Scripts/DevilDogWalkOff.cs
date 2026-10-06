@@ -9,6 +9,9 @@ public class DevilDogWalkOff : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private Animator animator;
 
+    [Header("Dog Collision")]
+    [SerializeField] private Collider2D dogBodyCollider;
+
     [Header("Player Movement Lock")]
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Rigidbody2D playerRigidbody;
@@ -45,6 +48,14 @@ public class DevilDogWalkOff : MonoBehaviour
 
         isWalkingAway = true;
 
+        // Temporarily make the dog's BODY collider a trigger.
+        // This allows the dog to walk through Patch
+        // instead of physically pushing him.
+        if (dogBodyCollider != null)
+        {
+            dogBodyCollider.isTrigger = true;
+        }
+
         // Freeze Patch once at the start.
         FreezePlayer();
 
@@ -64,8 +75,14 @@ public class DevilDogWalkOff : MonoBehaviour
     {
         isWalkingAway = false;
 
-        // IMPORTANT:
-        // Restore Patch's movement BEFORE disabling Devil Dog.
+        // Restore the body collider before the object
+        // is disabled.
+        if (dogBodyCollider != null)
+        {
+            dogBodyCollider.isTrigger = false;
+        }
+
+        // Restore Patch's movement.
         UnfreezePlayer();
 
         // Devil Dog disappears from this room.

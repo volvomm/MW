@@ -1,0 +1,1469 @@
+fileFormatVersion: 2
+guid: a6fb5237ea7e64e45ac4cacbbecdabfa
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2712870514712903553
+    second: redcropped426spaced_0
+  - first:
+      213: -3385872211529657573
+    second: redcropped426spaced_1
+  - first:
+      213: -6285216664397258294
+    second: redcropped426spaced_2
+  - first:
+      213: 1516409306336074480
+    second: redcropped426spaced_3
+  - first:
+      213: -7678624484772840911
+    second: redcropped426spaced_4
+  - first:
+      213: -2333825375743954370
+    second: redcropped426spaced_5
+  - first:
+      213: 4552826046525337370
+    second: redcropped426spaced_6
+  - first:
+      213: -6510121339811884858
+    second: redcropped426spaced_7
+  - first:
+      213: -8576844325231241496
+    second: redcropped426spaced_8
+  - first:
+      213: 8283379172175885230
+    second: redcropped426spaced_9
+  - first:
+      213: 2666295983372775443
+    second: redcropped426spaced_10
+  - first:
+      213: -4912560376400055096
+    second: redcropped426spaced_11
+  - first:
+      213: -6646752060249556982
+    second: redcropped426spaced_12
+  - first:
+      213: 6407112598726873024
+    second: redcropped426spaced_13
+  - first:
+      213: -6886812619693018640
+    second: redcropped426spaced_14
+  - first:
+      213: -2006981145796564418
+    second: redcropped426spaced_15
+  - first:
+      213: -74788761093445994
+    second: redcropped426spaced_16
+  - first:
+      213: -9182825662999546622
+    second: redcropped426spaced_17
+  - first:
+      213: -5613029969331644411
+    second: redcropped426spaced_18
+  - first:
+      213: 4620395830256511717
+    second: redcropped426spaced_19
+  - first:
+      213: -8813904498835651988
+    second: redcropped426spaced_20
+  - first:
+      213: 3270540928190164620
+    second: redcropped426spaced_21
+  - first:
+      213: -7315380183190073874
+    second: redcropped426spaced_22
+  - first:
+      213: 4749573568178306975
+    second: redcropped426spaced_23
+  - first:
+      213: -8522734384130341463
+    second: redcropped426spaced_24
+  - first:
+      213: 5781408513038536423
+    second: redcropped426spaced_25
+  - first:
+      213: -6393411954877930387
+    second: redcropped426spaced_26
+  - first:
+      213: -5531852570247519728
+    second: redcropped426spaced_27
+  - first:
+      213: -923309372867099877
+    second: redcropped426spaced_28
+  - first:
+      213: -1912934645914340859
+    second: redcropped426spaced_29
+  - first:
+      213: 3522760824647972181
+    second: redcropped426spaced_30
+  - first:
+      213: 5764866370460137197
+    second: redcropped426spaced_31
+  - first:
+      213: 2023066536624306621
+    second: redcropped426spaced_32
+  - first:
+      213: 8230301423149161709
+    second: redcropped426spaced_33
+  - first:
+      213: 4503486989124488646
+    second: redcropped426spaced_34
+  - first:
+      213: -6503706818138963780
+    second: redcropped426spaced_35
+  - first:
+      213: 5022622504192980875
+    second: redcropped426spaced_36
+  - first:
+      213: -7300316476637617857
+    second: redcropped426spaced_37
+  - first:
+      213: -3071028201215798498
+    second: redcropped426spaced_38
+  - first:
+      213: 5643054668067276994
+    second: redcropped426spaced_39
+  - first:
+      213: 2007019938135610369
+    second: redcropped426spaced_40
+  - first:
+      213: -151340695022284694
+    second: redcropped426spaced_41
+  - first:
+      213: 2136821284615306925
+    second: redcropped426spaced_42
+  - first:
+      213: 9056179608216137147
+    second: redcropped426spaced_43
+  - first:
+      213: -3001841949476489675
+    second: redcropped426spaced_44
+  - first:
+      213: 3257129621181824381
+    second: redcropped426spaced_45
+  - first:
+      213: -869300518202924850
+    second: redcropped426spaced_46
+  - first:
+      213: -7311810863291278669
+    second: redcropped426spaced_47
+  - first:
+      213: 2198156293433070231
+    second: redcropped426spaced_48
+  - first:
+      213: -7906330773206143470
+    second: redcropped426spaced_49
+  - first:
+      213: 3006399327147947221
+    second: redcropped426spaced_50
+  - first:
+      213: 2472710494749190892
+    second: redcropped426spaced_51
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: redcropped426spaced_0
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 356
+        width: 28
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7008e8e3a2f95ad0800000000000000
+      internalID: -2712870514712903553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_1
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 365
+        width: 49
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1398e8a927f201d0800000000000000
+      internalID: -3385872211529657573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_2
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 364
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac16c368ebc66c8a0800000000000000
+      internalID: -6285216664397258294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_3
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 364
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fa1246da3e5b0510800000000000000
+      internalID: 1516409306336074480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_4
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 351
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13a7f75d6bb007590800000000000000
+      internalID: -7678624484772840911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_5
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 350
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e323df69f269c9fd0800000000000000
+      internalID: -2333825375743954370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_6
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 359
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1fe94bda23ee2f30800000000000000
+      internalID: 4552826046525337370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_7
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 332
+        width: 155
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c092df222767a5a0800000000000000
+      internalID: -6510121339811884858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_8
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 359
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e654cc378de8f880800000000000000
+      internalID: -8576844325231241496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_9
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 373
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea3b969487974f270800000000000000
+      internalID: 8283379172175885230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_10
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 365
+        width: 43
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3103cfaf116900520800000000000000
+      internalID: 2666295983372775443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_11
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 350
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c4f3039d5413dbb0800000000000000
+      internalID: -4912560376400055096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_12
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 351
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a08baba973ef1c3a0800000000000000
+      internalID: -6646752060249556982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_13
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 364
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cf8b0356f2aae850800000000000000
+      internalID: 6407112598726873024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_14
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 356
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f1358809602d60a0800000000000000
+      internalID: -6886812619693018640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_15
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 364
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3aa3e50845c524e0800000000000000
+      internalID: -2006981145796564418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_16
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 351
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69665dd940c46fef0800000000000000
+      internalID: -74788761093445994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_17
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 336
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 205329256bc009080800000000000000
+      internalID: -9182825662999546622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_18
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 352
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5089d546bf28a12b0800000000000000
+      internalID: -5613029969331644411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_19
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 351
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5eaa2281781fe1040800000000000000
+      internalID: 4620395830256511717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_20
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 357
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c620fae6e88bea580800000000000000
+      internalID: -8813904498835651988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_21
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 348
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8ea62865ab436d20800000000000000
+      internalID: 3270540928190164620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_22
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 357
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eed06006b7c8a7a90800000000000000
+      internalID: -7315380183190073874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_23
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 351
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9f3ad5feffd9e140800000000000000
+      internalID: 4749573568178306975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_24
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 352
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a547e6ab3a29b980800000000000000
+      internalID: -8522734384130341463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_25
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 340
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7eec4115960bb3050800000000000000
+      internalID: 5781408513038536423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_26
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 353
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d64e3c663b90647a0800000000000000
+      internalID: -6393411954877930387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_27
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 334
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 012a0987569ea33b0800000000000000
+      internalID: -5531852570247519728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_28
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 316
+        width: 42
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b13c77c640fbf23f0800000000000000
+      internalID: -923309372867099877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_29
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 323
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 502fcbf1314e375e0800000000000000
+      internalID: -1912934645914340859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_30
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 342
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 555fdcd3e4c53e030800000000000000
+      internalID: 3522760824647972181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_31
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 334
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de63fdc9b6be00050800000000000000
+      internalID: 5764866370460137197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_32
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 323
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db9b870eb40631c10800000000000000
+      internalID: 2023066536624306621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_33
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 343
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dec9231d987e73270800000000000000
+      internalID: 8230301423149161709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_34
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 329
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cdcb5d5e899f7e30800000000000000
+      internalID: 4503486989124488646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_35
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 330
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb08a856b113eb5a0800000000000000
+      internalID: -6503706818138963780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_36
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 327
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b873e4b7e80f3b540800000000000000
+      internalID: 5022622504192980875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_37
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 343
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f31651ed7d010ba90800000000000000
+      internalID: -7300316476637617857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_38
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 316
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e13535b3f148165d0800000000000000
+      internalID: -3071028201215798498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_39
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 334
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c8824a8258205e40800000000000000
+      internalID: 5643054668067276994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_40
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 342
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10413b5000e5adb10800000000000000
+      internalID: 2007019938135610369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_41
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 311
+        width: 40
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a60d221907456edf0800000000000000
+      internalID: -151340695022284694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_42
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 323
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dae3df113a387ad10800000000000000
+      internalID: 2136821284615306925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_43
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 334
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbdebd93f530ead70800000000000000
+      internalID: 9056179608216137147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_44
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 321
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5367691c6a05756d0800000000000000
+      internalID: -3001841949476489675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_45
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 312
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7df1f92226a33d20800000000000000
+      internalID: 3257129621181824381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_46
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 313
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec0a371d8cf9fe3f0800000000000000
+      internalID: -869300518202924850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_47
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 306
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ba5eac62ca378a90800000000000000
+      internalID: -7311810863291278669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_48
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 306
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7921ed6a08b618e10800000000000000
+      internalID: 2198156293433070231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_49
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 314
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21eee422d02174290800000000000000
+      internalID: -7906330773206143470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_50
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 302
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d470ab6240e8b920800000000000000
+      internalID: 3006399327147947221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redcropped426spaced_51
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 303
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ceae7ef0815d05220800000000000000
+      internalID: 2472710494749190892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      redcropped426spaced_0: -2712870514712903553
+      redcropped426spaced_1: -3385872211529657573
+      redcropped426spaced_10: 2666295983372775443
+      redcropped426spaced_11: -4912560376400055096
+      redcropped426spaced_12: -6646752060249556982
+      redcropped426spaced_13: 6407112598726873024
+      redcropped426spaced_14: -6886812619693018640
+      redcropped426spaced_15: -2006981145796564418
+      redcropped426spaced_16: -74788761093445994
+      redcropped426spaced_17: -9182825662999546622
+      redcropped426spaced_18: -5613029969331644411
+      redcropped426spaced_19: 4620395830256511717
+      redcropped426spaced_2: -6285216664397258294
+      redcropped426spaced_20: -8813904498835651988
+      redcropped426spaced_21: 3270540928190164620
+      redcropped426spaced_22: -7315380183190073874
+      redcropped426spaced_23: 4749573568178306975
+      redcropped426spaced_24: -8522734384130341463
+      redcropped426spaced_25: 5781408513038536423
+      redcropped426spaced_26: -6393411954877930387
+      redcropped426spaced_27: -5531852570247519728
+      redcropped426spaced_28: -923309372867099877
+      redcropped426spaced_29: -1912934645914340859
+      redcropped426spaced_3: 1516409306336074480
+      redcropped426spaced_30: 3522760824647972181
+      redcropped426spaced_31: 5764866370460137197
+      redcropped426spaced_32: 2023066536624306621
+      redcropped426spaced_33: 8230301423149161709
+      redcropped426spaced_34: 4503486989124488646
+      redcropped426spaced_35: -6503706818138963780
+      redcropped426spaced_36: 5022622504192980875
+      redcropped426spaced_37: -7300316476637617857
+      redcropped426spaced_38: -3071028201215798498
+      redcropped426spaced_39: 5643054668067276994
+      redcropped426spaced_4: -7678624484772840911
+      redcropped426spaced_40: 2007019938135610369
+      redcropped426spaced_41: -151340695022284694
+      redcropped426spaced_42: 2136821284615306925
+      redcropped426spaced_43: 9056179608216137147
+      redcropped426spaced_44: -3001841949476489675
+      redcropped426spaced_45: 3257129621181824381
+      redcropped426spaced_46: -869300518202924850
+      redcropped426spaced_47: -7311810863291278669
+      redcropped426spaced_48: 2198156293433070231
+      redcropped426spaced_49: -7906330773206143470
+      redcropped426spaced_5: -2333825375743954370
+      redcropped426spaced_50: 3006399327147947221
+      redcropped426spaced_51: 2472710494749190892
+      redcropped426spaced_6: 4552826046525337370
+      redcropped426spaced_7: -6510121339811884858
+      redcropped426spaced_8: -8576844325231241496
+      redcropped426spaced_9: 8283379172175885230
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

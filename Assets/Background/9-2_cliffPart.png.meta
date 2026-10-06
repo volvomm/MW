@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b42368990f807b14b86f10ee10606515
+guid: 2c8be2dc17ee3f44297ef13e30e03d05
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4597669601535120429
-    second: 6-1_doorLock(Locked2)_0
+      213: 8200933459894003030
+    second: 9-2_cliffPart_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 6-1_doorLock(Locked2)_0
+      name: 9-2_cliffPart_0
       rect:
         serializedVersion: 2
-        x: 1050
-        y: 934
-        width: 146
-        height: 43
+        x: 0
+        y: 0
+        width: 537
+        height: 342
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d24dc12a4243ecf30800000000000000
-      internalID: 4597669601535120429
+      spriteID: 655e89708819fc170800000000000000
+      internalID: 8200933459894003030
       vertices: []
       indices: 
       edges: []

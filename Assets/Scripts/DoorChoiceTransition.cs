@@ -189,6 +189,11 @@ public class DoorChoiceTransition : MonoBehaviour, IInteractable
     {
         choiceOpen = true;
 
+        // NEW:
+        // Patch cannot move while the Yes/No
+        // question is on screen.
+        FreezePlayer();
+
         if (doorChoicePanel != null)
         {
             doorChoicePanel.SetActive(true);
@@ -214,6 +219,7 @@ public class DoorChoiceTransition : MonoBehaviour, IInteractable
 
     private void YesEnterRoom()
     {
+        // Patch remains frozen.
         StartCoroutine(TransitionRoom());
     }
 
@@ -225,6 +231,11 @@ public class DoorChoiceTransition : MonoBehaviour, IInteractable
         }
 
         choiceOpen = false;
+
+        // NEW:
+        // Choosing No closes the prompt,
+        // so Patch can move again.
+        UnfreezePlayer();
     }
 
     // =========================================================
@@ -238,8 +249,13 @@ public class DoorChoiceTransition : MonoBehaviour, IInteractable
             doorChoicePanel.SetActive(false);
         }
 
+        // Keep Patch frozen during the entire transition.
+        FreezePlayer();
+
+        // Fade to black.
         yield return StartCoroutine(Fade(1));
 
+        // Move Patch to the new room.
         if (player != null &&
             targetSpawnPoint != null)
         {
@@ -247,6 +263,7 @@ public class DoorChoiceTransition : MonoBehaviour, IInteractable
                 targetSpawnPoint.position;
         }
 
+        // Move the camera to the new room.
         if (mainCamera != null &&
             targetCameraPoint != null)
         {
@@ -258,9 +275,15 @@ public class DoorChoiceTransition : MonoBehaviour, IInteractable
                 );
         }
 
+        // Fade back in.
         yield return StartCoroutine(Fade(0));
 
         choiceOpen = false;
+
+        // NEW:
+        // Only restore movement once the entire
+        // room transition has finished.
+        UnfreezePlayer();
     }
 
     private IEnumerator Fade(float targetAlpha)
@@ -283,6 +306,8 @@ public class DoorChoiceTransition : MonoBehaviour, IInteractable
 
             yield return null;
         }
+
+        fadePanel.alpha = targetAlpha;
     }
 
     // =========================================================
@@ -291,12 +316,14 @@ public class DoorChoiceTransition : MonoBehaviour, IInteractable
 
     private void FreezePlayer()
     {
+        // Immediately stop any current velocity.
         if (playerRigidbody != null)
         {
             playerRigidbody.linearVelocity =
                 Vector2.zero;
         }
 
+        // Stop Patch's walking animation.
         if (playerAnimator != null)
         {
             playerAnimator.SetFloat(
@@ -305,6 +332,7 @@ public class DoorChoiceTransition : MonoBehaviour, IInteractable
             );
         }
 
+        // Disable player movement.
         if (playerMovement != null)
         {
             playerMovement.StopMovementImmediately();
@@ -314,6 +342,8 @@ public class DoorChoiceTransition : MonoBehaviour, IInteractable
 
     private void UnfreezePlayer()
     {
+        // Make sure Patch doesn't retain any
+        // old movement velocity.
         if (playerRigidbody != null)
         {
             playerRigidbody.linearVelocity =
@@ -328,6 +358,7 @@ public class DoorChoiceTransition : MonoBehaviour, IInteractable
             );
         }
 
+        // Restore player movement.
         if (playerMovement != null)
         {
             playerMovement.StopMovementImmediately();
@@ -356,6 +387,9 @@ public class DoorChoiceTransition : MonoBehaviour, IInteractable
 
         playerNearDoor = false;
 
+        // Safety:
+        // If the question somehow closes because Patch
+        // leaves the trigger, restore his movement.
         if (choiceOpen)
         {
             if (doorChoicePanel != null)
@@ -364,6 +398,8 @@ public class DoorChoiceTransition : MonoBehaviour, IInteractable
             }
 
             choiceOpen = false;
+
+            UnfreezePlayer();
         }
     }
 }
