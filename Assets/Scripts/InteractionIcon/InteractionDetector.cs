@@ -102,19 +102,6 @@ public class InteractionDetector : MonoBehaviour
         // If the closet lock currently owns a dialogue,
         // allow E to continue advancing that dialogue even
         // while normal world interactions are locked.
-        //
-        // This allows:
-        //
-        // Opening dialogue
-        // -> E
-        // -> Minigame
-        //
-        // and later:
-        //
-        // 3/3
-        // -> Completion dialogue
-        // -> E
-        // -> Finish unlocking.
         if (activeClosetLockDialogue != null &&
             activeClosetLockDialogue.IsDialogueActive)
         {
@@ -136,7 +123,6 @@ public class InteractionDetector : MonoBehaviour
         RefreshNearbyInteractions();
 
         // Preserve first-time tracking for existing scripts.
-        // This no longer controls the E indicator.
         if (firstTimeInRange != null &&
             !firstTimeInRange.HasBeenInteractedWith)
         {
@@ -170,8 +156,7 @@ public class InteractionDetector : MonoBehaviour
         }
 
         // If this interaction started the closet-lock dialogue,
-        // remember it so E can continue controlling that dialogue
-        // even when the minigame locks normal interactions.
+        // remember it so E can continue controlling that dialogue.
         if (closetLock != null && closetLock.IsDialogueActive)
         {
             activeClosetLockDialogue = closetLock;
@@ -215,7 +200,7 @@ public class InteractionDetector : MonoBehaviour
         if (collision == null || !collision.isTrigger)
             return false;
 
-        return FindInteractable(collision) != null ||
+        return FindAnyInteractable(collision) != null ||
                FindFirstTimeInteractable(collision) != null;
     }
 
@@ -240,19 +225,16 @@ public class InteractionDetector : MonoBehaviour
                 continue;
             }
 
+            // IMPORTANT:
+            // Find an interactable that can CURRENTLY interact.
+            // This allows one object, such as Mother Cat,
+            // to have multiple IInteractable scripts for
+            // different stages of the story.
             IInteractable candidate =
-                FindInteractable(trigger);
+                FindAvailableInteractable(trigger);
 
             FirstTimeInteractable firstTime =
                 FindFirstTimeInteractable(trigger);
-
-            // Don't select objects that cannot currently
-            // be interacted with.
-            if (candidate != null &&
-                !candidate.CanInteract())
-            {
-                continue;
-            }
 
             if (candidate == null && firstTime == null)
                 continue;
@@ -261,7 +243,10 @@ public class InteractionDetector : MonoBehaviour
             nextFirstTime = firstTime;
             nextOutline = FindOutlineController(trigger);
 
-            canShowIcon = true;
+            // Only show the E icon if there is actually
+            // an available IInteractable.
+            canShowIcon = candidate != null;
+
             break;
         }
 
@@ -295,28 +280,130 @@ public class InteractionDetector : MonoBehaviour
         }
     }
 
-    private IInteractable FindInteractable(
+    // =========================================================
+    // FIND AVAILABLE INTERACTABLE
+    // =========================================================
+
+    private IInteractable FindAvailableInteractable(
         Collider2D collision)
     {
         if (collision == null)
             return null;
 
-        IInteractable result =
-            collision.GetComponent<IInteractable>();
+        // -----------------------------------------------------
+        // CHECK THE COLLIDER'S OWN GAMEOBJECT
+        // -----------------------------------------------------
 
-        if (result == null)
+        MonoBehaviour[] ownComponents =
+            collision.GetComponents<MonoBehaviour>();
+
+        foreach (MonoBehaviour component in ownComponents)
         {
-            result =
-                collision.GetComponentInParent<IInteractable>();
+            if (component is IInteractable interactable &&
+                interactable.CanInteract())
+            {
+                return interactable;
+            }
         }
 
-        if (result == null)
+        // -----------------------------------------------------
+        // CHECK PARENTS
+        // -----------------------------------------------------
+
+        Transform currentParent = collision.transform.parent;
+
+        while (currentParent != null)
         {
-            result =
-                collision.GetComponentInChildren<IInteractable>(true);
+            MonoBehaviour[] parentComponents =
+                currentParent.GetComponents<MonoBehaviour>();
+
+            foreach (MonoBehaviour component in parentComponents)
+            {
+                if (component is IInteractable interactable &&
+                    interactable.CanInteract())
+                {
+                    return interactable;
+                }
+            }
+
+            currentParent = currentParent.parent;
         }
 
-        return result;
+        // -----------------------------------------------------
+        // CHECK CHILDREN
+        // -----------------------------------------------------
+
+        MonoBehaviour[] childComponents =
+            collision.GetComponentsInChildren<MonoBehaviour>(true);
+
+        foreach (MonoBehaviour component in childComponents)
+        {
+            if (component is IInteractable interactable &&
+                interactable.CanInteract())
+            {
+                return interactable;
+            }
+        }
+
+        return null;
+    }
+
+    // =========================================================
+    // FIND ANY INTERACTABLE
+    // =========================================================
+
+    // Unlike FindAvailableInteractable(), this does NOT care
+    // whether CanInteract() is currently true.
+    //
+    // This is used only to recognise a collider as belonging
+    // to an interaction object.
+    private IInteractable FindAnyInteractable(
+        Collider2D collision)
+    {
+        if (collision == null)
+            return null;
+
+        MonoBehaviour[] ownComponents =
+            collision.GetComponents<MonoBehaviour>();
+
+        foreach (MonoBehaviour component in ownComponents)
+        {
+            if (component is IInteractable interactable)
+            {
+                return interactable;
+            }
+        }
+
+        Transform currentParent = collision.transform.parent;
+
+        while (currentParent != null)
+        {
+            MonoBehaviour[] parentComponents =
+                currentParent.GetComponents<MonoBehaviour>();
+
+            foreach (MonoBehaviour component in parentComponents)
+            {
+                if (component is IInteractable interactable)
+                {
+                    return interactable;
+                }
+            }
+
+            currentParent = currentParent.parent;
+        }
+
+        MonoBehaviour[] childComponents =
+            collision.GetComponentsInChildren<MonoBehaviour>(true);
+
+        foreach (MonoBehaviour component in childComponents)
+        {
+            if (component is IInteractable interactable)
+            {
+                return interactable;
+            }
+        }
+
+        return null;
     }
 
     private FirstTimeInteractable FindFirstTimeInteractable(
