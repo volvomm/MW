@@ -3619,7 +3619,7 @@ Transform:
   m_GameObject: {fileID: 246482619}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.06, y: -91.58, z: 0}
+  m_LocalPosition: {x: 144.39, y: -91.58, z: 0}
   m_LocalScale: {x: 0.12994635, y: 0.12994635, z: 0.12994635}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5441,7 +5441,7 @@ Transform:
   m_GameObject: {fileID: 355046058}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 162.53, y: -92.02, z: -0.025011547}
+  m_LocalPosition: {x: 163.09, y: -92.24, z: -0.025011547}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8164,7 +8164,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: -89.297905, z: -10}
+  m_LocalPosition: {x: 142.79, y: -89.297905, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26507,7 +26507,7 @@ Transform:
   m_GameObject: {fileID: 1682169579}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 157, y: -92.35, z: -9.913822}
+  m_LocalPosition: {x: 160.1, y: -92.35, z: -9.913822}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26780,6 +26780,7 @@ MonoBehaviour:
   patchFallEndPoint: {fileID: 987512058}
   devilDogCliffStopPoint: {fileID: 1682169580}
   cliffFallDuration: 1.5
+  cliffFallTimeline: {fileID: 326783249}
   patchSpawn: {fileID: 484854611}
   patchCliffTarget: {fileID: 355046059}
   mainCamera: {fileID: 519420031}
@@ -26788,7 +26789,7 @@ MonoBehaviour:
   fadeDuration: 0.75
   patchWalkSpeed: 3
   devilDog: {fileID: 391222446}
-  devilDogStopPoint: {fileID: 1002489530}
+  devilDogStopPoint: {fileID: 1682169580}
   devilDogAnimator: {fileID: 391222449}
   devilDogSprite: {fileID: 391222451}
   devilDogWalkSpeed: 2.5

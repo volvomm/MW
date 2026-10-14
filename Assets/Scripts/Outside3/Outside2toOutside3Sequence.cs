@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Playables;
 
 public class Outside2ToOutside3Sequence : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
     public Transform patchFallEndPoint;
     public Transform devilDogCliffStopPoint;
     public float cliffFallDuration = 1.5f;
+
+    [Header("Cliff Fall Timeline")]
+    public PlayableDirector cliffFallTimeline;
 
     [Header("Outside 3 Positions")]
     public Transform patchSpawn;
@@ -208,25 +212,6 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
             devilDogAnimator.Play(devilDogWalkAnimationState);
         }
 
-        // Move Devil Dog to his first stopping point.
-        if (devilDog != null && devilDogStopPoint != null)
-        {
-            while (Vector2.Distance(
-                       devilDog.transform.position,
-                       devilDogStopPoint.position) > 0.05f)
-            {
-                devilDog.transform.position = Vector3.MoveTowards(
-                    devilDog.transform.position,
-                    devilDogStopPoint.position,
-                    devilDogWalkSpeed * Time.deltaTime
-                );
-
-                yield return null;
-            }
-
-            devilDog.transform.position = devilDogStopPoint.position;
-        }
-
         // Freeze Devil Dog after reaching Patch.
         if (devilDogAnimator != null)
             devilDogAnimator.speed = 0f;
@@ -255,10 +240,17 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
 
         yield return StartCoroutine(
             ShowDialogueLine(
-                "Patch",
-                "Please no..."
-            )
-        );
+        "Patch",
+        "Please stay back."
+    )
+);
+
+        // ---------------------------------
+        // DEVIL DOG APPROACHES THE CLIFF
+        // WHILE PATCH SPEAKS
+        // ---------------------------------
+
+        yield return StartCoroutine(ShowGroundShakingDialogue());
 
         // Hide dialogue before the falling sequence.
         if (dialoguePanel != null)
@@ -267,14 +259,64 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
         dialogueActive = false;
 
         // ---------------------------------
-        // PATCH FALLS + DEVIL DOG WALKS
+        // PLAY CLIFF FALL TIMELINE
         // ---------------------------------
 
-        yield return StartCoroutine(CliffFallSequence());
+        if (cliffFallTimeline != null)
+        {
+            // Make sure Patch cannot move.
+            if (playerMovement != null)
+                playerMovement.enabled = false;
 
-        // Patch intentionally remains disabled
-        // after falling off the cliff.
-    }
+            if (playerRb != null)
+                playerRb.linearVelocity = Vector2.zero;
+
+            // Start the falling animation from the beginning.
+            cliffFallTimeline.time = 0;
+            cliffFallTimeline.Play();
+
+            // Display Patch's scream while he falls.
+            ShowFallingDialogue();
+
+            // Wait until the Timeline finishes.
+            while (cliffFallTimeline.state == PlayState.Playing)
+            {
+                yield return null;
+            }
+
+            // Keep Patch's scream visible for one extra second.
+            yield return new WaitForSeconds(1f);
+
+            // Hide Patch's dialogue.
+            if (dialoguePanel != null)
+                dialoguePanel.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("Cliff Fall Timeline is not assigned!");
+        }
+
+        // ---------------------------------
+        // DEVIL DOG'S FINAL REACTION
+        // ---------------------------------
+
+        // Devil Dog remains standing on the cliff.
+        if (devilDogAnimator != null)
+            devilDogAnimator.speed = 0f;
+
+        // Show Devil Dog's final dialogue.
+        yield return StartCoroutine(
+            ShowDialogueLine(
+                "Devil Dog",
+                "I almost had him."
+            )
+        );
+
+        // Hide the dialogue after the player presses E.
+        if (dialoguePanel != null)
+            dialoguePanel.SetActive(false);
+
+    } // Closes PlaySequence()
 
     private IEnumerator CliffFallSequence()
     {
@@ -496,6 +538,94 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
         dialogueActive = false;
     }
 
+    private IEnumerator ShowGroundShakingDialogue()
+    {
+        string line = "Wait, why is the ground shaking?";
+
+        dialogueActive = true;
+        lineFinished = false;
+        advancePressed = false;
+
+        // Display Patch's dialogue.
+        if (dialoguePanel != null)
+            dialoguePanel.SetActive(true);
+
+        if (speakerNameText != null)
+            speakerNameText.text = "Patch";
+
+        if (portraitImage != null)
+            portraitImage.sprite = patchPortrait;
+
+        if (dialogueText != null)
+            dialogueText.text = "";
+
+        // Start typing Patch's dialogue.
+        typingCoroutine = StartCoroutine(TypeLine(line));
+
+        // Start Devil Dog's walking animation.
+        if (devilDogAnimator != null)
+        {
+            devilDogAnimator.speed = 1f;
+
+            if (!string.IsNullOrEmpty(devilDogWalkAnimationState))
+                devilDogAnimator.Play(devilDogWalkAnimationState);
+        }
+
+        bool dogReachedEdge = devilDog == null || devilDogStopPoint == null;
+
+        if (dogReachedEdge)
+            Debug.LogError("Devil Dog or Devil Dog Stop Point is not assigned!");
+
+        while (!dogReachedEdge || !advancePressed)
+        {
+            // Move Devil Dog toward the cliff edge.
+            if (!dogReachedEdge)
+            {
+                devilDog.transform.position = Vector3.MoveTowards(
+                    devilDog.transform.position,
+                    devilDogStopPoint.position,
+                    devilDogWalkSpeed * Time.deltaTime
+                );
+
+                if (Vector2.Distance(
+                    devilDog.transform.position,
+                    devilDogStopPoint.position) <= 0.05f)
+                {
+                    devilDog.transform.position = devilDogStopPoint.position;
+                    dogReachedEdge = true;
+
+                    // Stop Devil Dog's walking animation.
+                    if (devilDogAnimator != null)
+                        devilDogAnimator.speed = 0f;
+                }
+            }
+
+            // E can reveal the full dialogue while it is typing.
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (!lineFinished)
+                {
+                    if (typingCoroutine != null)
+                        StopCoroutine(typingCoroutine);
+
+                    if (dialogueText != null)
+                        dialogueText.text = line;
+
+                    lineFinished = true;
+                }
+                else if (dogReachedEdge)
+                {
+                    // Only allow advancing once Devil Dog reaches the edge.
+                    advancePressed = true;
+                }
+            }
+
+            yield return null;
+        }
+
+        dialogueActive = false;
+    }
+
     private IEnumerator TypeLine(string line)
     {
         if (dialogueText == null)
@@ -513,5 +643,27 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
         }
 
         lineFinished = true;
+    }
+
+    private void ShowFallingDialogue()
+    {
+        // Display the dialogue panel.
+        if (dialoguePanel != null)
+            dialoguePanel.SetActive(true);
+
+        // Set Patch as the speaker.
+        if (speakerNameText != null)
+            speakerNameText.text = "Patch";
+
+        // Display Patch's portrait.
+        if (portraitImage != null)
+            portraitImage.sprite = patchPortrait;
+
+        // Display the final scream immediately.
+        if (dialogueText != null)
+            dialogueText.text = "Nooooo!";
+
+        // No E press is required.
+        dialogueActive = false;
     }
 }
