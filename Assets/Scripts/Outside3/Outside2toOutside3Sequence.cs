@@ -489,6 +489,8 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
 
     private IEnumerator ShowDialogueLine(string speaker, string line)
     {
+        Debug.Log("STARTING DIALOGUE: " + speaker + " - " + line);
+
         dialogueActive = true;
         lineFinished = false;
         advancePressed = false;

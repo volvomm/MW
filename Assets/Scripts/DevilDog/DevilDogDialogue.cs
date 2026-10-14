@@ -62,10 +62,8 @@ public class DevilDogDialogue : MonoBehaviour
 
     private void Start()
     {
-        if (dialoguePanel != null)
-        {
-            dialoguePanel.SetActive(false);
-        }
+        // Do not automatically hide the shared dialogue panel here.
+        // Other dialogue sequences may already be using it.
 
         if (interactionIcon != null)
         {
