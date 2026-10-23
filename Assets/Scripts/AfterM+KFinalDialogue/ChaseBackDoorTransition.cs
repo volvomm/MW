@@ -70,6 +70,15 @@ public class ChaseBackDoorTransition : MonoBehaviour
         // Move Patch.
         player.position = outsideSpawnPoint.position;
 
+        // Switch Patch's perspective scaling to Outside.
+        PlayerPerspectiveScaling perspectiveScaling =
+            player.GetComponent<PlayerPerspectiveScaling>();
+
+        if (perspectiveScaling != null)
+        {
+            perspectiveScaling.SetActiveRoom(4);
+        }
+
         // Move camera.
         Vector3 cameraPosition = outsideCameraPoint.position;
 

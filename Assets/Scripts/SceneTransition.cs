@@ -25,6 +25,10 @@ public class SceneTransition : MonoBehaviour
     [Tooltip("Enable if Patch enters the hole by moving left instead of right.")]
     [SerializeField] private bool enterFromRight = true;
 
+    [Header("Perspective Scaling")]
+    [Tooltip("The perspective room Patch enters after this transition.")]
+    [SerializeField] private int destinationRoomIndex = 0;
+
     public InventoryItemData RequiredKey => requiredKey;
     public bool CanTransition => canTransition;
 
@@ -107,6 +111,18 @@ public class SceneTransition : MonoBehaviour
             newCameraPosition.y = cameraTargetPosition.position.y;
 
             mainCamera.position = newCameraPosition;
+        }
+
+        // Update Patch's perspective for the destination room.
+        if (player != null)
+        {
+            PlayerPerspectiveScaling perspective =
+                player.GetComponent<PlayerPerspectiveScaling>();
+
+            if (perspective != null)
+            {
+                perspective.SetActiveRoom(destinationRoomIndex);
+            }
         }
 
         Debug.Log("Transition completed: " + gameObject.name);

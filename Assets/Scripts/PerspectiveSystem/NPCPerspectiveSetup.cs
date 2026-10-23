@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class NPCPerspectiveSetup : MonoBehaviour
@@ -7,6 +8,9 @@ public class NPCPerspectiveSetup : MonoBehaviour
 
     [Header("NPC Visual")]
     public SpriteRenderer targetSpriteRenderer;
+
+    [Header("Animation (Optional)")]
+    [SerializeField] private Animator animator;
 
     [Header("Mood-Based Starting Visuals")]
     public MoodPerceptionVisual[] moodVisuals;
@@ -34,53 +38,60 @@ public class NPCPerspectiveSetup : MonoBehaviour
             return;
         }
 
-        // If Patch's mood changes, immediately update
-        // this NPC's perception visual.
         if (moodManager.currentMood != lastMood)
         {
             lastMood = moodManager.currentMood;
-
             ApplyCurrentMoodVisual();
         }
     }
 
     public void ApplyCurrentMoodVisual()
     {
-        if (targetSpriteRenderer == null)
-        {
-            Debug.LogWarning(
-                "NPCPerspectiveSetup: No Target Sprite Renderer assigned."
-            );
-
-            return;
-        }
-
         if (moodManager == null)
         {
-            Debug.LogWarning(
-                "NPCPerspectiveSetup: No Mood Manager assigned."
-            );
-
             ApplyDefaultSprite();
             return;
         }
 
-        if (moodVisuals != null)
+        // If an Animator is assigned, use the correct
+        // idle animation instead of directly changing
+        // the Sprite Renderer.
+        if (animator != null)
         {
-            for (int i = 0; i < moodVisuals.Length; i++)
+            // Do not interrupt the walking-away sequence.
+            DevilDogWalkOff walkOff =
+                GetComponent<DevilDogWalkOff>();
+
+            if (walkOff != null &&
+                walkOff.IsWalkingAway)
             {
-                MoodPerceptionVisual visual =
-                    moodVisuals[i];
+                return;
+            }
 
-                if (visual != null &&
-                    visual.mood == moodManager.currentMood &&
-                    visual.sprite != null)
-                {
-                    targetSpriteRenderer.sprite =
-                        visual.sprite;
+            string idleState =
+                moodManager.currentMood == PatchMood.Frightened
+                ? "DevilDogIdle"
+                : "NeutralDogIdle";
 
-                    return;
-                }
+            animator.Play(idleState, 0, 0f);
+            return;
+        }
+
+        // Preserve sprite-based visuals for NPCs
+        // that do not use an Animator.
+        if (targetSpriteRenderer == null)
+        {
+            return;
+        }
+
+        foreach (MoodPerceptionVisual visual in moodVisuals)
+        {
+            if (visual != null &&
+                visual.mood == moodManager.currentMood &&
+                visual.sprite != null)
+            {
+                targetSpriteRenderer.sprite = visual.sprite;
+                return;
             }
         }
 
@@ -92,13 +103,10 @@ public class NPCPerspectiveSetup : MonoBehaviour
         if (defaultSprite != null &&
             targetSpriteRenderer != null)
         {
-            targetSpriteRenderer.sprite =
-                defaultSprite;
+            targetSpriteRenderer.sprite = defaultSprite;
         }
     }
 
-    // Returns the dialogue portrait that matches
-    // Patch's current mood.
     public Sprite GetCurrentDialoguePortrait()
     {
         if (moodManager == null)
@@ -108,11 +116,8 @@ public class NPCPerspectiveSetup : MonoBehaviour
 
         if (moodVisuals != null)
         {
-            for (int i = 0; i < moodVisuals.Length; i++)
+            foreach (MoodPerceptionVisual visual in moodVisuals)
             {
-                MoodPerceptionVisual visual =
-                    moodVisuals[i];
-
                 if (visual != null &&
                     visual.mood == moodManager.currentMood &&
                     visual.dialoguePortrait != null)

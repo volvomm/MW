@@ -236,11 +236,24 @@ public class DevilDogDialogue : MonoBehaviour
 
         if (speakerPortraitImage != null)
         {
-            speakerPortraitImage.sprite =
-                line.speakerPortrait;
+            Sprite portrait = line.speakerPortrait;
 
-            speakerPortraitImage.enabled =
-                line.speakerPortrait != null;
+            // Use the correct Devil Dog portrait
+            // based on Patch's current mood.
+            if (perspectiveSetup != null &&
+                line.speakerName == "Devil Dog")
+            {
+                Sprite moodPortrait =
+                    perspectiveSetup.GetCurrentDialoguePortrait();
+
+                if (moodPortrait != null)
+                {
+                    portrait = moodPortrait;
+                }
+            }
+
+            speakerPortraitImage.sprite = portrait;
+            speakerPortraitImage.enabled = portrait != null;
         }
 
         if (typingCoroutine != null)

@@ -24,6 +24,11 @@ public class DoorChoiceTransition : MonoBehaviour, IInteractable
     public float fadeSpeed = 1f;
     public string message = "Would you like to enter the next room?";
 
+    [Header("Perspective Scaling")]
+    [Tooltip("The perspective room Patch enters through this door.")]
+    [SerializeField] private int destinationRoomIndex = 0;
+
+
     // =========================================================
     // OPTIONAL KITTEN STORY GATE
     // =========================================================
@@ -255,13 +260,25 @@ public class DoorChoiceTransition : MonoBehaviour, IInteractable
         // Fade to black.
         yield return StartCoroutine(Fade(1));
 
+
         // Move Patch to the new room.
         if (player != null &&
             targetSpawnPoint != null)
         {
             player.position =
                 targetSpawnPoint.position;
+
+            // Update Patch's perspective scaling
+            // for the destination room.
+            PlayerPerspectiveScaling perspective =
+                player.GetComponent<PlayerPerspectiveScaling>();
+
+            if (perspective != null)
+            {
+                perspective.SetActiveRoom(destinationRoomIndex);
+            }
         }
+
 
         // Move the camera to the new room.
         if (mainCamera != null &&

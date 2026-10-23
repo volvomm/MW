@@ -1,3 +1,4 @@
+
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -17,12 +18,15 @@ public class PlankQTEManager : MonoBehaviour
     [Header("QTE Boxes")]
     [SerializeField] private QTEBox[] qteBoxes;
 
-    [Header("QTE Settings")]
+    [Header("Closet Placement QTE Settings")]
     [SerializeField] private float timePerKey = 2f;
     [SerializeField] private float flashDuration = 0.6f;
 
-    // Prevents the E press used to interact
-    // from also counting as a QTE input.
+    [Header("Floor Plank Button Mashing")]
+    [SerializeField] private int pressesRequiredPerLetter = 8;
+    [SerializeField] private float mashBarDrainPerSecond = 0.15f;
+
+    [Header("Input")]
     [SerializeField] private float startingInputDelay = 0.12f;
 
     [Header("Player")]
@@ -37,40 +41,26 @@ public class PlankQTEManager : MonoBehaviour
 
     private readonly KeyCode[] possibleKeys =
     {
-        KeyCode.A,
-        KeyCode.B,
-        KeyCode.C,
-        KeyCode.D,
-        KeyCode.F,
-        KeyCode.G,
-        KeyCode.H,
-        KeyCode.J,
-        KeyCode.K,
-        KeyCode.L,
-        KeyCode.Q,
-        KeyCode.R,
-        KeyCode.S,
-        KeyCode.T,
-        KeyCode.V,
-        KeyCode.W,
-        KeyCode.X,
-        KeyCode.Y,
-        KeyCode.Z
+        KeyCode.A, KeyCode.B, KeyCode.C, KeyCode.D,
+        KeyCode.F, KeyCode.G, KeyCode.H, KeyCode.J,
+        KeyCode.K, KeyCode.L, KeyCode.Q, KeyCode.R,
+        KeyCode.S, KeyCode.T, KeyCode.V, KeyCode.W,
+        KeyCode.X, KeyCode.Y, KeyCode.Z
     };
 
     private KeyCode[] selectedKeys;
+    private Color[] normalBackgroundColors;
 
     private int currentBoxIndex;
     private float currentTimer;
     private float inputDelayTimer;
+    private float mashProgress;
 
     private bool qteRunning;
     private bool waitingDuringFlash;
     private bool qteSuccessful;
+    private bool pickupMashMode;
 
-    private Color[] normalBackgroundColors;
-
-    // Only ONE of these will be used for each QTE.
     private WoodenPlankPickup currentPlankPickup;
     private WoodenPlankBarricade currentBarricade;
 
@@ -79,7 +69,10 @@ public class PlankQTEManager : MonoBehaviour
         selectedKeys = new KeyCode[3];
         normalBackgroundColors = new Color[3];
 
-        for (int i = 0; i < qteBoxes.Length; i++)
+        if (qteBoxes == null)
+            return;
+
+        for (int i = 0; i < qteBoxes.Length && i < 3; i++)
         {
             if (qteBoxes[i].keyBackground != null)
             {
@@ -97,19 +90,23 @@ public class PlankQTEManager : MonoBehaviour
     private void Update()
     {
         if (!qteRunning || waitingDuringFlash)
-        {
             return;
-        }
 
-        // Ignore the original E interaction press.
         if (inputDelayTimer > 0f)
         {
             inputDelayTimer -= Time.deltaTime;
             return;
         }
 
-        UpdateTimer();
-        CheckKeyboardInput();
+        if (pickupMashMode)
+        {
+            UpdateMashMode();
+        }
+        else
+        {
+            UpdateTimer();
+            CheckKeyboardInput();
+        }
     }
 
     private void PositionQTENextToPlayer()
@@ -123,18 +120,14 @@ public class PlankQTEManager : MonoBehaviour
         }
 
         Vector3 patchScreenPosition =
-            gameCamera.WorldToScreenPoint(
-                playerTransform.position
-            );
+            gameCamera.WorldToScreenPoint(playerTransform.position);
 
         bool patchFacingLeft =
             playerMovement.rend != null &&
             playerMovement.rend.flipX;
 
         float xOffset =
-            patchFacingLeft
-                ? -horizontalOffset
-                : horizontalOffset;
+            patchFacingLeft ? -horizontalOffset : horizontalOffset;
 
         qteContainer.position = new Vector3(
             patchScreenPosition.x + xOffset,
@@ -143,49 +136,43 @@ public class PlankQTEManager : MonoBehaviour
         );
     }
 
-    // =====================================================
-    // FLOOR PLANK QTE
-    // =====================================================
-
+    // FLOOR PLANK PICKUP: BUTTON MASHING
     public void StartQTE(WoodenPlankPickup plankPickup)
     {
         if (qteRunning)
-        {
             return;
-        }
 
         currentPlankPickup = plankPickup;
         currentBarricade = null;
+        pickupMashMode = true;
+
+        // Patch always faces RIGHT when picking up a plank.
+        if (playerMovement != null &&
+            playerMovement.rend != null)
+        {
+            playerMovement.rend.flipX = false;
+        }
 
         StartCommonQTE();
     }
 
-    // =====================================================
-    // CLOSET BARRICADE QTE
-    // =====================================================
-
+    // CLOSET BARRICADE: ORIGINAL TIMED QTE
     public void StartBarricadeQTE(
         WoodenPlankBarricade barricade)
     {
         if (qteRunning)
-        {
             return;
-        }
 
         currentBarricade = barricade;
         currentPlankPickup = null;
+        pickupMashMode = false;
 
         StartCommonQTE();
     }
 
-    // =====================================================
-    // SHARED QTE START
-    // =====================================================
-
     private void StartCommonQTE()
     {
-        if (qteBoxes == null ||
-            qteBoxes.Length != 3)
+        if (qteBoxes == null || qteBoxes.Length != 3)
         {
             Debug.LogWarning(
                 "PlankQTEManager needs exactly 3 QTE boxes."
@@ -193,34 +180,28 @@ public class PlankQTEManager : MonoBehaviour
 
             currentPlankPickup = null;
             currentBarricade = null;
-
             return;
         }
 
         qteSuccessful = true;
-
         GenerateRandomKeys();
-
-        PositionQTENextToPlayer();
 
         currentBoxIndex = 0;
         qteRunning = true;
         waitingDuringFlash = false;
-
-        // Keeps the E interaction press from
-        // instantly failing QTE #1.
         inputDelayTimer = startingInputDelay;
+
+        PositionQTENextToPlayer();
 
         for (int i = 0; i < qteBoxes.Length; i++)
         {
             if (qteBoxes[i].boxObject != null)
-            {
                 qteBoxes[i].boxObject.SetActive(true);
-            }
 
             if (qteBoxes[i].timerFill != null)
             {
-                qteBoxes[i].timerFill.fillAmount = 1f;
+                qteBoxes[i].timerFill.fillAmount =
+                    pickupMashMode ? 0f : 1f;
             }
 
             if (qteBoxes[i].keyBackground != null)
@@ -231,7 +212,6 @@ public class PlankQTEManager : MonoBehaviour
         }
 
         FreezePlayer();
-
         BeginCurrentBox();
     }
 
@@ -246,10 +226,7 @@ public class PlankQTEManager : MonoBehaviour
             {
                 newKey =
                     possibleKeys[
-                        Random.Range(
-                            0,
-                            possibleKeys.Length
-                        )
+                        Random.Range(0, possibleKeys.Length)
                     ];
 
                 duplicate = false;
@@ -268,32 +245,79 @@ public class PlankQTEManager : MonoBehaviour
             selectedKeys[i] = newKey;
 
             if (qteBoxes[i].keyText != null)
-            {
-                qteBoxes[i].keyText.text =
-                    newKey.ToString();
-            }
+                qteBoxes[i].keyText.text = newKey.ToString();
         }
     }
 
     private void BeginCurrentBox()
     {
-        currentTimer = timePerKey;
+        if (pickupMashMode)
+        {
+            mashProgress = 0f;
+
+            if (qteBoxes[currentBoxIndex].timerFill != null)
+            {
+                qteBoxes[currentBoxIndex]
+                    .timerFill.fillAmount = 0f;
+            }
+        }
+        else
+        {
+            currentTimer = timePerKey;
+
+            if (qteBoxes[currentBoxIndex].timerFill != null)
+            {
+                qteBoxes[currentBoxIndex]
+                    .timerFill.fillAmount = 1f;
+            }
+        }
+    }
+
+    // FLOOR PICKUP: FILL THE BAR BY MASHING
+    private void UpdateMashMode()
+    {
+        mashProgress = Mathf.Max(
+            0f,
+            mashProgress -
+            mashBarDrainPerSecond * Time.deltaTime
+        );
+
+        KeyCode correctKey = selectedKeys[currentBoxIndex];
+
+        if (Input.GetKeyDown(correctKey))
+        {
+            mashProgress +=
+                1f / Mathf.Max(1, pressesRequiredPerLetter);
+        }
+
+        mashProgress = Mathf.Clamp01(mashProgress);
 
         if (qteBoxes[currentBoxIndex].timerFill != null)
         {
             qteBoxes[currentBoxIndex]
-                .timerFill.fillAmount = 1f;
+                .timerFill.fillAmount = mashProgress;
+        }
+
+        if (mashProgress >= 1f)
+        {
+            // Keep the completed bar filled.
+            if (qteBoxes[currentBoxIndex].timerFill != null)
+            {
+                qteBoxes[currentBoxIndex]
+                    .timerFill.fillAmount = 1f;
+            }
+
+            MoveToNextBox();
         }
     }
 
+    // CLOSET PLACEMENT: ORIGINAL TIMER
     private void UpdateTimer()
     {
         currentTimer -= Time.deltaTime;
 
         float amount =
-            Mathf.Clamp01(
-                currentTimer / timePerKey
-            );
+            Mathf.Clamp01(currentTimer / timePerKey);
 
         if (qteBoxes[currentBoxIndex].timerFill != null)
         {
@@ -302,20 +326,15 @@ public class PlankQTEManager : MonoBehaviour
         }
 
         if (currentTimer <= 0f)
-        {
             FailCurrentBox();
-        }
     }
 
     private void CheckKeyboardInput()
     {
         if (!Input.anyKeyDown)
-        {
             return;
-        }
 
-        KeyCode correctKey =
-            selectedKeys[currentBoxIndex];
+        KeyCode correctKey = selectedKeys[currentBoxIndex];
 
         if (Input.GetKeyDown(correctKey))
         {
@@ -324,9 +343,7 @@ public class PlankQTEManager : MonoBehaviour
         }
 
         if (AnyLetterKeyPressed())
-        {
             FailCurrentBox();
-        }
     }
 
     private bool AnyLetterKeyPressed()
@@ -336,9 +353,7 @@ public class PlankQTEManager : MonoBehaviour
              key++)
         {
             if (Input.GetKeyDown(key))
-            {
                 return true;
-            }
         }
 
         return false;
@@ -358,12 +373,9 @@ public class PlankQTEManager : MonoBehaviour
     private void FailCurrentBox()
     {
         if (waitingDuringFlash)
-        {
             return;
-        }
 
         qteSuccessful = false;
-
         StartCoroutine(FlashFailedBox());
     }
 
@@ -375,24 +387,17 @@ public class PlankQTEManager : MonoBehaviour
             qteBoxes[currentBoxIndex].keyBackground;
 
         if (background != null)
-        {
             background.color = Color.red;
-        }
 
-        yield return new WaitForSeconds(
-            flashDuration
-        );
+        yield return new WaitForSeconds(flashDuration);
 
         if (background != null)
         {
             background.color =
-                normalBackgroundColors[
-                    currentBoxIndex
-                ];
+                normalBackgroundColors[currentBoxIndex];
         }
 
         waitingDuringFlash = false;
-
         MoveToNextBox();
     }
 
@@ -414,40 +419,27 @@ public class PlankQTEManager : MonoBehaviour
         qteRunning = false;
 
         HideQTE();
-
         UnfreezePlayer();
 
         if (qteSuccessful)
         {
             Debug.Log("Plank QTE SUCCESS!");
 
-            // Floor plank pickup.
             if (currentPlankPickup != null)
-            {
                 currentPlankPickup.QTESucceeded();
-            }
 
-            // Closet plank placement.
             if (currentBarricade != null)
-            {
                 currentBarricade.QTESucceeded();
-            }
         }
         else
         {
             Debug.Log("Plank QTE FAILED!");
 
-            // Floor plank pickup failed.
             if (currentPlankPickup != null)
-            {
                 currentPlankPickup.QTEFailed();
-            }
 
-            // Closet placement failed.
             if (currentBarricade != null)
-            {
                 currentBarricade.QTEFailed();
-            }
         }
 
         currentPlankPickup = null;
@@ -457,9 +449,7 @@ public class PlankQTEManager : MonoBehaviour
     private void FreezePlayer()
     {
         if (playerMovement == null)
-        {
             return;
-        }
 
         playerMovement.StopMovementImmediately();
         playerMovement.enabled = false;
@@ -468,9 +458,7 @@ public class PlankQTEManager : MonoBehaviour
     private void UnfreezePlayer()
     {
         if (playerMovement == null)
-        {
             return;
-        }
 
         playerMovement.StopMovementImmediately();
         playerMovement.enabled = true;
@@ -479,16 +467,12 @@ public class PlankQTEManager : MonoBehaviour
     private void HideQTE()
     {
         if (qteBoxes == null)
-        {
             return;
-        }
 
         foreach (QTEBox box in qteBoxes)
         {
             if (box.boxObject != null)
-            {
                 box.boxObject.SetActive(false);
-            }
         }
     }
 }

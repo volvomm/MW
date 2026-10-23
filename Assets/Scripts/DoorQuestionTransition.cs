@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DoorQuestionTransition : MonoBehaviour
+public class DoorQuestionTransition : MonoBehaviour, IInteractable
 {
     [Header("Door Question UI")]
     public GameObject questionPanel;
@@ -21,6 +21,11 @@ public class DoorQuestionTransition : MonoBehaviour
     [Header("Settings")]
     public float fadeSpeed = 1f;
     public string question = "Enter the closet?";
+
+    [Header("Perspective Scaling")]
+    [Tooltip("The perspective room Patch enters through this door.")]
+    [SerializeField] private int destinationRoomIndex = 0;
+
 
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
@@ -78,6 +83,73 @@ public class DoorQuestionTransition : MonoBehaviour
 
     private string currentDialogue;
 
+    public bool CanInteract()
+    {
+        // Prevent new interactions while the door question
+        // or Patch's dialogue is currently active.
+        if (questionOpen || patchDialogueActive)
+        {
+            return false;
+        }
+
+        // AFTER DEVIL DOG IS TRAPPED:
+        // Allow Patch to place wooden planks against the closet.
+        if (StoryProgress.DevilDogTrapdoorSequenceFinished)
+        {
+            return woodenPlankBarricade != null &&
+                   woodenPlankBarricade.CanPlacePlank();
+        }
+
+        // BEFORE PATCH TALKS TO DEVIL DOG:
+        // Allow the original locked-door dialogue.
+        if (!StoryProgress.HasTalkedToDevilDog)
+        {
+            return true;
+        }
+
+        // AFTER TALKING TO DEVIL DOG:
+        // The locked handle must take priority until
+        // the spinning wheel minigame has been completed.
+        if (!StoryProgress.ClosetLockMinigameCompleted)
+        {
+            return false;
+        }
+
+        // AFTER COMPLETING THE SPINNING WHEEL MINIGAME:
+        // Allow the normal closet door interaction.
+        return true;
+    }
+
+    public void Interact()
+    {
+        if (!CanInteract())
+            return;
+
+        // After Devil Dog is trapped, use the
+        // existing three-plank barricade sequence.
+        if (StoryProgress.DevilDogTrapdoorSequenceFinished)
+        {
+            TryBarricadeCloset();
+            return;
+        }
+
+        // Before talking to Devil Dog, show
+        // the existing locked-door dialogue.
+        if (!StoryProgress.HasTalkedToDevilDog)
+        {
+            StartPatchDialogue(lockedDialogue);
+            return;
+        }
+
+        // The spinning lock must be completed through
+        // its own interaction before entering.
+        if (!StoryProgress.ClosetLockMinigameCompleted)
+            return;
+
+        // Once unlocked, show the door question.
+        OpenQuestion();
+    }
+
     private void Start()
     {
         if (questionPanel != null)
@@ -105,62 +177,21 @@ public class DoorQuestionTransition : MonoBehaviour
 
     private void Update()
     {
+        // Only handle E when Patch's dialogue
+        // is already being displayed.
+        if (!patchDialogueActive)
+        {
+            return;
+        }
+
         if (!Input.GetKeyDown(KeyCode.E))
         {
             return;
         }
 
-        // If Patch dialogue is already on screen,
-        // E handles that dialogue instead of interacting
-        // with the door again.
-        if (patchDialogueActive)
-        {
-            HandlePatchDialogueInput();
-            return;
-        }
-
-        if (!playerInside || questionOpen)
-        {
-            return;
-        }
-
-        // ------------------------------------------------
-        // AFTER DEVIL DOG DISAPPEARS INTO THE CLOSET
-        // ------------------------------------------------
-        if (StoryProgress.DevilDogTrapdoorSequenceFinished)
-        {
-            TryBarricadeCloset();
-            return;
-        }
-
-        // ------------------------------------------------
-        // EARLIER STORY BEHAVIOUR
-        // ------------------------------------------------
-
-        // Before Patch talks to the Devil Dog,
-        // don't allow the closet question.
-        if (!StoryProgress.HasTalkedToDevilDog)
-        {
-            StartPatchDialogue(lockedDialogue);
-            return;
-        }
-
-        // Patch has talked to the Devil Dog,
-        // but the spinning lock has NOT been completed yet.
-        //
-        // Do not show the "Enter the closet?" question.
-        // Patch must interact with the locked door handle
-        // and complete the spinning lock minigame first.
-        if (!StoryProgress.ClosetLockMinigameCompleted)
-        {
-            return;
-        }
-
-        // The Devil Dog has been spoken to AND
-        // the spinning lock minigame has been completed.
-        //
-        // The closet can now be entered normally.
-        OpenQuestion();
+        // E reveals the complete sentence if it is typing.
+        // The next E closes the dialogue.
+        HandlePatchDialogueInput();
     }
 
     private void TryBarricadeCloset()
@@ -477,9 +508,20 @@ public class DoorQuestionTransition : MonoBehaviour
 
         yield return StartCoroutine(Fade(1f));
 
+
         if (player != null && spawnPoint != null)
         {
             player.position = spawnPoint.position;
+
+            // Update Patch's perspective scaling
+            // for the destination room.
+            PlayerPerspectiveScaling perspective =
+                player.GetComponent<PlayerPerspectiveScaling>();
+
+            if (perspective != null)
+            {
+                perspective.SetActiveRoom(destinationRoomIndex);
+            }
         }
 
         if (mainCamera != null && cameraPoint != null)

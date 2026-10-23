@@ -212,7 +212,10 @@ public class InteractionDetector : MonoBehaviour
 
         bool canShowIcon = false;
 
+
         // Most recently entered available trigger wins.
+        // Only use the normal interaction selection if
+        // no available wooden plank was found.
         for (int i = nearbyTriggers.Count - 1; i >= 0; i--)
         {
             Collider2D trigger = nearbyTriggers[i];
@@ -236,7 +239,10 @@ public class InteractionDetector : MonoBehaviour
             FirstTimeInteractable firstTime =
                 FindFirstTimeInteractable(trigger);
 
-            if (candidate == null && firstTime == null)
+            // Skip objects that cannot currently be interacted with.
+            // A FirstTimeInteractable component alone does not mean
+            // the object has an available interaction.
+            if (candidate == null)
                 continue;
 
             nextInteractable = candidate;
@@ -249,6 +255,10 @@ public class InteractionDetector : MonoBehaviour
 
             break;
         }
+
+        // End of normal interaction selection.
+    
+
 
         // Update the visible outline.
         if (currentOutline != nextOutline)

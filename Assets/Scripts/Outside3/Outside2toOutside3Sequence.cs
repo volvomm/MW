@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Playables;
+using UnityEngine.Video;
 
 public class Outside2ToOutside3Sequence : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
     [Header("Cliff Fall Timeline")]
     public PlayableDirector cliffFallTimeline;
 
+    [Range(0.5f, 5f)]
+    public float cliffTimelineSpeed = 1.5f;
+
     [Header("Outside 3 Positions")]
     public Transform patchSpawn;
     public Transform patchCliffTarget;
@@ -35,18 +39,36 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
     public CanvasGroup fadePanel;
     public float fadeDuration = 0.75f;
 
+    [Header("Ending Video Transition")]
+    public VideoPlayer endingVideoPlayer;
+    public GameObject endingVideoDisplay;
+    public CanvasGroup endingFadeOverlay;
+
+    public float endingDelay = 1f;
+    public float endingFadeDuration = 2f;
+
     [Header("Patch Automatic Walk")]
     public float patchWalkSpeed = 3f;
 
     [Header("Devil Dog")]
     public GameObject devilDog;
     public Transform devilDogStopPoint;
+
+    [Header("Devil Dog Entrance")]
+    public Transform devilDogEntranceStartPoint;
+    public Transform devilDogEntranceStopPoint;
+    public float devilDogEntranceSpeed = 1.5f;
+
     public Animator devilDogAnimator;
     public SpriteRenderer devilDogSprite;
     public float devilDogWalkSpeed = 2.5f;
 
     [Tooltip("Type the EXACT name of the Devil Dog walking animation state.")]
     public string devilDogWalkAnimationState = "DevilDogWalk";
+
+    [Header("Neutral Dog Animations")]
+public string neutralDogWalkAnimationState = "NeutralDogWalk";
+public string neutralDogIdleAnimationState = "NeutralDogIdle";
 
     [Header("Dialogue UI")]
     public GameObject dialoguePanel;
@@ -58,6 +80,34 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
 
     [Header("Dialogue Settings")]
     public float typingSpeed = 0.04f;
+
+    // Choose the dog's walking animation based on Patch's mood.
+    private string GetDogWalkAnimation()
+    {
+        MoodManager moodManager = FindFirstObjectByType<MoodManager>();
+
+        if (moodManager != null &&
+            moodManager.currentMood != PatchMood.Frightened)
+        {
+            return neutralDogWalkAnimationState;
+        }
+
+        return devilDogWalkAnimationState;
+    }
+
+    // Choose the dog's idle animation based on Patch's mood.
+    private string GetDogIdleAnimation()
+    {
+        MoodManager moodManager = FindFirstObjectByType<MoodManager>();
+
+        if (moodManager != null &&
+            moodManager.currentMood != PatchMood.Frightened)
+        {
+            return neutralDogIdleAnimationState;
+        }
+
+        return "DevilDogIdle";
+    }
 
     private Rigidbody2D playerRb;
 
@@ -140,6 +190,13 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
         if (playerSprite != null)
             playerSprite.flipX = false;
 
+        // Keep Patch idle while the screen fades in.
+        if (playerAnimator != null)
+        {
+            playerAnimator.speed = 1f;
+            playerAnimator.SetFloat("Speed", 0f);
+        }
+
         // ---------------------------------
         // FADE BACK IN
         // ---------------------------------
@@ -189,32 +246,93 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
             )
         );
 
+        // Hide Patch's dialogue after the player presses E.
+        if (dialoguePanel != null)
+        {
+            dialoguePanel.SetActive(false);
+        }
+
         // ---------------------------------
         // DEVIL DOG ENTERS
         // ---------------------------------
 
-        if (devilDog != null)
+        // Wait one second before Devil Dog enters.
+        yield return new WaitForSeconds(1f);
+
+        // Position Devil Dog at his entrance starting point.
+        if (devilDog != null &&
+            devilDogEntranceStartPoint != null &&
+            devilDogEntranceStopPoint != null)
+        {
+            devilDog.transform.position = devilDogEntranceStartPoint.position;
             devilDog.SetActive(true);
 
-        // Patch turns around to look at Devil Dog.
+            // Devil Dog faces left, towards Patch.
+            if (devilDogSprite != null)
+                devilDogSprite.flipX = true;
+
+            // Start Devil Dog's walking animation.
+            if (devilDogAnimator != null)
+            {
+                devilDogAnimator.speed = 1f;
+
+                string walkAnimation = GetDogWalkAnimation();
+
+                if (!string.IsNullOrEmpty(walkAnimation))
+                    devilDogAnimator.Play(walkAnimation, 0, 0f);
+            }
+
+            // Walk to the entrance stopping position.
+            while (Vector2.Distance(
+                devilDog.transform.position,
+                devilDogEntranceStopPoint.position) > 0.05f)
+            {
+                Vector3 targetPosition = devilDogEntranceStopPoint.position;
+
+                // Preserve Devil Dog's Z position.
+                targetPosition.z = devilDog.transform.position.z;
+
+                devilDog.transform.position = Vector3.MoveTowards(
+                    devilDog.transform.position,
+                    targetPosition,
+                    devilDogEntranceSpeed * Time.deltaTime
+                );
+
+                yield return null;
+            }
+
+            // Stop at the entrance destination.
+            Vector3 finalPosition = devilDogEntranceStopPoint.position;
+            finalPosition.z = devilDog.transform.position.z;
+            devilDog.transform.position = finalPosition;
+
+            // Switch to the correct idle animation based on Patch's mood.
+            if (devilDogAnimator != null)
+            {
+                devilDogAnimator.speed = 1f;
+                devilDogAnimator.Play(GetDogIdleAnimation(), 0, 0f);
+            }
+        }
+
+        // Devil Dog calls out to Patch.
+        yield return StartCoroutine(
+            ShowDialogueLine(
+                "Devil Dog",
+                "Hey!"
+            )
+        );
+
+        // Patch turns around to face Devil Dog.
         if (patchSpriteRenderer != null)
             patchSpriteRenderer.flipX = true;
 
-        // Devil Dog faces toward Patch.
-        if (devilDogSprite != null)
-            devilDogSprite.flipX = true;
-
-        // Start Devil Dog walking animation.
-        if (devilDogAnimator != null &&
-            !string.IsNullOrEmpty(devilDogWalkAnimationState))
-        {
-            devilDogAnimator.speed = 1f;
-            devilDogAnimator.Play(devilDogWalkAnimationState);
-        }
-
-        // Freeze Devil Dog after reaching Patch.
-        if (devilDogAnimator != null)
-            devilDogAnimator.speed = 0f;
+        // Patch reacts to Devil Dog's appearance.
+        yield return StartCoroutine(
+            ShowDialogueLine(
+                "Patch",
+                "What...? How did you get out?"
+            )
+        );
 
         // ---------------------------------
         // DEVIL DOG DIALOGUE
@@ -241,7 +359,7 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
         yield return StartCoroutine(
             ShowDialogueLine(
         "Patch",
-        "Please stay back."
+        "No... Go away!"
     )
 );
 
@@ -275,6 +393,13 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
             cliffFallTimeline.time = 0;
             cliffFallTimeline.Play();
 
+            // Apply the custom playback speed to the entire Timeline.
+            cliffFallTimeline.playableGraph.GetRootPlayable(0)
+                .SetSpeed(cliffTimelineSpeed);
+
+            // Devil Dog continues walking while Patch falls.
+            StartCoroutine(ContinueDevilDogWalking());
+
             // Display Patch's scream while he falls.
             ShowFallingDialogue();
 
@@ -284,12 +409,24 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
                 yield return null;
             }
 
-            // Keep Patch's scream visible for one extra second.
-            yield return new WaitForSeconds(1f);
+            // The falling animation has finished.
+            // Keep Patch's "Nooooo!" dialogue visible.
 
-            // Hide Patch's dialogue.
+            // Wait one frame so the E press cannot carry over.
+            yield return null;
+
+            // Wait for the player to press E.
+            while (!Input.GetKeyDown(KeyCode.E))
+            {
+                yield return null;
+            }
+
+            // Hide Patch's dialogue before Devil Dog speaks.
             if (dialoguePanel != null)
                 dialoguePanel.SetActive(false);
+
+            // Wait until the next frame before starting Devil Dog's dialogue.
+            yield return null;
         }
         else
         {
@@ -300,21 +437,34 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
         // DEVIL DOG'S FINAL REACTION
         // ---------------------------------
 
-        // Devil Dog remains standing on the cliff.
+        // Devil Dog returns to the correct idle animation.
         if (devilDogAnimator != null)
-            devilDogAnimator.speed = 0f;
+        {
+            devilDogAnimator.speed = 1f;
+            devilDogAnimator.Play(GetDogIdleAnimation(), 0, 0f);
+        }
 
         // Show Devil Dog's final dialogue.
         yield return StartCoroutine(
             ShowDialogueLine(
                 "Devil Dog",
-                "I almost had him."
+                "Dammit."
             )
         );
+
+        yield return StartCoroutine(
+    ShowDialogueLine(
+        "Devil Dog",
+        "I almost had him."
+    )
+);
 
         // Hide the dialogue after the player presses E.
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
+
+        // Start the final animated ending.
+        yield return StartCoroutine(PlayEndingVideoSequence());
 
     } // Closes PlaySequence()
 
@@ -389,9 +539,11 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
         {
             devilDogAnimator.speed = 1f;
 
-            if (!string.IsNullOrEmpty(devilDogWalkAnimationState))
+            string walkAnimation = GetDogWalkAnimation();
+
+            if (!string.IsNullOrEmpty(walkAnimation))
             {
-                devilDogAnimator.Play(devilDogWalkAnimationState);
+                devilDogAnimator.Play(walkAnimation, 0, 0f);
             }
         }
 
@@ -457,6 +609,64 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
 
         patchIsFalling = false;
         player.gameObject.SetActive(false);
+    }
+
+    private IEnumerator PlayEndingVideoSequence()
+    {
+        // Wait one second after Devil Dog's dialogue disappears.
+        yield return new WaitForSeconds(endingDelay);
+
+        // Slowly fade the gameplay screen to black.
+        yield return StartCoroutine(EndingFade(0f, 1f));
+
+        // Activate the video display while the screen is black.
+        if (endingVideoDisplay != null)
+            endingVideoDisplay.SetActive(true);
+
+        // Prepare the video before playing it.
+        if (endingVideoPlayer != null)
+        {
+            endingVideoPlayer.Prepare();
+
+            while (!endingVideoPlayer.isPrepared)
+            {
+                yield return null;
+            }
+
+            endingVideoPlayer.Play();
+        }
+
+        // Keep the screen black for 2 seconds
+        // while the animated ending begins playing.
+        yield return new WaitForSeconds(2f);
+
+        // Slowly reveal the video.
+        yield return StartCoroutine(EndingFade(1f, 0f));
+    }
+
+    private IEnumerator EndingFade(float startAlpha, float endAlpha)
+    {
+        if (endingFadeOverlay == null)
+            yield break;
+
+        endingFadeOverlay.alpha = startAlpha;
+
+        float timer = 0f;
+
+        while (timer < endingFadeDuration)
+        {
+            timer += Time.deltaTime;
+
+            endingFadeOverlay.alpha = Mathf.Lerp(
+                startAlpha,
+                endAlpha,
+                timer / endingFadeDuration
+            );
+
+            yield return null;
+        }
+
+        endingFadeOverlay.alpha = endAlpha;
     }
 
     private IEnumerator Fade(float startAlpha, float endAlpha)
@@ -542,7 +752,7 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
 
     private IEnumerator ShowGroundShakingDialogue()
     {
-        string line = "Wait, why is the ground shaking?";
+        string line = "Wait, why does the ground feel unstable?";
 
         dialogueActive = true;
         lineFinished = false;
@@ -569,16 +779,23 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
         {
             devilDogAnimator.speed = 1f;
 
-            if (!string.IsNullOrEmpty(devilDogWalkAnimationState))
-                devilDogAnimator.Play(devilDogWalkAnimationState);
+            string walkAnimation = GetDogWalkAnimation();
+
+            if (!string.IsNullOrEmpty(walkAnimation))
+            {
+                devilDogAnimator.Play(walkAnimation, 0, 0f);
+            }
         }
+
+        // Start the fall when Devil Dog is this close to his stopping point.
+        float fallTriggerDistance = 3.0f;
 
         bool dogReachedEdge = devilDog == null || devilDogStopPoint == null;
 
         if (dogReachedEdge)
             Debug.LogError("Devil Dog or Devil Dog Stop Point is not assigned!");
 
-        while (!dogReachedEdge || !advancePressed)
+        while (!dogReachedEdge)
         {
             // Move Devil Dog toward the cliff edge.
             if (!dogReachedEdge)
@@ -591,34 +808,10 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
 
                 if (Vector2.Distance(
                     devilDog.transform.position,
-                    devilDogStopPoint.position) <= 0.05f)
+                    devilDogStopPoint.position) <= fallTriggerDistance)
                 {
-                    devilDog.transform.position = devilDogStopPoint.position;
+                    // Trigger Patch's fall when Devil Dog gets close enough.
                     dogReachedEdge = true;
-
-                    // Stop Devil Dog's walking animation.
-                    if (devilDogAnimator != null)
-                        devilDogAnimator.speed = 0f;
-                }
-            }
-
-            // E can reveal the full dialogue while it is typing.
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (!lineFinished)
-                {
-                    if (typingCoroutine != null)
-                        StopCoroutine(typingCoroutine);
-
-                    if (dialogueText != null)
-                        dialogueText.text = line;
-
-                    lineFinished = true;
-                }
-                else if (dogReachedEdge)
-                {
-                    // Only allow advancing once Devil Dog reaches the edge.
-                    advancePressed = true;
                 }
             }
 
@@ -626,6 +819,48 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
         }
 
         dialogueActive = false;
+    }
+
+    private IEnumerator ContinueDevilDogWalking()
+    {
+        if (devilDog == null || devilDogStopPoint == null)
+            yield break;
+
+        // Keep Devil Dog's walking animation playing.
+        if (devilDogAnimator != null)
+            devilDogAnimator.speed = 1f;
+
+        // Continue walking towards the original stopping point.
+        while (Vector2.Distance(
+            devilDog.transform.position,
+            devilDogStopPoint.position) > 0.05f)
+        {
+            Vector3 currentPosition = devilDog.transform.position;
+            Vector3 targetPosition = devilDogStopPoint.position;
+
+            // Preserve Devil Dog's current Z position.
+            targetPosition.z = currentPosition.z;
+
+            devilDog.transform.position = Vector3.MoveTowards(
+                currentPosition,
+                targetPosition,
+                devilDogWalkSpeed * Time.deltaTime
+            );
+
+            yield return null;
+        }
+
+        // Stop exactly at the edge, keeping the current Z position.
+        Vector3 finalPosition = devilDogStopPoint.position;
+        finalPosition.z = devilDog.transform.position.z;
+        devilDog.transform.position = finalPosition;
+
+        // Switch Devil Dog to the correct idle animation.
+        if (devilDogAnimator != null)
+        {
+            devilDogAnimator.speed = 1f;
+            devilDogAnimator.Play(GetDogIdleAnimation(), 0, 0f);
+        }
     }
 
     private IEnumerator TypeLine(string line)
@@ -649,6 +884,13 @@ public class Outside2ToOutside3Sequence : MonoBehaviour
 
     private void ShowFallingDialogue()
     {
+        // Stop the previous dialogue from continuing to type.
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
+        }
+
         // Display the dialogue panel.
         if (dialoguePanel != null)
             dialoguePanel.SetActive(true);

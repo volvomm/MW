@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: f50fd1e4d9f589a44ab576d7622416f8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7136478710510131982
+    second: Timeline 1_0001_0
+  - first:
+      213: -6646507051061443825
+    second: Timeline 1_0001_1
+  - first:
+      213: -8361362092676905563
+    second: Timeline 1_0001_2
+  - first:
+      213: 2541709320803202884
+    second: Timeline 1_0001_3
+  - first:
+      213: -3593581157987560096
+    second: Timeline 1_0001_4
+  - first:
+      213: 6537614404484191755
+    second: Timeline 1_0001_5
+  - first:
+      213: -1143011470026347717
+    second: Timeline 1_0001_6
+  - first:
+      213: -3054780157518242959
+    second: Timeline 1_0001_7
+  - first:
+      213: -2054619282207357248
+    second: Timeline 1_0001_8
+  - first:
+      213: 2504824316182950490
+    second: Timeline 1_0001_9
+  - first:
+      213: 2941965243221219211
+    second: Timeline 1_0001_10
+  - first:
+      213: 8626447538447367326
+    second: Timeline 1_0001_11
+  - first:
+      213: 6610891975261669380
+    second: Timeline 1_0001_12
+  - first:
+      213: 4574890241805675426
+    second: Timeline 1_0001_13
+  - first:
+      213: 49783646884478459
+    second: Timeline 1_0001_14
+  - first:
+      213: 2573622432630290687
+    second: Timeline 1_0001_15
+  - first:
+      213: -4070355286018421367
+    second: Timeline 1_0001_16
+  - first:
+      213: -7030606255513073038
+    second: Timeline 1_0001_17
+  - first:
+      213: 8919038574452241473
+    second: Timeline 1_0001_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 140
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Timeline 1_0001_0
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 1545
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b1817939dd90360800000000000000
+      internalID: 7136478710510131982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_1
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 1555
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f038a504d0dd2c3a0800000000000000
+      internalID: -6646507051061443825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_2
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 1545
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a583932a7976fb80800000000000000
+      internalID: -8361362092676905563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_3
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 1509
+        width: 44
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44736c42927f54320800000000000000
+      internalID: 2541709320803202884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_4
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 1522
+        width: 36
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0655d96f9f8012ec0800000000000000
+      internalID: -3593581157987560096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_5
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 1537
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b06d1c1c9a54aba50800000000000000
+      internalID: 6537614404484191755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_6
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 0
+        width: 2433
+        height: 1525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3be1eabf153320f0800000000000000
+      internalID: -1143011470026347717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_7
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 1513
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17b9634b1ad3b95d0800000000000000
+      internalID: -3054780157518242959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_8
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 1511
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c6cc5f06a68c73e0800000000000000
+      internalID: -2054619282207357248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_9
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 1513
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5278d6c17ce2c220800000000000000
+      internalID: 2504824316182950490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_10
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 13
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b871fbf2dc5f3d820800000000000000
+      internalID: 2941965243221219211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_11
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 16
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9cb2b2d45c47b770800000000000000
+      internalID: 8626447538447367326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_12
+      rect:
+        serializedVersion: 2
+        x: 1869
+        y: 18
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 408c3f9b93b9ebb50800000000000000
+      internalID: 6610891975261669380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_13
+      rect:
+        serializedVersion: 2
+        x: 1878
+        y: 12
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ab6a35af664d7f30800000000000000
+      internalID: 4574890241805675426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_14
+      rect:
+        serializedVersion: 2
+        x: 1885
+        y: 19
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfd3c2c86fdd0b000800000000000000
+      internalID: 49783646884478459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_15
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 0
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff8b7e287f757b320800000000000000
+      internalID: 2573622432630290687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_16
+      rect:
+        serializedVersion: 2
+        x: 1886
+        y: 11
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98d0d3bde613387c0800000000000000
+      internalID: -4070355286018421367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_17
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 1
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27a01804cd44e6e90800000000000000
+      internalID: -7030606255513073038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timeline 1_0001_18
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 0
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1447b30145ac6cb70800000000000000
+      internalID: 8919038574452241473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Timeline 1_0001_0: 7136478710510131982
+      Timeline 1_0001_1: -6646507051061443825
+      Timeline 1_0001_10: 2941965243221219211
+      Timeline 1_0001_11: 8626447538447367326
+      Timeline 1_0001_12: 6610891975261669380
+      Timeline 1_0001_13: 4574890241805675426
+      Timeline 1_0001_14: 49783646884478459
+      Timeline 1_0001_15: 2573622432630290687
+      Timeline 1_0001_16: -4070355286018421367
+      Timeline 1_0001_17: -7030606255513073038
+      Timeline 1_0001_18: 8919038574452241473
+      Timeline 1_0001_2: -8361362092676905563
+      Timeline 1_0001_3: 2541709320803202884
+      Timeline 1_0001_4: -3593581157987560096
+      Timeline 1_0001_5: 6537614404484191755
+      Timeline 1_0001_6: -1143011470026347717
+      Timeline 1_0001_7: -3054780157518242959
+      Timeline 1_0001_8: -2054619282207357248
+      Timeline 1_0001_9: 2504824316182950490
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

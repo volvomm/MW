@@ -17,6 +17,7 @@ public class DevilDogTrapdoorSequence : MonoBehaviour
 
     [Header("Portraits")]
     [SerializeField] private Sprite devilDogPortrait;
+    [SerializeField] private Sprite soundRecorderPortrait;
 
     [Header("Recorder Recording Dialogue")]
     [SerializeField] private BoxDialogue recorderRecordingDialogue;
@@ -213,17 +214,15 @@ public class DevilDogTrapdoorSequence : MonoBehaviour
 
         if (speakerNameText != null)
         {
-            speakerNameText.text =
-                recorderRecordingDialogue.npcName;
+            speakerNameText.text = "Sound Recorder";
         }
 
         if (speakerPortraitImage != null)
         {
-            speakerPortraitImage.sprite =
-                recorderRecordingDialogue.npcPortrait;
+            speakerPortraitImage.sprite = soundRecorderPortrait;
 
             speakerPortraitImage.enabled =
-                recorderRecordingDialogue.npcPortrait != null;
+                soundRecorderPortrait != null;
         }
 
         // Element 1 is the actual:

@@ -26,6 +26,9 @@ public class PuzzleInteractable : MonoBehaviour, IInteractable
     [SerializeField] private bool disableOjectAfterPickup = true;
     [SerializeField] private bool destroyObjectAfterPickup = false;
 
+    [Tooltip("Optional: The visible object to hide after pickup.")]
+    [SerializeField] private GameObject objectToHideAfterPickup;
+
     private int dialogueIndex = 0;
 
     private bool isTyping = false;
@@ -484,8 +487,14 @@ public class PuzzleInteractable : MonoBehaviour, IInteractable
             ui.RefreshUI();
         }
 
-        // Everything involving dialogue has finished
-        // BEFORE we disable/destroy this GameObject.
+        // Hide the assigned visible object after
+        // the item has successfully entered inventory.
+        if (objectToHideAfterPickup != null)
+        {
+            objectToHideAfterPickup.SetActive(false);
+        }
+
+        // Preserve the existing pickup behaviour.
         if (destroyObjectAfterPickup)
         {
             Destroy(gameObject);

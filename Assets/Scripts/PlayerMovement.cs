@@ -1,9 +1,14 @@
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
+
+    [Header("Shadow Settings")]
+    [SerializeField] private Transform shadow;
+    [SerializeField] private float shadowOffsetX = 3.4f;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -16,18 +21,23 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        UpdateShadowPosition();
     }
 
     private void Update()
     {
-        rb.linearVelocity = moveInput * moveSpeed;
-
         Flip();
 
         float animationSpeed =
             moveInput.sqrMagnitude > 0.001f ? 1f : 0f;
 
         animator.SetFloat("Speed", animationSpeed);
+    }
+
+    private void FixedUpdate()
+    {
+        rb.linearVelocity = moveInput * moveSpeed;
     }
 
     private void Flip()
@@ -42,6 +52,22 @@ public class PlayerMovement : MonoBehaviour
             // Moving left.
             rend.flipX = true;
         }
+
+        UpdateShadowPosition();
+    }
+
+    private void UpdateShadowPosition()
+    {
+        if (shadow == null || rend == null)
+            return;
+
+        Vector3 shadowPosition = shadow.localPosition;
+
+        shadowPosition.x = rend.flipX
+            ? -shadowOffsetX
+            : shadowOffsetX;
+
+        shadow.localPosition = shadowPosition;
     }
 
     public void Move(InputAction.CallbackContext context)

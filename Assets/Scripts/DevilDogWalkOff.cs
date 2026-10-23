@@ -19,6 +19,8 @@ public class DevilDogWalkOff : MonoBehaviour
 
     private bool isWalkingAway = false;
 
+    public bool IsWalkingAway => isWalkingAway;
+
     private void Update()
     {
         if (!isWalkingAway)
@@ -63,11 +65,17 @@ public class DevilDogWalkOff : MonoBehaviour
         {
             animator.enabled = true;
 
-            animator.Play(
-                "DevilDogWalk",
-                0,
-                0f
-            );
+            MoodManager moodManager = FindFirstObjectByType<MoodManager>();
+
+            string walkAnimation = "NeutralDogWalk";
+
+            if (moodManager != null &&
+                moodManager.currentMood == PatchMood.Frightened)
+            {
+                walkAnimation = "DevilDogWalk";
+            }
+
+            animator.Play(walkAnimation, 0, 0f);
         }
     }
 
